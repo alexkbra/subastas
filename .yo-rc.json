@@ -1,0 +1,43 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "co.com.poli.subastas",
+      "nativeLanguage": "es"
+    },
+    "jhipsterVersion": "6.7.1",
+    "applicationType": "monolith",
+    "baseName": "subastas",
+    "packageName": "co.com.poli.subastas",
+    "packageFolder": "co/com/poli/subastas",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": false,
+    "websocket": "spring-websocket",
+    "databaseType": "sql",
+    "devDatabaseType": "mysql",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "ZjQyNWQxNmZkMjk3Njc2ZjYzMTY0NjQ1MmI4MzA2MDU4ODhlMWFkMWNmYWVlMzM5MDQ1YzMzMDIyZDE5MTE4OTgzZTc3Yzc4N2E1ZTI1YjNkZTFhNjAwZmViZGQyYTk4MGYzNjQwZWRjYzI3Nzk1YzUxMzU3ZjkxOWZkNGM2OGY=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "creationTimestamp": 1584116731867,
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": true,
+    "nativeLanguage": "es",
+    "languages": ["es", "en"],
+    "blueprints": []
+  }
+}

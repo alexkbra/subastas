@@ -1,0 +1,322 @@
+entity Dispositivo {
+  idEvento String,
+  idSubasta String,
+  idLote String,
+  idusuario String,
+  idcliente String,
+  activo Boolean,
+  dispositivo String
+}
+
+entity EstadoCliente {
+  nombre String minlength(5) maxlength(100) required,
+  code String minlength(2) maxlength(50) required
+
+}
+
+entity Cliente {
+  numeroDocumento Integer min(5) max(20) required,
+  nombre String minlength(5) maxlength(100) required,
+  apellido String minlength(5) maxlength(100) required,
+  correo String minlength(5) maxlength(255) required,
+  nombrerepresentantelegal String minlength(5) maxlength(100) required,
+  telefonocelular String minlength(5) maxlength(45),
+  telefonofijo String minlength(5) maxlength(45),
+  telefonoempresarial String minlength(5) maxlength(45),
+  telefonorepresentantelegal String minlength(5) maxlength(45) required,
+  direccionresidencial String minlength(5) maxlength(100),
+  direccionempresarial String minlength(5) maxlength(100),
+  direccionrepresentantelegal String minlength(5) maxlength(100) required,
+  fechanacimiento LocalDate required,
+  idusuario String,
+  imagenUrl ImageBlob,
+  idciudad Long,
+  anonimo Boolean
+}
+
+enum EstadoPujadores {
+  ACTIVO,
+  NOAUTORIZADO,
+  INACTIVO,
+  GANADOR
+}
+
+entity Pujadores{
+  idEvento String,
+  idSubasta String,
+  idLote String,
+  nroconsignacion String minlength(5) maxlength(255),
+  nombrebanco String minlength(5) maxlength(255),
+  estado EstadoPujadores,
+  pagoAceptado Boolean
+}
+
+entity Pujas{
+  idEvento String,
+  idSubasta String,
+  idLote String,
+  valor BigDecimal required,
+  fechacreacion Instant,
+  aceptadoGanador Boolean
+}
+
+entity Subastas{
+ nombre String minlength(5) maxlength(100) required,
+ decripcion TextBlob, 
+ fechainicio Instant required,
+ fechafinal Instant required,
+ timpoRecloGanador Duration required,
+ fechacreacion Instant required,
+ valorinicial BigDecimal required,
+ valoractual BigDecimal required,
+ valortope BigDecimal required,
+ pagaAnticipo Boolean required,
+ pesobaseporkg BigDecimal,
+ pesototallote BigDecimal,
+ valorAnticipo BigDecimal,
+ imagenUrl ImageBlob,
+ videoUrl String maxlength(500),
+ estadoActivo Boolean required
+}
+
+entity Eventos{
+ nombre String minlength(5) maxlength(100) required,
+ decripcion TextBlob,
+ fechainicio Instant required,
+ fechafinal Instant required,
+ fechacreacion Instant required,
+ imagenUrl ImageBlob required, 
+ videoUrl String maxlength(500),
+ idciudad Long,
+ latitud String,
+ longitud String,
+ estadoActivo Boolean required
+}
+
+
+
+entity ClasificacionLote{
+ nombre String minlength(5) maxlength(100) required,
+ code String minlength(2) maxlength(50) required
+}
+
+entity Mensajes {
+ titulo  String   minlength(5) maxlength(100) required,
+ cuerpo  TextBlob  required,
+ numeroLote String,
+ tipoMensaje TipoMensaje,
+ tipoCliente TipoCliente,
+ direccion String required,
+  idusuario String,
+  idcliente String,
+  activo Boolean,
+  valorPagar BigDecimal required
+}
+
+enum TipoCliente{
+ COMPRADOR,
+ PUJADOR
+}
+
+enum TipoMensaje{
+	GANDOR,
+     INFO,
+     ERROR
+}
+
+enum Sexos {
+ MASCULINO,
+ FEMENINO,
+ OTRO
+}
+
+entity Especies {
+ nombre String minlength(5) maxlength(100) required,
+ decripcion TextBlob ,
+ code String minlength(2) maxlength(50) required
+}
+
+entity Razas {
+ nombre String minlength(5) maxlength(100) required,
+ decripcion TextBlob,
+ code String minlength(2) maxlength(50) required
+}
+
+
+entity Departamentos {
+  iddepartamentos Long,
+  departamento String minlength(5) maxlength(255) required
+}
+
+
+entity Municipios {
+  idmunicipios Long,
+  municipio String minlength(5) maxlength(100) required,
+  estado String minlength(5) maxlength(100) required
+}
+
+entity Ciudad {
+  idciudad Long,
+  nombre String minlength(5) maxlength(100) required
+}
+
+enum TipoContenido{
+ VIDEO,
+ IMAGEN,
+ TEXTO
+}
+
+enum EntidadContenido{
+ Cliente,
+ Pujadores,
+ Pujas,
+ Subastas,
+ Eventos,
+ Lotes,
+ Animales,
+ Razas
+}
+
+entity Contenido{
+ tipo TipoContenido,
+ url String maxlength(500),
+ imagenUrl ImageBlob,
+ texto TextBlob,
+ entidad EntidadContenido,
+ idEntidad String
+}
+
+entity TipoDocumento{
+ codigo String minlength(5) maxlength(100) required,
+ nombre String minlength(5) maxlength(100) required
+}
+
+entity Propietario{
+  numeroDocumento Integer min(5) max(20) required,
+  nombreORazonSocial String minlength(5) maxlength(100) required,
+  correo String minlength(5) maxlength(255) required,
+  telefonocelular String minlength(5) maxlength(45) required,
+  telefonofijo String minlength(5) maxlength(45),
+  telefonoempresarial String minlength(5) maxlength(45),
+  direccionresidencial String minlength(5) maxlength(100) required,
+  direccionempresarial String minlength(5) maxlength(100),
+  idusuario String,
+  imagenUrl ImageBlob,
+  idciudad Long
+}
+
+entity Lotes{
+ numero String minlength(5) maxlength(100) required,
+ nombre String minlength(5) maxlength(100) required,
+ decripcion TextBlob,
+ raza String,
+ cantidadAnimales Integer required,
+ pesopromedio BigDecimal,
+ pesototallote BigDecimal,
+ pesobaseporkg BigDecimal,
+ imagenUrl ImageBlob,
+ videoUrl String maxlength(500),
+ idciudad Long
+}
+
+entity Animales {
+ pesokg BigDecimal required,
+ descripcion TextBlob required,
+ sexo Sexos,
+ procedencia String minlength(5) maxlength(100) required,
+ propietario String minlength(5) maxlength(100) required,
+ imagenUrl ImageBlob,
+ videoUrl String maxlength(500)
+}
+
+entity LotesToAnimales{
+ cantidad BigDecimal required
+}
+
+relationship OneToMany {
+  Especies{razas } to Razas{especies required}
+}
+
+
+relationship OneToMany {
+  Lotes{lotestoanimales } to LotesToAnimales{lotes required}
+}
+
+relationship OneToMany {
+  Animales{lotestoanimales } to LotesToAnimales{animales required}
+}
+
+relationship OneToMany {
+   Propietario{lotes} to Lotes{propietario required} 
+} 
+
+
+relationship OneToMany {
+   TipoDocumento{propietario} to Propietario{tipoDocumento required} 
+} 
+
+relationship OneToMany {
+   TipoDocumento{cliente} to Cliente{tipoDocumento required} 
+} 
+
+
+relationship OneToMany {
+   Eventos{subastas} to Subastas{eventos required} 
+} 
+
+relationship OneToMany {
+   Departamentos{municipios} to Municipios{departamentos required} 
+}   
+
+relationship OneToMany {
+   Municipios{ciudad} to Ciudad{municipios required} 
+}   
+
+
+relationship OneToMany {
+  Razas{animales} to Animales{razas required}
+}
+
+relationship OneToMany {
+  ClasificacionLote{lotes} to Lotes{clasificacionlote required}
+}
+
+relationship OneToMany {
+  Subastas{lotes} to Lotes{subastas required}
+}
+
+relationship OneToMany {
+	EstadoCliente{cliente} to Cliente{estadocliente required}
+}
+
+
+relationship OneToMany {
+	Cliente{pujadores} to Pujadores{cliente required}
+}
+
+relationship OneToMany {
+	Pujadores{pujas} to Pujas{pujadores required}
+}
+
+paginate Dispositivo with pagination
+paginate EstadoCliente with pagination
+paginate Cliente with pagination
+paginate Pujadores with pagination
+paginate Pujas with pagination
+paginate Subastas with pagination
+paginate Eventos with pagination
+paginate ClasificacionLote with pagination
+paginate Mensajes with pagination
+paginate Especies with pagination
+paginate Razas with pagination
+paginate Departamentos with pagination
+paginate Municipios with pagination
+paginate Ciudad with pagination
+paginate Contenido with pagination
+paginate TipoDocumento with pagination
+paginate Propietario with pagination
+paginate Lotes with pagination
+paginate Animales with pagination
+paginate LotesToAnimales with pagination
+
+
