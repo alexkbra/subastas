@@ -1,0 +1,10 @@
+{
+  "subastasApp": {
+    "TipoContenido": {
+      "null": "",
+      "VIDEO": "VIDEO",
+      "IMAGEN": "IMAGEN",
+      "TEXTO": "TEXTO"
+    }
+  }
+}

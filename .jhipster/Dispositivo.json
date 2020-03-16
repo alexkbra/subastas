@@ -1,0 +1,44 @@
+{
+    "name": "Dispositivo",
+    "fields": [
+        {
+            "fieldName": "idEvento",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "idSubasta",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "idLote",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "idusuario",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "idcliente",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "activo",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "dispositivo",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20200313165600",
+    "entityTableName": "dispositivo",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,10 @@
+{
+  "subastasApp": {
+    "Sexos": {
+      "null": "",
+      "MASCULINO": "MASCULINO",
+      "FEMENINO": "FEMENINO",
+      "OTRO": "OTRO"
+    }
+  }
+}

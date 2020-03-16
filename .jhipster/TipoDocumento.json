@@ -1,0 +1,51 @@
+{
+    "name": "TipoDocumento",
+    "fields": [
+        {
+            "fieldName": "codigo",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "minlength",
+                "maxlength",
+                "required"
+            ],
+            "fieldValidateRulesMinlength": "5",
+            "fieldValidateRulesMaxlength": "100"
+        },
+        {
+            "fieldName": "nombre",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "minlength",
+                "maxlength",
+                "required"
+            ],
+            "fieldValidateRulesMinlength": "5",
+            "fieldValidateRulesMaxlength": "100"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "propietario",
+            "otherEntityRelationshipName": "tipoDocumento",
+            "relationshipName": "propietario"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "cliente",
+            "otherEntityRelationshipName": "tipoDocumento",
+            "relationshipName": "cliente"
+        }
+    ],
+    "changelogDate": "20200313171100",
+    "entityTableName": "tipo_documento",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

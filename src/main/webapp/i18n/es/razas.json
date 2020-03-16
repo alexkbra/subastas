@@ -1,0 +1,26 @@
+{
+  "subastasApp": {
+    "razas": {
+      "home": {
+        "title": "Razas",
+        "createLabel": "Crear nueva raza",
+        "createOrEditLabel": "Crear o editar raza",
+        "notFound": "Ninguna raza encontrada"
+      },
+      "created": "Una nueva raza ha sido creado con el identificador {{ param }}",
+      "updated": "Una raza ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Una raza ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar raza {{ id }}?"
+      },
+      "detail": {
+        "title": "Razas"
+      },
+      "nombre": "Nombre",
+      "decripcion": "Descripción",
+      "code": "Code",
+      "animales": "Animales",
+      "especies": "Especie"
+    }
+  }
+}

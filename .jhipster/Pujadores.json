@@ -1,0 +1,72 @@
+{
+    "name": "Pujadores",
+    "fields": [
+        {
+            "fieldName": "idEvento",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "idSubasta",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "idLote",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "nroconsignacion",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": "5",
+            "fieldValidateRulesMaxlength": "255"
+        },
+        {
+            "fieldName": "nombrebanco",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": "5",
+            "fieldValidateRulesMaxlength": "255"
+        },
+        {
+            "fieldName": "estado",
+            "fieldType": "EstadoPujadores",
+            "fieldValues": "ACTIVO,NOAUTORIZADO,INACTIVO,GANADOR"
+        },
+        {
+            "fieldName": "pagoAceptado",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "pujas",
+            "otherEntityRelationshipName": "pujadores",
+            "relationshipName": "pujas"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "cliente",
+            "otherEntityRelationshipName": "pujadores",
+            "relationshipValidateRules": "required",
+            "relationshipName": "cliente",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200313165900",
+    "entityTableName": "pujadores",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

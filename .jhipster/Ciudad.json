@@ -1,0 +1,40 @@
+{
+    "name": "Ciudad",
+    "fields": [
+        {
+            "fieldName": "idciudad",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "nombre",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "minlength",
+                "maxlength",
+                "required"
+            ],
+            "fieldValidateRulesMinlength": "5",
+            "fieldValidateRulesMaxlength": "100"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "municipios",
+            "otherEntityRelationshipName": "ciudad",
+            "relationshipValidateRules": "required",
+            "relationshipName": "municipios",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200313170900",
+    "entityTableName": "ciudad",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

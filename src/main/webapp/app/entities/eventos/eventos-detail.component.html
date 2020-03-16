@@ -1,0 +1,75 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="eventos">
+            <h2><span jhiTranslate="subastasApp.eventos.detail.title">Eventos</span> {{ eventos.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="subastasApp.eventos.nombre">Nombre</span></dt>
+                <dd>
+                    <span>{{ eventos.nombre }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.eventos.decripcion">Decripcion</span></dt>
+                <dd>
+                    <span>{{ eventos.decripcion }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.eventos.fechainicio">Fechainicio</span></dt>
+                <dd>
+                    <span>{{ eventos.fechainicio }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.eventos.fechafinal">Fechafinal</span></dt>
+                <dd>
+                    <span>{{ eventos.fechafinal }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.eventos.fechacreacion">Fechacreacion</span></dt>
+                <dd>
+                    <span>{{ eventos.fechacreacion }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.eventos.imagenUrl">Imagen Url</span></dt>
+                <dd>
+                    <div *ngIf="eventos.imagenUrl">
+                        <a (click)="openFile(eventos.imagenUrlContentType!, eventos.imagenUrl)">
+                            <img [src]="'data:' + eventos.imagenUrlContentType + ';base64,' + eventos.imagenUrl" style="max-width: 100%;" alt="eventos image"/>
+                        </a>
+                        {{ eventos.imagenUrlContentType }}, {{ byteSize(eventos.imagenUrl) }}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.eventos.videoUrl">Video Url</span></dt>
+                <dd>
+                    <span>{{ eventos.videoUrl }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.eventos.idciudad">Idciudad</span></dt>
+                <dd>
+                    <span>{{ eventos.idciudad }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.eventos.latitud">Latitud</span></dt>
+                <dd>
+                    <span>{{ eventos.latitud }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.eventos.longitud">Longitud</span></dt>
+                <dd>
+                    <span>{{ eventos.longitud }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.eventos.estadoActivo">Estado Activo</span></dt>
+                <dd>
+                    <span>{{ eventos.estadoActivo }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/eventos', eventos.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="razas">
+            <h2><span jhiTranslate="subastasApp.razas.detail.title">Razas</span> {{ razas.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="subastasApp.razas.nombre">Nombre</span></dt>
+                <dd>
+                    <span>{{ razas.nombre }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.razas.decripcion">Decripcion</span></dt>
+                <dd>
+                    <span>{{ razas.decripcion }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.razas.code">Code</span></dt>
+                <dd>
+                    <span>{{ razas.code }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.razas.especies">Especies</span></dt>
+                <dd>
+                    <div *ngIf="razas.especies">
+                        <a [routerLink]="['/especies', razas.especies?.id, 'view']">{{ razas.especies?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/razas', razas.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

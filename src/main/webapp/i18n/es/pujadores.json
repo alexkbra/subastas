@@ -1,0 +1,30 @@
+{
+  "subastasApp": {
+    "pujadores": {
+      "home": {
+        "title": "Pujadores",
+        "createLabel": "Crear nuevo pujador",
+        "createOrEditLabel": "Crear o editar pujador",
+        "notFound": "Ningún pujador encontrado"
+      },
+      "created": "Un nuevo pujador ha sido creado con el identificador {{ param }}",
+      "updated": "Un pujador ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un pujador ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar pujador {{ id }}?"
+      },
+      "detail": {
+        "title": "Pujadores"
+      },
+      "idEvento": "Evento",
+      "idSubasta": "Subasta",
+      "idLote": "Lote",
+      "nroconsignacion": "Nro. consignación",
+      "nombrebanco": "Nombre banco",
+      "estado": "Estado",
+      "pagoAceptado": "Pago aceptado",
+      "pujas": "Pujas",
+      "cliente": "Cliente"
+    }
+  }
+}

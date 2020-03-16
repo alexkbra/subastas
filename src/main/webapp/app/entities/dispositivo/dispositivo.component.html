@@ -1,0 +1,83 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="subastasApp.dispositivo.home.title">Dispositivos</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-dispositivo" [routerLink]="['/dispositivo/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="subastasApp.dispositivo.home.createLabel">
+            Create a new Dispositivo
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="dispositivos?.length === 0">
+        <span jhiTranslate="subastasApp.dispositivo.home.notFound">No dispositivos found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="dispositivos?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="idEvento"><span jhiTranslate="subastasApp.dispositivo.idEvento">Id Evento</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="idSubasta"><span jhiTranslate="subastasApp.dispositivo.idSubasta">Id Subasta</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="idLote"><span jhiTranslate="subastasApp.dispositivo.idLote">Id Lote</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="idusuario"><span jhiTranslate="subastasApp.dispositivo.idusuario">Idusuario</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="idcliente"><span jhiTranslate="subastasApp.dispositivo.idcliente">Idcliente</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="activo"><span jhiTranslate="subastasApp.dispositivo.activo">Activo</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="dispositivo"><span jhiTranslate="subastasApp.dispositivo.dispositivo">Dispositivo</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let dispositivo of dispositivos ;trackBy: trackId">
+                    <td><a [routerLink]="['/dispositivo', dispositivo.id, 'view']">{{ dispositivo.id }}</a></td>
+                    <td>{{ dispositivo.idEvento }}</td>
+                    <td>{{ dispositivo.idSubasta }}</td>
+                    <td>{{ dispositivo.idLote }}</td>
+                    <td>{{ dispositivo.idusuario }}</td>
+                    <td>{{ dispositivo.idcliente }}</td>
+                    <td>{{ dispositivo.activo }}</td>
+                    <td>{{ dispositivo.dispositivo }}</td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/dispositivo', dispositivo.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/dispositivo', dispositivo.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(dispositivo)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="dispositivos?.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+{
+  "subastasApp": {
+    "eventos": {
+      "home": {
+        "title": "Eventos",
+        "createLabel": "Create a new Eventos",
+        "createOrEditLabel": "Create or edit a Eventos",
+        "notFound": "No Eventos found"
+      },
+      "created": "A new Eventos is created with identifier {{ param }}",
+      "updated": "A Eventos is updated with identifier {{ param }}",
+      "deleted": "A Eventos is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Eventos {{ id }}?"
+      },
+      "detail": {
+        "title": "Eventos"
+      },
+      "nombre": "Nombre",
+      "decripcion": "Decripcion",
+      "fechainicio": "Fechainicio",
+      "fechafinal": "Fechafinal",
+      "fechacreacion": "Fechacreacion",
+      "imagenUrl": "Imagen Url",
+      "videoUrl": "Video Url",
+      "idciudad": "Idciudad",
+      "latitud": "Latitud",
+      "longitud": "Longitud",
+      "estadoActivo": "Estado Activo",
+      "subastas": "Subastas"
+    }
+  }
+}

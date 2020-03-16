@@ -1,0 +1,129 @@
+{
+    "name": "Propietario",
+    "fields": [
+        {
+            "fieldName": "numeroDocumento",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "min",
+                "max",
+                "required"
+            ],
+            "fieldValidateRulesMin": "5",
+            "fieldValidateRulesMax": "20"
+        },
+        {
+            "fieldName": "nombreORazonSocial",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "minlength",
+                "maxlength",
+                "required"
+            ],
+            "fieldValidateRulesMinlength": "5",
+            "fieldValidateRulesMaxlength": "100"
+        },
+        {
+            "fieldName": "correo",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "minlength",
+                "maxlength",
+                "required"
+            ],
+            "fieldValidateRulesMinlength": "5",
+            "fieldValidateRulesMaxlength": "255"
+        },
+        {
+            "fieldName": "telefonocelular",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "minlength",
+                "maxlength",
+                "required"
+            ],
+            "fieldValidateRulesMinlength": "5",
+            "fieldValidateRulesMaxlength": "45"
+        },
+        {
+            "fieldName": "telefonofijo",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": "5",
+            "fieldValidateRulesMaxlength": "45"
+        },
+        {
+            "fieldName": "telefonoempresarial",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": "5",
+            "fieldValidateRulesMaxlength": "45"
+        },
+        {
+            "fieldName": "direccionresidencial",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "minlength",
+                "maxlength",
+                "required"
+            ],
+            "fieldValidateRulesMinlength": "5",
+            "fieldValidateRulesMaxlength": "100"
+        },
+        {
+            "fieldName": "direccionempresarial",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": "5",
+            "fieldValidateRulesMaxlength": "100"
+        },
+        {
+            "fieldName": "idusuario",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "imagenUrl",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldName": "idciudad",
+            "fieldType": "Long"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "lotes",
+            "otherEntityRelationshipName": "propietario",
+            "relationshipName": "lotes"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "tipoDocumento",
+            "otherEntityRelationshipName": "propietario",
+            "relationshipValidateRules": "required",
+            "relationshipName": "tipoDocumento",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200313171200",
+    "entityTableName": "propietario",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

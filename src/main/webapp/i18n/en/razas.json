@@ -1,0 +1,26 @@
+{
+  "subastasApp": {
+    "razas": {
+      "home": {
+        "title": "Razas",
+        "createLabel": "Create a new Razas",
+        "createOrEditLabel": "Create or edit a Razas",
+        "notFound": "No Razas found"
+      },
+      "created": "A new Razas is created with identifier {{ param }}",
+      "updated": "A Razas is updated with identifier {{ param }}",
+      "deleted": "A Razas is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Razas {{ id }}?"
+      },
+      "detail": {
+        "title": "Razas"
+      },
+      "nombre": "Nombre",
+      "decripcion": "Decripcion",
+      "code": "Code",
+      "animales": "Animales",
+      "especies": "Especies"
+    }
+  }
+}

@@ -2,8 +2,12 @@ package co.com.poli.subastas.service;
 
 import co.com.poli.subastas.config.Constants;
 import co.com.poli.subastas.domain.Authority;
+import co.com.poli.subastas.domain.Cliente;
 import co.com.poli.subastas.domain.User;
 import co.com.poli.subastas.repository.AuthorityRepository;
+import co.com.poli.subastas.repository.ClienteRepository;
+import co.com.poli.subastas.repository.EstadoClienteRepository;
+import co.com.poli.subastas.repository.TipoDocumentoRepository;
 import co.com.poli.subastas.repository.UserRepository;
 import co.com.poli.subastas.security.AuthoritiesConstants;
 import co.com.poli.subastas.security.SecurityUtils;
@@ -22,6 +26,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Instant;
+import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -36,6 +41,9 @@ public class UserService {
     private final Logger log = LoggerFactory.getLogger(UserService.class);
 
     private final UserRepository userRepository;
+    private final ClienteRepository clienteRepository;
+    private final TipoDocumentoRepository tipoDocumentoRepository;
+    private final EstadoClienteRepository estadoClienteRepository;
 
     private final PasswordEncoder passwordEncoder;
 
@@ -43,8 +51,12 @@ public class UserService {
 
     private final CacheManager cacheManager;
 
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, AuthorityRepository authorityRepository, CacheManager cacheManager) {
+    public UserService(UserRepository userRepository, ClienteRepository clienteRepository,
+    TipoDocumentoRepository tipoDocumentoRepository, EstadoClienteRepository estadoClienteRepository, PasswordEncoder passwordEncoder, AuthorityRepository authorityRepository, CacheManager cacheManager) {
         this.userRepository = userRepository;
+        this.tipoDocumentoRepository = tipoDocumentoRepository;
+        this.estadoClienteRepository = estadoClienteRepository;
+        this.clienteRepository = clienteRepository;
         this.passwordEncoder = passwordEncoder;
         this.authorityRepository = authorityRepository;
         this.cacheManager = cacheManager;
@@ -101,6 +113,7 @@ public class UserService {
             }
         });
         User newUser = new User();
+        Cliente cliente = new Cliente();
         String encryptedPassword = passwordEncoder.encode(password);
         newUser.setLogin(userDTO.getLogin().toLowerCase());
         // new user gets initially a generated password
@@ -120,8 +133,26 @@ public class UserService {
         authorityRepository.findById(AuthoritiesConstants.USER).ifPresent(authorities::add);
         newUser.setAuthorities(authorities);
         userRepository.save(newUser);
+
+        cliente.setAnonimo(true);
+        cliente.setIdusuario(newUser.getId().toString());
+        cliente.setNumeroDocumento(15);
+        
+        cliente.setNombre(userDTO.getLogin().toLowerCase());
+        cliente.setApellido(Constants.ANONYMOUS_USER);
+        if (userDTO.getEmail() != null) {
+            cliente.setCorreo(userDTO.getEmail().toLowerCase());
+        }
+        cliente.setNombrerepresentantelegal(Constants.ANONYMOUS_USER);
+        cliente.setTelefonorepresentantelegal(Constants.ANONYMOUS_USER);
+        cliente.direccionrepresentantelegal(Constants.ANONYMOUS_USER);
+        cliente.setFechanacimiento(LocalDate.now());
+        Long id = new Long(1);
+        cliente.setTipoDocumento(tipoDocumentoRepository.findById(id).get());
+        cliente.setEstadocliente(estadoClienteRepository.findById(id).get());
+        clienteRepository.save(cliente);
         this.clearUserCaches(newUser);
-        log.debug("Created Information for User: {}", newUser);
+        log.debug("Created Information for User an cliente: {0} {1}", newUser, cliente);
         return newUser;
     }
 

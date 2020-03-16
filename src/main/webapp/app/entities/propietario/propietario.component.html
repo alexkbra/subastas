@@ -1,0 +1,104 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="subastasApp.propietario.home.title">Propietarios</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-propietario" [routerLink]="['/propietario/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="subastasApp.propietario.home.createLabel">
+            Create a new Propietario
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="propietarios?.length === 0">
+        <span jhiTranslate="subastasApp.propietario.home.notFound">No propietarios found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="propietarios?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="tipoDocumento.id"><span jhiTranslate="subastasApp.propietario.tipoDocumento">Tipo Documento</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="numeroDocumento"><span jhiTranslate="subastasApp.propietario.numeroDocumento">Numero Documento</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="nombreORazonSocial"><span jhiTranslate="subastasApp.propietario.nombreORazonSocial">Nombre O Razon Social</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="correo"><span jhiTranslate="subastasApp.propietario.correo">Correo</span> <fa-icon icon="sort"></fa-icon></th>
+                    <!--th scope="col"  jhiSortBy="telefonocelular"><span jhiTranslate="subastasApp.propietario.telefonocelular">Telefonocelular</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="telefonofijo"><span jhiTranslate="subastasApp.propietario.telefonofijo">Telefonofijo</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="telefonoempresarial"><span jhiTranslate="subastasApp.propietario.telefonoempresarial">Telefonoempresarial</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="direccionresidencial"><span jhiTranslate="subastasApp.propietario.direccionresidencial">Direccionresidencial</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="direccionempresarial"><span jhiTranslate="subastasApp.propietario.direccionempresarial">Direccionempresarial</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="idusuario"><span jhiTranslate="subastasApp.propietario.idusuario">Idusuario</span> <fa-icon icon="sort"></fa-icon></th-->
+                    <th scope="col"  jhiSortBy="imagenUrl"><span jhiTranslate="subastasApp.propietario.imagenUrl">Imagen Url</span> <fa-icon icon="sort"></fa-icon></th>
+                    <!--th scope="col"  jhiSortBy="idciudad"><span jhiTranslate="subastasApp.propietario.idciudad">Idciudad</span> <fa-icon icon="sort"></fa-icon></th-->
+                    
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let propietario of propietarios ;trackBy: trackId">
+                    <td><a [routerLink]="['/propietario', propietario.id, 'view']">{{ propietario.id }}</a></td>
+                    <td>
+                        <div *ngIf="propietario.tipoDocumento">
+                            <a [routerLink]="['/tipo-documento', propietario.tipoDocumento?.id, 'view']" >{{ propietario.tipoDocumento?.nombre }}</a>
+                        </div>
+                    </td>
+                    <td>{{ propietario.numeroDocumento }}</td>
+                    <td>{{ propietario.nombreORazonSocial }}</td>
+                    <td>{{ propietario.correo }}</td>
+                    <!--td>{{ propietario.telefonocelular }}</td>
+                    <td>{{ propietario.telefonofijo }}</td>
+                    <td>{{ propietario.telefonoempresarial }}</td>
+                    <td>{{ propietario.direccionresidencial }}</td>
+                    <td>{{ propietario.direccionempresarial }}</td>
+                    <td>{{ propietario.idusuario }}</td-->
+                    <td>
+                        <a *ngIf="propietario.imagenUrl" (click)="openFile(propietario.imagenUrlContentType, propietario.imagenUrl)">
+                            <img [src]="'data:' + propietario.imagenUrlContentType + ';base64,' + propietario.imagenUrl" style="max-height: 30px;" alt="propietario image"/>
+                        </a>
+                        <!--span *ngIf="propietario.imagenUrl">{{ propietario.imagenUrlContentType }}, {{ byteSize(propietario.imagenUrl) }}</span-->
+                    </td>
+                    <!--td>{{ propietario.idciudad }}</td-->
+                    
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/propietario', propietario.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/propietario', propietario.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(propietario)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="propietarios?.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+{
+  "subastasApp": {
+    "clasificacionLote": {
+      "home": {
+        "title": "Clasificación lotes",
+        "createLabel": "Crear nuevo clasificación",
+        "createOrEditLabel": "Crear o editar clasificación",
+        "notFound": "Ninguna clasificación encontrado"
+      },
+      "created": "Una nueva clasificación ha sido creado con el identificador {{ param }}",
+      "updated": "Una clasificación ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Una clasificación ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar clasificación {{ id }}?"
+      },
+      "detail": {
+        "title": "Clasificación lotes"
+      },
+      "nombre": "Nombre",
+      "code": "Code",
+      "lotes": "Lotes"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "subastasApp": {
+    "TipoMensaje": {
+      "null": "",
+      "GANDOR": "GANDOR",
+      "INFO": "INFO",
+      "ERROR": "ERROR"
+    }
+  }
+}

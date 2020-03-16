@@ -1,0 +1,93 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="subastasApp.lotesToAnimales.home.title">Lotes To Animales</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-lotes-to-animales" [routerLink]="['/lotes-to-animales/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="subastasApp.lotesToAnimales.home.createLabel">
+            Create a new Lotes To Animales
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="lotesToAnimales?.length === 0">
+        <span jhiTranslate="subastasApp.lotesToAnimales.home.notFound">No lotesToAnimales found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="lotesToAnimales?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="cantidad"><span jhiTranslate="subastasApp.lotesToAnimales.cantidad">Cantidad</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="lotes.id"><span jhiTranslate="subastasApp.lotesToAnimales.lotes">Lotes</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="animales.id"><span jhiTranslate="subastasApp.lotesToAnimales.animales">Animales</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let lotesToAnimales of lotesToAnimales ;trackBy: trackId">
+                    <td><a [routerLink]="['/lotes-to-animales', lotesToAnimales.id, 'view']">{{ lotesToAnimales.id }}</a></td>
+                    <td>{{ lotesToAnimales.cantidad }}</td>
+                    <td>
+                        <!--div *ngIf="lotesToAnimales.lotes">
+                            <a [routerLink]="['/lotes', lotesToAnimales.lotes?.id, 'view']" >{{ lotesToAnimales.lotes?.id }}</a>
+                        </div-->
+
+                        <a *ngIf="lotesToAnimales.lotes.imagenUrl" (click)="openFile(lotesToAnimales.lotes.imagenUrlContentType, lotesToAnimales.lotes.imagenUrl)">
+                            <img [src]="'data:' + lotesToAnimales.lotes.imagenUrlContentType + ';base64,' + lotesToAnimales.lotes.imagenUrl" style="max-height: 30px;" alt="lotes image"/>
+                        </a>
+                        <span *ngIf="lotesToAnimales.lotes.imagenUrl">{{ lotesToAnimales.lotes.nombre }}</span>
+
+                    </td>
+                    <td>
+                        <!--div *ngIf="lotesToAnimales.animales">
+                            <a [routerLink]="['/animales', lotesToAnimales.animales?.id, 'view']" >{{ lotesToAnimales.animales?.id }}</a>
+                        </div-->
+                        <a *ngIf="lotesToAnimales.animales.imagenUrl" (click)="openFile(lotesToAnimales.animales.imagenUrlContentType, lotesToAnimales.animales.imagenUrl)">
+                            <img [src]="'data:' + lotesToAnimales.animales.imagenUrlContentType + ';base64,' + lotesToAnimales.animales.imagenUrl" style="max-height: 30px;" alt="animales image"/>
+                        </a>
+                        <span *ngIf="lotesToAnimales.animales.imagenUrl">{{ lotesToAnimales.animales.descripcion }}</span>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/lotes-to-animales', lotesToAnimales.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/lotes-to-animales', lotesToAnimales.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(lotesToAnimales)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="lotesToAnimales?.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

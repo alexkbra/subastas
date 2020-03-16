@@ -1,0 +1,66 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="mensajes">
+            <h2><span jhiTranslate="subastasApp.mensajes.detail.title">Mensajes</span> {{ mensajes.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="subastasApp.mensajes.titulo">Titulo</span></dt>
+                <dd>
+                    <span>{{ mensajes.titulo }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.mensajes.cuerpo">Cuerpo</span></dt>
+                <dd>
+                    <span>{{ mensajes.cuerpo }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.mensajes.numeroLote">Numero Lote</span></dt>
+                <dd>
+                    <span>{{ mensajes.numeroLote }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.mensajes.tipoMensaje">Tipo Mensaje</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'subastasApp.TipoMensaje.' + mensajes.tipoMensaje }}">{{ mensajes.tipoMensaje }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.mensajes.tipoCliente">Tipo Cliente</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'subastasApp.TipoCliente.' + mensajes.tipoCliente }}">{{ mensajes.tipoCliente }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.mensajes.direccion">Direccion</span></dt>
+                <dd>
+                    <span>{{ mensajes.direccion }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.mensajes.idusuario">Idusuario</span></dt>
+                <dd>
+                    <span>{{ mensajes.idusuario }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.mensajes.idcliente">Idcliente</span></dt>
+                <dd>
+                    <span>{{ mensajes.idcliente }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.mensajes.activo">Activo</span></dt>
+                <dd>
+                    <span>{{ mensajes.activo }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.mensajes.valorPagar">Valor Pagar</span></dt>
+                <dd>
+                    <span>{{ mensajes.valorPagar }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/mensajes', mensajes.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

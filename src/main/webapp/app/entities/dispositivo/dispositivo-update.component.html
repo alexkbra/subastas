@@ -1,0 +1,68 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-dispositivo-heading" jhiTranslate="subastasApp.dispositivo.home.createOrEditLabel">Create or edit a Dispositivo</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="subastasApp.dispositivo.idEvento" for="field_idEvento">Id Evento</label>
+                    <input type="text" class="form-control" name="idEvento" id="field_idEvento"
+                           formControlName="idEvento"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="subastasApp.dispositivo.idSubasta" for="field_idSubasta">Id Subasta</label>
+                    <input type="text" class="form-control" name="idSubasta" id="field_idSubasta"
+                           formControlName="idSubasta"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="subastasApp.dispositivo.idLote" for="field_idLote">Id Lote</label>
+                    <input type="text" class="form-control" name="idLote" id="field_idLote"
+                           formControlName="idLote"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="subastasApp.dispositivo.idusuario" for="field_idusuario">Idusuario</label>
+                    <input type="text" class="form-control" name="idusuario" id="field_idusuario"
+                           formControlName="idusuario"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="subastasApp.dispositivo.idcliente" for="field_idcliente">Idcliente</label>
+                    <input type="text" class="form-control" name="idcliente" id="field_idcliente"
+                           formControlName="idcliente"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="subastasApp.dispositivo.activo" for="field_activo">Activo</label>
+                    <input type="checkbox" class="form-control" name="activo" id="field_activo"
+                           formControlName="activo"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="subastasApp.dispositivo.dispositivo" for="field_dispositivo">Dispositivo</label>
+                    <input type="text" class="form-control" name="dispositivo" id="field_dispositivo"
+                           formControlName="dispositivo"/>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

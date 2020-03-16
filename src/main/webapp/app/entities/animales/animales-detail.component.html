@@ -1,0 +1,65 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="animales">
+            <h2><span jhiTranslate="subastasApp.animales.detail.title">Animales</span> {{ animales.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="subastasApp.animales.pesokg">Pesokg</span></dt>
+                <dd>
+                    <span>{{ animales.pesokg }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.animales.descripcion">Descripcion</span></dt>
+                <dd>
+                    <span>{{ animales.descripcion }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.animales.sexo">Sexo</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'subastasApp.Sexos.' + animales.sexo }}">{{ animales.sexo }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.animales.procedencia">Procedencia</span></dt>
+                <dd>
+                    <span>{{ animales.procedencia }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.animales.propietario">Propietario</span></dt>
+                <dd>
+                    <span>{{ animales.propietario }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.animales.imagenUrl">Imagen Url</span></dt>
+                <dd>
+                    <div *ngIf="animales.imagenUrl">
+                        <a (click)="openFile(animales.imagenUrlContentType!, animales.imagenUrl)">
+                            <img [src]="'data:' + animales.imagenUrlContentType + ';base64,' + animales.imagenUrl" style="max-width: 100%;" alt="animales image"/>
+                        </a>
+                        {{ animales.imagenUrlContentType }}, {{ byteSize(animales.imagenUrl) }}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.animales.videoUrl">Video Url</span></dt>
+                <dd>
+                    <span>{{ animales.videoUrl }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.animales.razas">Razas</span></dt>
+                <dd>
+                    <div *ngIf="animales.razas">
+                        <a [routerLink]="['/razas', animales.razas?.id, 'view']">{{ animales.razas?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/animales', animales.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

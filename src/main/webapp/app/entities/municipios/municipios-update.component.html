@@ -1,0 +1,88 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-municipios-heading" jhiTranslate="subastasApp.municipios.home.createOrEditLabel">Create or edit a Municipios</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="subastasApp.municipios.departamentos" for="field_departamentos">Departamentos</label>
+                    <select class="form-control" id="field_departamentos" name="departamentos" formControlName="departamentos">
+                        <option *ngIf="!editForm.get('departamentos')!.value" [ngValue]="null" selected></option>
+                        <option [ngValue]="departamentosOption.id === editForm.get('departamentos')!.value?.id ? editForm.get('departamentos')!.value : departamentosOption" *ngFor="let departamentosOption of departamentos; trackBy: trackById">{{ departamentosOption.departamento }}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('departamentos')!.invalid && (editForm.get('departamentos')!.dirty || editForm.get('departamentos')!.touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('departamentos')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+
+                <!--div class="form-group">
+                    <label class="form-control-label" jhiTranslate="subastasApp.municipios.idmunicipios" for="field_idmunicipios">Idmunicipios</label>
+                    <input type="number" class="form-control" name="idmunicipios" id="field_idmunicipios"
+                           formControlName="idmunicipios"/>
+                </div-->
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="subastasApp.municipios.municipio" for="field_municipio">Municipio</label>
+                    <input type="text" class="form-control" name="municipio" id="field_municipio"
+                           formControlName="municipio"/>
+                    <div *ngIf="editForm.get('municipio')!.invalid && (editForm.get('municipio')!.dirty || editForm.get('municipio')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('municipio')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('municipio')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 5 }">
+                        This field is required to be at least 5 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('municipio')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 100 }">
+                        This field cannot be longer than 100 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="subastasApp.municipios.estado" for="field_estado">Estado</label>
+                    <input type="text" class="form-control" name="estado" id="field_estado"
+                           formControlName="estado"/>
+                    <div *ngIf="editForm.get('estado')!.invalid && (editForm.get('estado')!.dirty || editForm.get('estado')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('estado')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('estado')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 5 }">
+                        This field is required to be at least 5 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('estado')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 100 }">
+                        This field cannot be longer than 100 characters.
+                        </small>
+                    </div>
+                </div>
+
+                
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

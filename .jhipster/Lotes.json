@@ -1,0 +1,114 @@
+{
+    "name": "Lotes",
+    "fields": [
+        {
+            "fieldName": "numero",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "minlength",
+                "maxlength",
+                "required"
+            ],
+            "fieldValidateRulesMinlength": "5",
+            "fieldValidateRulesMaxlength": "100"
+        },
+        {
+            "fieldName": "nombre",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "minlength",
+                "maxlength",
+                "required"
+            ],
+            "fieldValidateRulesMinlength": "5",
+            "fieldValidateRulesMaxlength": "100"
+        },
+        {
+            "fieldName": "decripcion",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        },
+        {
+            "fieldName": "raza",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "cantidadAnimales",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "pesopromedio",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "pesototallote",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "pesobaseporkg",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "imagenUrl",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldName": "videoUrl",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "500"
+        },
+        {
+            "fieldName": "idciudad",
+            "fieldType": "Long"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "lotesToAnimales",
+            "otherEntityRelationshipName": "lotes",
+            "relationshipName": "lotestoanimales"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "propietario",
+            "otherEntityRelationshipName": "lotes",
+            "relationshipValidateRules": "required",
+            "relationshipName": "propietario",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "clasificacionLote",
+            "otherEntityRelationshipName": "lotes",
+            "relationshipValidateRules": "required",
+            "relationshipName": "clasificacionlote",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "subastas",
+            "otherEntityRelationshipName": "lotes",
+            "relationshipValidateRules": "required",
+            "relationshipName": "subastas",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200313171300",
+    "entityTableName": "lotes",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

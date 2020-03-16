@@ -1,0 +1,52 @@
+{
+    "name": "Pujas",
+    "fields": [
+        {
+            "fieldName": "idEvento",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "idSubasta",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "idLote",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "valor",
+            "fieldType": "BigDecimal",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "fechacreacion",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "aceptadoGanador",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "pujadores",
+            "otherEntityRelationshipName": "pujas",
+            "relationshipValidateRules": "required",
+            "relationshipName": "pujadores",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200313170000",
+    "entityTableName": "pujas",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,60 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="pujadores">
+            <h2><span jhiTranslate="subastasApp.pujadores.detail.title">Pujadores</span> {{ pujadores.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="subastasApp.pujadores.idEvento">Id Evento</span></dt>
+                <dd>
+                    <span>{{ pujadores.idEvento }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.pujadores.idSubasta">Id Subasta</span></dt>
+                <dd>
+                    <span>{{ pujadores.idSubasta }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.pujadores.idLote">Id Lote</span></dt>
+                <dd>
+                    <span>{{ pujadores.idLote }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.pujadores.nroconsignacion">Nroconsignacion</span></dt>
+                <dd>
+                    <span>{{ pujadores.nroconsignacion }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.pujadores.nombrebanco">Nombrebanco</span></dt>
+                <dd>
+                    <span>{{ pujadores.nombrebanco }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.pujadores.estado">Estado</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'subastasApp.EstadoPujadores.' + pujadores.estado }}">{{ pujadores.estado }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.pujadores.pagoAceptado">Pago Aceptado</span></dt>
+                <dd>
+                    <span>{{ pujadores.pagoAceptado }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.pujadores.cliente">Cliente</span></dt>
+                <dd>
+                    <div *ngIf="pujadores.cliente">
+                        <a [routerLink]="['/cliente', pujadores.cliente?.id, 'view']">{{ pujadores.cliente?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/pujadores', pujadores.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

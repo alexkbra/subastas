@@ -1,0 +1,96 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="subastasApp.eventos.home.title">Eventos</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-eventos" [routerLink]="['/eventos/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="subastasApp.eventos.home.createLabel">
+            Create a new Eventos
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="eventos?.length === 0">
+        <span jhiTranslate="subastasApp.eventos.home.notFound">No eventos found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="eventos?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="nombre"><span jhiTranslate="subastasApp.eventos.nombre">Nombre</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="decripcion"><span jhiTranslate="subastasApp.eventos.decripcion">Decripcion</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="fechainicio"><span jhiTranslate="subastasApp.eventos.fechainicio">Fechainicio</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="fechafinal"><span jhiTranslate="subastasApp.eventos.fechafinal">Fechafinal</span> <fa-icon icon="sort"></fa-icon></th>
+                    <!--th scope="col"  jhiSortBy="fechacreacion"><span jhiTranslate="subastasApp.eventos.fechacreacion">Fechacreacion</span> <fa-icon icon="sort"></fa-icon></th-->
+                    <th scope="col"  jhiSortBy="imagenUrl"><span jhiTranslate="subastasApp.eventos.imagenUrl">Imagen Url</span> <fa-icon icon="sort"></fa-icon></th>
+                    <!--th scope="col"  jhiSortBy="videoUrl"><span jhiTranslate="subastasApp.eventos.videoUrl">Video Url</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="idciudad"><span jhiTranslate="subastasApp.eventos.idciudad">Idciudad</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="latitud"><span jhiTranslate="subastasApp.eventos.latitud">Latitud</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="longitud"><span jhiTranslate="subastasApp.eventos.longitud">Longitud</span> <fa-icon icon="sort"></fa-icon></th-->
+                    <th scope="col"  jhiSortBy="estadoActivo"><span jhiTranslate="subastasApp.eventos.estadoActivo">Estado Activo</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let eventos of eventos ;trackBy: trackId">
+                    <td><a [routerLink]="['/eventos', eventos.id, 'view']">{{ eventos.id }}</a></td>
+                    <td>{{ eventos.nombre }}</td>
+                    <td>{{ eventos.decripcion }}</td>
+                    <td>{{ eventos.fechainicio | date:'MM/dd/yyyy hh:mm:ss a' }}</td>
+                    <td>{{ eventos.fechafinal | date:'MM/dd/yyyy hh:mm:ss a' }}</td>
+                    <!--td>{{ eventos.fechacreacion | date:'medium' }}</td-->
+                    <td>
+                        <a *ngIf="eventos.imagenUrl" (click)="openFile(eventos.imagenUrlContentType, eventos.imagenUrl)">
+                            <img [src]="'data:' + eventos.imagenUrlContentType + ';base64,' + eventos.imagenUrl" style="max-height: 30px;" alt="eventos image"/>
+                        </a>
+                        <!--span *ngIf="eventos.imagenUrl">{{ eventos.imagenUrlContentType }}, {{ byteSize(eventos.imagenUrl) }}</span-->
+                    </td>
+                    <!--td>{{ eventos.videoUrl }}</td>
+                    <td>{{ eventos.idciudad }}</td>
+                    <td>{{ eventos.latitud }}</td>
+                    <td>{{ eventos.longitud }}</td-->
+                    <td>{{ eventos.estadoActivo }}</td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/eventos', eventos.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/eventos', eventos.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(eventos)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="eventos?.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

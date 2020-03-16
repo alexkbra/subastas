@@ -1,0 +1,40 @@
+{
+    "name": "LotesToAnimales",
+    "fields": [
+        {
+            "fieldName": "cantidad",
+            "fieldType": "BigDecimal",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "lotes",
+            "otherEntityRelationshipName": "lotestoanimales",
+            "relationshipValidateRules": "required",
+            "relationshipName": "lotes",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "animales",
+            "otherEntityRelationshipName": "lotestoanimales",
+            "relationshipValidateRules": "required",
+            "relationshipName": "animales",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200313171500",
+    "entityTableName": "lotes_to_animales",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

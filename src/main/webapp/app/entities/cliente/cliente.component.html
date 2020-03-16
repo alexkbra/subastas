@@ -1,0 +1,121 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="subastasApp.cliente.home.title">Clientes</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-cliente" [routerLink]="['/cliente/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="subastasApp.cliente.home.createLabel">
+            Create a new Cliente
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="clientes?.length === 0">
+        <span jhiTranslate="subastasApp.cliente.home.notFound">No clientes found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="clientes?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="tipoDocumento.id"><span jhiTranslate="subastasApp.cliente.tipoDocumento">Tipo Documento</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="numeroDocumento"><span jhiTranslate="subastasApp.cliente.numeroDocumento">Numero Documento</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="nombre"><span jhiTranslate="subastasApp.cliente.nombre">Nombre</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="apellido"><span jhiTranslate="subastasApp.cliente.apellido">Apellido</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="correo"><span jhiTranslate="subastasApp.cliente.correo">Correo</span> <fa-icon icon="sort"></fa-icon></th>
+                    <!--th scope="col"  jhiSortBy="nombrerepresentantelegal"><span jhiTranslate="subastasApp.cliente.nombrerepresentantelegal">Nombrerepresentantelegal</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="telefonocelular"><span jhiTranslate="subastasApp.cliente.telefonocelular">Telefonocelular</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="telefonofijo"><span jhiTranslate="subastasApp.cliente.telefonofijo">Telefonofijo</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="telefonoempresarial"><span jhiTranslate="subastasApp.cliente.telefonoempresarial">Telefonoempresarial</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="telefonorepresentantelegal"><span jhiTranslate="subastasApp.cliente.telefonorepresentantelegal">Telefonorepresentantelegal</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="direccionresidencial"><span jhiTranslate="subastasApp.cliente.direccionresidencial">Direccionresidencial</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="direccionempresarial"><span jhiTranslate="subastasApp.cliente.direccionempresarial">Direccionempresarial</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="direccionrepresentantelegal"><span jhiTranslate="subastasApp.cliente.direccionrepresentantelegal">Direccionrepresentantelegal</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="fechanacimiento"><span jhiTranslate="subastasApp.cliente.fechanacimiento">Fechanacimiento</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="idusuario"><span jhiTranslate="subastasApp.cliente.idusuario">Idusuario</span> <fa-icon icon="sort"></fa-icon></th-->
+                    <th scope="col"  jhiSortBy="imagenUrl"><span jhiTranslate="subastasApp.cliente.imagenUrl">Imagen Url</span> <fa-icon icon="sort"></fa-icon></th>
+                    <!--th scope="col"  jhiSortBy="idciudad"><span jhiTranslate="subastasApp.cliente.idciudad">Idciudad</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="anonimo"><span jhiTranslate="subastasApp.cliente.anonimo">Anonimo</span> <fa-icon icon="sort"></fa-icon></th-->
+                    
+                    <th scope="col"  jhiSortBy="estadocliente.id"><span jhiTranslate="subastasApp.cliente.estadocliente">Estadocliente</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let cliente of clientes ;trackBy: trackId">
+                    <td><a [routerLink]="['/cliente', cliente.id, 'view']">{{ cliente.id }}</a></td>
+                    <td>
+                        <div *ngIf="cliente.tipoDocumento">
+                            <a [routerLink]="['/tipo-documento', cliente.tipoDocumento?.id, 'view']" >{{ cliente.tipoDocumento?.nombre }}</a>
+                        </div>
+                    </td>
+                    <td>{{ cliente.numeroDocumento }}</td>
+                    <td>{{ cliente.nombre }}</td>
+                    <td>{{ cliente.apellido }}</td>
+                    <td>{{ cliente.correo }}</td>
+                    <!--td>{{ cliente.nombrerepresentantelegal }}</td>
+                    <td>{{ cliente.telefonocelular }}</td>
+                    <td>{{ cliente.telefonofijo }}</td>
+                    <td>{{ cliente.telefonoempresarial }}</td>
+                    <td>{{ cliente.telefonorepresentantelegal }}</td>
+                    <td>{{ cliente.direccionresidencial }}</td>
+                    <td>{{ cliente.direccionempresarial }}</td>
+                    <td>{{ cliente.direccionrepresentantelegal }}</td>
+                    <td>{{ cliente.fechanacimiento | date:'mediumDate' }}</td>
+                    <td>{{ cliente.idusuario }}</td-->
+                    <td>
+                        <a *ngIf="cliente.imagenUrl" (click)="openFile(cliente.imagenUrlContentType, cliente.imagenUrl)">
+                            <img [src]="'data:' + cliente.imagenUrlContentType + ';base64,' + cliente.imagenUrl" style="max-height: 30px;" alt="cliente image"/>
+                        </a>
+                        <!--span *ngIf="cliente.imagenUrl">{{ cliente.imagenUrlContentType }}, {{ byteSize(cliente.imagenUrl) }}</span-->
+                    </td>
+                    <!--td>{{ cliente.idciudad }}</td>
+                    <td>{{ cliente.anonimo }}</td-->
+                    <td>
+                        <div *ngIf="cliente.estadocliente">
+                            <a [routerLink]="['/estado-cliente', cliente.estadocliente?.id, 'view']" >{{ cliente.estadocliente?.nombre }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/cliente', cliente.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/cliente', cliente.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button *jhiHasAnyAuthority="'ROLE_ADMIN'" type="submit" (click)="delete(cliente)" 
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="clientes?.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

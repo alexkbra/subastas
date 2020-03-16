@@ -1,0 +1,9 @@
+{
+  "subastasApp": {
+    "TipoCliente": {
+      "null": "",
+      "COMPRADOR": "COMPRADOR",
+      "PUJADOR": "PUJADOR"
+    }
+  }
+}

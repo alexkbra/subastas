@@ -1,0 +1,30 @@
+{
+  "subastasApp": {
+    "animales": {
+      "home": {
+        "title": "Animales",
+        "createLabel": "Crear nuevo animal",
+        "createOrEditLabel": "Crear o editar animal",
+        "notFound": "Ningún animal encontrado"
+      },
+      "created": "Un nuevo animal ha sido creado con el identificador {{ param }}",
+      "updated": "Un animal ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un animal ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar animal {{ id }}?"
+      },
+      "detail": {
+        "title": "Animales"
+      },
+      "pesokg": "Peso (kg)",
+      "descripcion": "Descripción",
+      "sexo": "Sexo",
+      "procedencia": "Procedencia",
+      "propietario": "Propietario",
+      "imagenUrl": "Imagen",
+      "videoUrl": "Video Url (YouTube)",
+      "lotestoanimales": "Lotestoanimales",
+      "razas": "Raza"
+    }
+  }
+}

@@ -1,0 +1,256 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-subastas-heading" jhiTranslate="subastasApp.subastas.home.createOrEditLabel">Create or edit a Subastas</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="subastasApp.subastas.eventos" for="field_eventos">Eventos</label>
+                    <select class="form-control" id="field_eventos" name="eventos" formControlName="eventos">
+                        <option *ngIf="!editForm.get('eventos')!.value" [ngValue]="null" selected></option>
+                        <option [ngValue]="eventosOption.id === editForm.get('eventos')!.value?.id ? editForm.get('eventos')!.value : eventosOption" *ngFor="let eventosOption of eventos; trackBy: trackById">{{ eventosOption.nombre }}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('eventos')!.invalid && (editForm.get('eventos')!.dirty || editForm.get('eventos')!.touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('eventos')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="subastasApp.subastas.nombre" for="field_nombre">Nombre</label>
+                    <input type="text" class="form-control" name="nombre" id="field_nombre"
+                           formControlName="nombre"/>
+                    <div *ngIf="editForm.get('nombre')!.invalid && (editForm.get('nombre')!.dirty || editForm.get('nombre')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nombre')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nombre')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 5 }">
+                        This field is required to be at least 5 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nombre')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 100 }">
+                        This field cannot be longer than 100 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="subastasApp.subastas.decripcion" for="field_decripcion">Decripcion</label>
+                    <textarea class="form-control" name="decripcion" id="field_decripcion"
+                              formControlName="decripcion"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="subastasApp.subastas.fechainicio" for="field_fechainicio">Fechainicio</label>
+                    <div class="d-flex">
+                        <input id="field_fechainicio" type="datetime-local" class="form-control" name="fechainicio" formControlName="fechainicio" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                    <div *ngIf="editForm.get('fechainicio')!.invalid && (editForm.get('fechainicio')!.dirty || editForm.get('fechainicio')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('fechainicio')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('fechainicio')?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="subastasApp.subastas.fechafinal" for="field_fechafinal">Fechafinal</label>
+                    <div class="d-flex">
+                        <input id="field_fechafinal" type="datetime-local" class="form-control" name="fechafinal" formControlName="fechafinal" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                    <div *ngIf="editForm.get('fechafinal')!.invalid && (editForm.get('fechafinal')!.dirty || editForm.get('fechafinal')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('fechafinal')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('fechafinal')?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="subastasApp.subastas.timpoRecloGanador" for="field_timpoRecloGanador">Timpo Reclo Ganador</label>
+                    <input type="number" class="form-control" name="timpoRecloGanador" id="field_timpoRecloGanador"
+                           formControlName="timpoRecloGanador"/>
+                    <div *ngIf="editForm.get('timpoRecloGanador')!.invalid && (editForm.get('timpoRecloGanador')!.dirty || editForm.get('timpoRecloGanador')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('timpoRecloGanador')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('timpoRecloGanador')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <!--div class="form-group">
+                    <label class="form-control-label" jhiTranslate="subastasApp.subastas.fechacreacion" for="field_fechacreacion">Fechacreacion</label>
+                    <div class="d-flex">
+                        <input id="field_fechacreacion" type="datetime-local" class="form-control" name="fechacreacion" formControlName="fechacreacion" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                    <div *ngIf="editForm.get('fechacreacion')!.invalid && (editForm.get('fechacreacion')!.dirty || editForm.get('fechacreacion')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('fechacreacion')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('fechacreacion')?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div-->
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="subastasApp.subastas.valorinicial" for="field_valorinicial">Valorinicial</label>
+                    <input type="number" class="form-control" name="valorinicial" id="field_valorinicial"
+                           formControlName="valorinicial"/>
+                    <div *ngIf="editForm.get('valorinicial')!.invalid && (editForm.get('valorinicial')!.dirty || editForm.get('valorinicial')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('valorinicial')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('valorinicial')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="subastasApp.subastas.valoractual" for="field_valoractual">Valoractual</label>
+                    <input type="number" class="form-control" name="valoractual" id="field_valoractual"
+                           formControlName="valoractual"/>
+                    <div *ngIf="editForm.get('valoractual')!.invalid && (editForm.get('valoractual')!.dirty || editForm.get('valoractual')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('valoractual')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('valoractual')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="subastasApp.subastas.valortope" for="field_valortope">Valortope</label>
+                    <input type="number" class="form-control" name="valortope" id="field_valortope"
+                           formControlName="valortope"/>
+                    <div *ngIf="editForm.get('valortope')!.invalid && (editForm.get('valortope')!.dirty || editForm.get('valortope')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('valortope')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('valortope')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="subastasApp.subastas.pesobaseporkg" for="field_pesobaseporkg">Pesobaseporkg</label>
+                    <input type="number" class="form-control" name="pesobaseporkg" id="field_pesobaseporkg"
+                           formControlName="pesobaseporkg"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="subastasApp.subastas.pesototallote" for="field_pesototallote">Pesototallote</label>
+                    <input type="number" class="form-control" name="pesototallote" id="field_pesototallote"
+                           formControlName="pesototallote"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="subastasApp.subastas.imagenUrl" for="field_imagenUrl">Imagen Url</label>
+                    <div>
+                        <img [src]="'data:' + editForm.get('imagenUrlContentType')!.value + ';base64,' + editForm.get('imagenUrl')!.value" style="max-height: 100px;" *ngIf="editForm.get('imagenUrl')!.value" alt="subastas image"/>
+                        <div *ngIf="editForm.get('imagenUrl')!.value" class="form-text text-danger clearfix">
+                            <span class="pull-left">{{ editForm.get('imagenUrlContentType')!.value }}, {{ byteSize(editForm.get('imagenUrl')!.value) }}</span>
+                            <button type="button" (click)="clearInputImage('imagenUrl', 'imagenUrlContentType', 'file_imagenUrl')" class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon icon="times"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_imagenUrl" (change)="setFileData($event, 'imagenUrl', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="imagenUrl" id="field_imagenUrl"
+                           formControlName="imagenUrl"/>
+                    <input type="hidden" class="form-control" name="imagenUrlContentType" id="field_imagenUrlContentType"
+                           formControlName="imagenUrlContentType" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="subastasApp.subastas.videoUrl" for="field_videoUrl">Video Url</label>
+                    <input type="text" class="form-control" name="videoUrl" id="field_videoUrl"
+                           formControlName="videoUrl"/>
+                    <div *ngIf="editForm.get('videoUrl')!.invalid && (editForm.get('videoUrl')!.dirty || editForm.get('videoUrl')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('videoUrl')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 500 }">
+                        This field cannot be longer than 500 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="subastasApp.subastas.pagaAnticipo" for="field_pagaAnticipo">Paga Anticipo</label>
+                    <input type="checkbox" class="form-control" name="pagaAnticipo" id="field_pagaAnticipo"
+                           formControlName="pagaAnticipo"/>
+                    <div *ngIf="editForm.get('pagaAnticipo')!.invalid && (editForm.get('pagaAnticipo')!.dirty || editForm.get('pagaAnticipo')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('pagaAnticipo')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group" >
+                    <label class="form-control-label" jhiTranslate="subastasApp.subastas.valorAnticipo" for="field_valorAnticipo">Valor Anticipo</label>
+                    <input type="number" class="form-control" name="valorAnticipo" id="field_valorAnticipo"
+                           formControlName="valorAnticipo"/>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="subastasApp.subastas.estadoActivo" for="field_estadoActivo">Estado Activo</label>
+                    <input type="checkbox" class="form-control" name="estadoActivo" id="field_estadoActivo"
+                           formControlName="estadoActivo"/>
+                    <div *ngIf="editForm.get('estadoActivo')!.invalid && (editForm.get('estadoActivo')!.dirty || editForm.get('estadoActivo')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('estadoActivo')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+               
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

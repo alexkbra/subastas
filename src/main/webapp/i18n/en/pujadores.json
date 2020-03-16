@@ -1,0 +1,30 @@
+{
+  "subastasApp": {
+    "pujadores": {
+      "home": {
+        "title": "Pujadores",
+        "createLabel": "Create a new Pujadores",
+        "createOrEditLabel": "Create or edit a Pujadores",
+        "notFound": "No Pujadores found"
+      },
+      "created": "A new Pujadores is created with identifier {{ param }}",
+      "updated": "A Pujadores is updated with identifier {{ param }}",
+      "deleted": "A Pujadores is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Pujadores {{ id }}?"
+      },
+      "detail": {
+        "title": "Pujadores"
+      },
+      "idEvento": "Id Evento",
+      "idSubasta": "Id Subasta",
+      "idLote": "Id Lote",
+      "nroconsignacion": "Nroconsignacion",
+      "nombrebanco": "Nombrebanco",
+      "estado": "Estado",
+      "pagoAceptado": "Pago Aceptado",
+      "pujas": "Pujas",
+      "cliente": "Cliente"
+    }
+  }
+}

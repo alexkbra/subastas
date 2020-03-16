@@ -1,0 +1,87 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="subastasApp.pujas.home.title">Pujas</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-pujas" [routerLink]="['/pujas/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="subastasApp.pujas.home.createLabel">
+            Create a new Pujas
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="pujas?.length === 0">
+        <span jhiTranslate="subastasApp.pujas.home.notFound">No pujas found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="pujas?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="idEvento"><span jhiTranslate="subastasApp.pujas.idEvento">Id Evento</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="idSubasta"><span jhiTranslate="subastasApp.pujas.idSubasta">Id Subasta</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="idLote"><span jhiTranslate="subastasApp.pujas.idLote">Id Lote</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="valor"><span jhiTranslate="subastasApp.pujas.valor">Valor</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="fechacreacion"><span jhiTranslate="subastasApp.pujas.fechacreacion">Fechacreacion</span> <fa-icon icon="sort"></fa-icon></th>
+                    <!--th scope="col"  jhiSortBy="aceptadoGanador"><span jhiTranslate="subastasApp.pujas.aceptadoGanador">Aceptado Ganador</span> <fa-icon icon="sort"></fa-icon></th-->
+                    <th scope="col"  jhiSortBy="pujadores.id"><span jhiTranslate="subastasApp.pujas.pujadores">Pujadores</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let pujas of pujas ;trackBy: trackId">
+                    <td><a [routerLink]="['/pujas', pujas.id, 'view']">{{ pujas.id }}</a></td>
+                    <td>{{ pujas.idEvento }}</td>
+                    <td>{{ pujas.idSubasta }}</td>
+                    <td>{{ pujas.idLote }}</td>
+                    <td>{{ pujas.valor }}</td>
+                    <td>{{ pujas.fechacreacion | date:'MM/dd/yyyy hh:mm:ss a' }}</td>
+                    <!--td>{{ pujas.aceptadoGanador }}</td>
+                    <td-->
+                        <div *ngIf="pujas.pujadores">
+                            <a [routerLink]="['/pujadores', pujas.pujadores?.id, 'view']" >{{ pujas.pujadores?.nroconsignacion }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/pujas', pujas.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/pujas', pujas.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(pujas)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="pujas?.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

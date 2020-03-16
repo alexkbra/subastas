@@ -1,0 +1,58 @@
+{
+    "name": "Razas",
+    "fields": [
+        {
+            "fieldName": "nombre",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "minlength",
+                "maxlength",
+                "required"
+            ],
+            "fieldValidateRulesMinlength": "5",
+            "fieldValidateRulesMaxlength": "100"
+        },
+        {
+            "fieldName": "decripcion",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        },
+        {
+            "fieldName": "code",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "minlength",
+                "maxlength",
+                "required"
+            ],
+            "fieldValidateRulesMinlength": "2",
+            "fieldValidateRulesMaxlength": "50"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "animales",
+            "otherEntityRelationshipName": "razas",
+            "relationshipName": "animales"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "especies",
+            "otherEntityRelationshipName": "razas",
+            "relationshipValidateRules": "required",
+            "relationshipName": "especies",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200313170600",
+    "entityTableName": "razas",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

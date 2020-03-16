@@ -1,0 +1,24 @@
+{
+  "subastasApp": {
+    "estadoCliente": {
+      "home": {
+        "title": "Estado Clientes",
+        "createLabel": "Crear nuevo Estado Cliente",
+        "createOrEditLabel": "Crear o editar Estado Cliente",
+        "notFound": "Ningún Estado Clientes encontrado"
+      },
+      "created": "Un nuevo Estado Cliente ha sido creado con el identificador {{ param }}",
+      "updated": "Un Estado Cliente ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Estado Cliente ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Estado Cliente {{ id }}?"
+      },
+      "detail": {
+        "title": "Estado Cliente"
+      },
+      "nombre": "Nombre",
+      "code": "Code",
+      "cliente": "Cliente"
+    }
+  }
+}

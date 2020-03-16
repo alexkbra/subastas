@@ -1,0 +1,41 @@
+{
+  "subastasApp": {
+    "cliente": {
+      "home": {
+        "title": "Clientes",
+        "createLabel": "Create a new Cliente",
+        "createOrEditLabel": "Create or edit a Cliente",
+        "notFound": "No Clientes found"
+      },
+      "created": "A new Cliente is created with identifier {{ param }}",
+      "updated": "A Cliente is updated with identifier {{ param }}",
+      "deleted": "A Cliente is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Cliente {{ id }}?"
+      },
+      "detail": {
+        "title": "Cliente"
+      },
+      "numeroDocumento": "Numero Documento",
+      "nombre": "Nombre",
+      "apellido": "Apellido",
+      "correo": "Correo",
+      "nombrerepresentantelegal": "Nombrerepresentantelegal",
+      "telefonocelular": "Telefonocelular",
+      "telefonofijo": "Telefonofijo",
+      "telefonoempresarial": "Telefonoempresarial",
+      "telefonorepresentantelegal": "Telefonorepresentantelegal",
+      "direccionresidencial": "Direccionresidencial",
+      "direccionempresarial": "Direccionempresarial",
+      "direccionrepresentantelegal": "Direccionrepresentantelegal",
+      "fechanacimiento": "Fechanacimiento",
+      "idusuario": "Idusuario",
+      "imagenUrl": "Imagen Url",
+      "idciudad": "Idciudad",
+      "anonimo": "Anonimo",
+      "pujadores": "Pujadores",
+      "tipoDocumento": "Tipo Documento",
+      "estadocliente": "Estadocliente"
+    }
+  }
+}

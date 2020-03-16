@@ -1,0 +1,56 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="pujas">
+            <h2><span jhiTranslate="subastasApp.pujas.detail.title">Pujas</span> {{ pujas.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="subastasApp.pujas.idEvento">Id Evento</span></dt>
+                <dd>
+                    <span>{{ pujas.idEvento }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.pujas.idSubasta">Id Subasta</span></dt>
+                <dd>
+                    <span>{{ pujas.idSubasta }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.pujas.idLote">Id Lote</span></dt>
+                <dd>
+                    <span>{{ pujas.idLote }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.pujas.valor">Valor</span></dt>
+                <dd>
+                    <span>{{ pujas.valor }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.pujas.fechacreacion">Fechacreacion</span></dt>
+                <dd>
+                    <span>{{ pujas.fechacreacion }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.pujas.aceptadoGanador">Aceptado Ganador</span></dt>
+                <dd>
+                    <span>{{ pujas.aceptadoGanador }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.pujas.pujadores">Pujadores</span></dt>
+                <dd>
+                    <div *ngIf="pujas.pujadores">
+                        <a [routerLink]="['/pujadores', pujas.pujadores?.id, 'view']">{{ pujas.pujadores?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/pujas', pujas.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

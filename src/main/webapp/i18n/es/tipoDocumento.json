@@ -1,0 +1,25 @@
+{
+  "subastasApp": {
+    "tipoDocumento": {
+      "home": {
+        "title": "Tipos Documentos",
+        "createLabel": "Crear nuevo Tipo documento",
+        "createOrEditLabel": "Crear o editar Tipo documento",
+        "notFound": "Ningún Tipo documentos encontrado"
+      },
+      "created": "Un nuevo Tipo documento ha sido creado con el identificador {{ param }}",
+      "updated": "Un Tipo documento ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Tipo documento ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Tipo documento {{ id }}?"
+      },
+      "detail": {
+        "title": "Tipo Documento"
+      },
+      "codigo": "Código",
+      "nombre": "Nombre",
+      "propietario": "Propietario",
+      "cliente": "Cliente"
+    }
+  }
+}

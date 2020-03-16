@@ -1,0 +1,27 @@
+{
+  "subastasApp": {
+    "contenido": {
+      "home": {
+        "title": "Contenidos",
+        "createLabel": "Crear nuevo contenido",
+        "createOrEditLabel": "Crear o editar contenido",
+        "notFound": "Ningún contenido encontrado"
+      },
+      "created": "Un nuevo contenido ha sido creado con el identificador {{ param }}",
+      "updated": "Un contenido ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un contenido ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar contenido {{ id }}?"
+      },
+      "detail": {
+        "title": "Contenido"
+      },
+      "tipo": "Tipo",
+      "url": "Video Url (YouTube)",
+      "imagenUrl": "Imagen",
+      "texto": "Texto",
+      "entidad": "Entidad",
+      "idEntidad": "Id Entidad"
+    }
+  }
+}

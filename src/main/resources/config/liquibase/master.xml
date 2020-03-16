@@ -14,6 +14,37 @@
     <property name="uuidType" value="varchar(36)" dbms="h2, mysql, mariadb"/>
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200313165600_added_entity_Dispositivo.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200313165700_added_entity_EstadoCliente.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200313165800_added_entity_Cliente.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200313165900_added_entity_Pujadores.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200313170000_added_entity_Pujas.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200313170100_added_entity_Subastas.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200313170200_added_entity_Eventos.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200313170300_added_entity_ClasificacionLote.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200313170400_added_entity_Mensajes.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200313170500_added_entity_Especies.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200313170600_added_entity_Razas.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200313170700_added_entity_Departamentos.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200313170800_added_entity_Municipios.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200313170900_added_entity_Ciudad.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200313171000_added_entity_Contenido.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200313171100_added_entity_TipoDocumento.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200313171200_added_entity_Propietario.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200313171300_added_entity_Lotes.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200313171400_added_entity_Animales.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200313171500_added_entity_LotesToAnimales.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20200313165800_added_entity_constraints_Cliente.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200313165900_added_entity_constraints_Pujadores.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200313170000_added_entity_constraints_Pujas.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200313170100_added_entity_constraints_Subastas.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200313170600_added_entity_constraints_Razas.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200313170800_added_entity_constraints_Municipios.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200313170900_added_entity_constraints_Ciudad.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200313171200_added_entity_constraints_Propietario.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200313171300_added_entity_constraints_Lotes.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200313171400_added_entity_constraints_Animales.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200313171500_added_entity_constraints_LotesToAnimales.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

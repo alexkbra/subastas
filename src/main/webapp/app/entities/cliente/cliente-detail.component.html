@@ -1,0 +1,111 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="cliente">
+            <h2><span jhiTranslate="subastasApp.cliente.detail.title">Cliente</span> {{ cliente.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="subastasApp.cliente.numeroDocumento">Numero Documento</span></dt>
+                <dd>
+                    <span>{{ cliente.numeroDocumento }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.cliente.nombre">Nombre</span></dt>
+                <dd>
+                    <span>{{ cliente.nombre }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.cliente.apellido">Apellido</span></dt>
+                <dd>
+                    <span>{{ cliente.apellido }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.cliente.correo">Correo</span></dt>
+                <dd>
+                    <span>{{ cliente.correo }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.cliente.nombrerepresentantelegal">Nombrerepresentantelegal</span></dt>
+                <dd>
+                    <span>{{ cliente.nombrerepresentantelegal }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.cliente.telefonocelular">Telefonocelular</span></dt>
+                <dd>
+                    <span>{{ cliente.telefonocelular }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.cliente.telefonofijo">Telefonofijo</span></dt>
+                <dd>
+                    <span>{{ cliente.telefonofijo }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.cliente.telefonoempresarial">Telefonoempresarial</span></dt>
+                <dd>
+                    <span>{{ cliente.telefonoempresarial }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.cliente.telefonorepresentantelegal">Telefonorepresentantelegal</span></dt>
+                <dd>
+                    <span>{{ cliente.telefonorepresentantelegal }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.cliente.direccionresidencial">Direccionresidencial</span></dt>
+                <dd>
+                    <span>{{ cliente.direccionresidencial }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.cliente.direccionempresarial">Direccionempresarial</span></dt>
+                <dd>
+                    <span>{{ cliente.direccionempresarial }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.cliente.direccionrepresentantelegal">Direccionrepresentantelegal</span></dt>
+                <dd>
+                    <span>{{ cliente.direccionrepresentantelegal }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.cliente.fechanacimiento">Fechanacimiento</span></dt>
+                <dd>
+                    <span>{{ cliente.fechanacimiento }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.cliente.idusuario">Idusuario</span></dt>
+                <dd>
+                    <span>{{ cliente.idusuario }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.cliente.imagenUrl">Imagen Url</span></dt>
+                <dd>
+                    <div *ngIf="cliente.imagenUrl">
+                        <a (click)="openFile(cliente.imagenUrlContentType!, cliente.imagenUrl)">
+                            <img [src]="'data:' + cliente.imagenUrlContentType + ';base64,' + cliente.imagenUrl" style="max-width: 100%;" alt="cliente image"/>
+                        </a>
+                        {{ cliente.imagenUrlContentType }}, {{ byteSize(cliente.imagenUrl) }}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.cliente.idciudad">Idciudad</span></dt>
+                <dd>
+                    <span>{{ cliente.idciudad }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.cliente.anonimo">Anonimo</span></dt>
+                <dd>
+                    <span>{{ cliente.anonimo }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.cliente.tipoDocumento">Tipo Documento</span></dt>
+                <dd>
+                    <div *ngIf="cliente.tipoDocumento">
+                        <a [routerLink]="['/tipo-documento', cliente.tipoDocumento?.id, 'view']">{{ cliente.tipoDocumento?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.cliente.estadocliente">Estadocliente</span></dt>
+                <dd>
+                    <div *ngIf="cliente.estadocliente">
+                        <a [routerLink]="['/estado-cliente', cliente.estadocliente?.id, 'view']">{{ cliente.estadocliente?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/cliente', cliente.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

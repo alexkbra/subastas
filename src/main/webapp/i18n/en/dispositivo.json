@@ -1,0 +1,28 @@
+{
+  "subastasApp": {
+    "dispositivo": {
+      "home": {
+        "title": "Dispositivos",
+        "createLabel": "Create a new Dispositivo",
+        "createOrEditLabel": "Create or edit a Dispositivo",
+        "notFound": "No Dispositivos found"
+      },
+      "created": "A new Dispositivo is created with identifier {{ param }}",
+      "updated": "A Dispositivo is updated with identifier {{ param }}",
+      "deleted": "A Dispositivo is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Dispositivo {{ id }}?"
+      },
+      "detail": {
+        "title": "Dispositivo"
+      },
+      "idEvento": "Id Evento",
+      "idSubasta": "Id Subasta",
+      "idLote": "Id Lote",
+      "idusuario": "Idusuario",
+      "idcliente": "Idcliente",
+      "activo": "Activo",
+      "dispositivo": "Dispositivo"
+    }
+  }
+}

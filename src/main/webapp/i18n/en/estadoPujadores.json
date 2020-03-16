@@ -1,0 +1,11 @@
+{
+  "subastasApp": {
+    "EstadoPujadores": {
+      "null": "",
+      "ACTIVO": "ACTIVO",
+      "NOAUTORIZADO": "NOAUTORIZADO",
+      "INACTIVO": "INACTIVO",
+      "GANADOR": "GANADOR"
+    }
+  }
+}

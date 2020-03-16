@@ -1,0 +1,24 @@
+{
+  "subastasApp": {
+    "lotesToAnimales": {
+      "home": {
+        "title": "Lotes To Animales",
+        "createLabel": "Create a new Lotes To Animales",
+        "createOrEditLabel": "Create or edit a Lotes To Animales",
+        "notFound": "No Lotes To Animales found"
+      },
+      "created": "A new Lotes To Animales is created with identifier {{ param }}",
+      "updated": "A Lotes To Animales is updated with identifier {{ param }}",
+      "deleted": "A Lotes To Animales is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Lotes To Animales {{ id }}?"
+      },
+      "detail": {
+        "title": "Lotes To Animales"
+      },
+      "cantidad": "Cantidad",
+      "lotes": "Lotes",
+      "animales": "Animales"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "subastasApp": {
+    "animales": {
+      "home": {
+        "title": "Animales",
+        "createLabel": "Create a new Animales",
+        "createOrEditLabel": "Create or edit a Animales",
+        "notFound": "No Animales found"
+      },
+      "created": "A new Animales is created with identifier {{ param }}",
+      "updated": "A Animales is updated with identifier {{ param }}",
+      "deleted": "A Animales is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Animales {{ id }}?"
+      },
+      "detail": {
+        "title": "Animales"
+      },
+      "pesokg": "Pesokg",
+      "descripcion": "Descripcion",
+      "sexo": "Sexo",
+      "procedencia": "Procedencia",
+      "propietario": "Propietario",
+      "imagenUrl": "Imagen Url",
+      "videoUrl": "Video Url",
+      "lotestoanimales": "Lotestoanimales",
+      "razas": "Razas"
+    }
+  }
+}

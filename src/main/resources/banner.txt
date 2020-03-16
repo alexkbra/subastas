@@ -1,10 +1,10 @@
 
-  ${AnsiColor.GREEN}      ██╗${AnsiColor.RED} ██╗   ██╗ ████████╗ ███████╗   ██████╗ ████████╗ ████████╗ ███████╗
-  ${AnsiColor.GREEN}      ██║${AnsiColor.RED} ██║   ██║ ╚══██╔══╝ ██╔═══██╗ ██╔════╝ ╚══██╔══╝ ██╔═════╝ ██╔═══██╗
-  ${AnsiColor.GREEN}      ██║${AnsiColor.RED} ████████║    ██║    ███████╔╝ ╚█████╗     ██║    ██████╗   ███████╔╝
-  ${AnsiColor.GREEN}██╗   ██║${AnsiColor.RED} ██╔═══██║    ██║    ██╔════╝   ╚═══██╗    ██║    ██╔═══╝   ██╔══██║
-  ${AnsiColor.GREEN}╚██████╔╝${AnsiColor.RED} ██║   ██║ ████████╗ ██║       ██████╔╝    ██║    ████████╗ ██║  ╚██╗
-  ${AnsiColor.GREEN} ╚═════╝ ${AnsiColor.RED} ╚═╝   ╚═╝ ╚═══════╝ ╚═╝       ╚═════╝     ╚═╝    ╚═══════╝ ╚═╝   ╚═╝
+ ${AnsiColor.GREEN} KKKK  kkK ${AnsiColor.RED}  BBBBBB    RRRRRRR         A
+  ${AnsiColor.GREEN}KKKK kkK ${AnsiColor.RED}   BBB   BB  RRR    R       A AA
+  ${AnsiColor.GREEN}KKKKkk ${AnsiColor.RED}     BBBBBBbb  RRRRRRR       AA AAA
+  ${AnsiColor.GREEN}KKKKkk  ${AnsiColor.RED}    BBBBB bb  RRR   RR     AAAAAAAA
+  ${AnsiColor.GREEN}KKKK  Kkk ${AnsiColor.RED}  BBB   bb  RRR    RR   AA      AA
+  ${AnsiColor.GREEN}KKKK   KkK ${AnsiColor.RED} BBBBBBbbB RRR     RR AA        AA
 
 ${AnsiColor.BRIGHT_BLUE}:: JHipster 🤓  :: Running Spring Boot ${spring-boot.version} ::
 :: https://www.jhipster.tech ::${AnsiColor.DEFAULT}

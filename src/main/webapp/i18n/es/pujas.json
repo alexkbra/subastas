@@ -1,0 +1,28 @@
+{
+  "subastasApp": {
+    "pujas": {
+      "home": {
+        "title": "Pujas",
+        "createLabel": "Crear nuevo puja",
+        "createOrEditLabel": "Crear o editar puja",
+        "notFound": "Ninguna puja encontrada"
+      },
+      "created": "Una nueva puja ha sido creado con el identificador {{ param }}",
+      "updated": "Una puja ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Una puja ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar puja {{ id }}?"
+      },
+      "detail": {
+        "title": "Pujas"
+      },
+      "idEvento": "Evento",
+      "idSubasta": "Subasta",
+      "idLote": "Lote",
+      "valor": "Valor",
+      "fechacreacion": "Fecha creación",
+      "aceptadoGanador": "Aceptado Ganador",
+      "pujadores": "Pujadores"
+    }
+  }
+}

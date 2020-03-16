@@ -1,0 +1,39 @@
+{
+  "subastasApp": {
+    "subastas": {
+      "home": {
+        "title": "Subastas",
+        "createLabel": "Crear nueva subasta",
+        "createOrEditLabel": "Crear o editar subasta",
+        "notFound": "Ninguna subasta encontrada"
+      },
+      "created": "Una nueva subasta ha sido creado con el identificador {{ param }}",
+      "updated": "Una subasta ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Una subasta ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar subasta {{ id }}?"
+      },
+      "detail": {
+        "title": "Subastas"
+      },
+      "nombre": "Nombre",
+      "decripcion": "Descripción",
+      "fechainicio": "Fecha inicio",
+      "fechafinal": "Fecha final",
+      "timpoRecloGanador": "Tiempo de espera para reclamar ganador",
+      "fechacreacion": "Fechacreacion",
+      "valorinicial": "Valor inicial",
+      "valoractual": "Valor actual",
+      "valortope": "Valor tope",
+      "pagaAnticipo": "Paga anticipo",
+      "pesobaseporkg": "Peso base por (kg)",
+      "pesototallote": "Peso total lote",
+      "valorAnticipo": "Valor anticipo",
+      "imagenUrl": "Imagen",
+      "videoUrl": "Video Url (YouTube)",
+      "estadoActivo": "Estado Activo",
+      "lotes": "Lotes",
+      "eventos": "Eventos"
+    }
+  }
+}

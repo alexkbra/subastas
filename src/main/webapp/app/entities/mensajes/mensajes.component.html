@@ -1,0 +1,89 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="subastasApp.mensajes.home.title">Mensajes</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-mensajes" [routerLink]="['/mensajes/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="subastasApp.mensajes.home.createLabel">
+            Create a new Mensajes
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="mensajes?.length === 0">
+        <span jhiTranslate="subastasApp.mensajes.home.notFound">No mensajes found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="mensajes?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="titulo"><span jhiTranslate="subastasApp.mensajes.titulo">Titulo</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="cuerpo"><span jhiTranslate="subastasApp.mensajes.cuerpo">Cuerpo</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="numeroLote"><span jhiTranslate="subastasApp.mensajes.numeroLote">Numero Lote</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="tipoMensaje"><span jhiTranslate="subastasApp.mensajes.tipoMensaje">Tipo Mensaje</span> <fa-icon icon="sort"></fa-icon></th>
+                    <!--th scope="col"  jhiSortBy="tipoCliente"><span jhiTranslate="subastasApp.mensajes.tipoCliente">Tipo Cliente</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="direccion"><span jhiTranslate="subastasApp.mensajes.direccion">Direccion</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="idusuario"><span jhiTranslate="subastasApp.mensajes.idusuario">Idusuario</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="idcliente"><span jhiTranslate="subastasApp.mensajes.idcliente">Idcliente</span> <fa-icon icon="sort"></fa-icon></th-->
+                    <th scope="col"  jhiSortBy="activo"><span jhiTranslate="subastasApp.mensajes.activo">Activo</span> <fa-icon icon="sort"></fa-icon></th>
+                    <!--th scope="col"  jhiSortBy="valorPagar"><span jhiTranslate="subastasApp.mensajes.valorPagar">Valor Pagar</span> <fa-icon icon="sort"></fa-icon></th-->
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let mensajes of mensajes ;trackBy: trackId">
+                    <td><a [routerLink]="['/mensajes', mensajes.id, 'view']">{{ mensajes.id }}</a></td>
+                    <td>{{ mensajes.titulo }}</td>
+                    <td>{{ mensajes.cuerpo }}</td>
+                    <td>{{ mensajes.numeroLote }}</td>
+                    <td jhiTranslate="{{ 'subastasApp.TipoMensaje.' + mensajes.tipoMensaje }}">{{ mensajes.tipoMensaje }}</td>
+                    <!--td jhiTranslate="{{ 'subastasApp.TipoCliente.' + mensajes.tipoCliente }}">{{ mensajes.tipoCliente }}</td>
+                    <td>{{ mensajes.direccion }}</td>
+                    <td>{{ mensajes.idusuario }}</td>
+                    <td>{{ mensajes.idcliente }}</td-->
+                    <td>{{ mensajes.activo }}</td>
+                    <!--td>{{ mensajes.valorPagar }}</td-->
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/mensajes', mensajes.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/mensajes', mensajes.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(mensajes)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="mensajes?.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

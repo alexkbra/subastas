@@ -1,0 +1,149 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-animales-heading" jhiTranslate="subastasApp.animales.home.createOrEditLabel">Create or edit a Animales</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="subastasApp.animales.razas" for="field_razas">Razas</label>
+                    <select class="form-control" id="field_razas" name="razas" formControlName="razas">
+                        <option *ngIf="!editForm.get('razas')!.value" [ngValue]="null" selected></option>
+                        <option [ngValue]="razasOption.id === editForm.get('razas')!.value?.id ? editForm.get('razas')!.value : razasOption" *ngFor="let razasOption of razas; trackBy: trackById">{{ razasOption.nombre }}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('razas')!.invalid && (editForm.get('razas')!.dirty || editForm.get('razas')!.touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('razas')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="subastasApp.animales.pesokg" for="field_pesokg">Pesokg</label>
+                    <input type="number" class="form-control" name="pesokg" id="field_pesokg"
+                           formControlName="pesokg"/>
+                    <div *ngIf="editForm.get('pesokg')!.invalid && (editForm.get('pesokg')!.dirty || editForm.get('pesokg')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('pesokg')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('pesokg')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="subastasApp.animales.descripcion" for="field_descripcion">Descripcion</label>
+                    <textarea class="form-control" name="descripcion" id="field_descripcion"
+                              formControlName="descripcion"></textarea>
+                    <div *ngIf="editForm.get('descripcion')!.invalid && (editForm.get('descripcion')!.dirty || editForm.get('descripcion')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('descripcion')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="subastasApp.animales.sexo" for="field_sexo">Sexo</label>
+                    <select class="form-control" name="sexo" formControlName="sexo" id="field_sexo">
+                        <option value="MASCULINO">{{ 'subastasApp.Sexos.MASCULINO' | translate }}</option>
+                        <option value="FEMENINO">{{ 'subastasApp.Sexos.FEMENINO' | translate }}</option>
+                        <option value="OTRO">{{ 'subastasApp.Sexos.OTRO' | translate }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="subastasApp.animales.procedencia" for="field_procedencia">Procedencia</label>
+                    <input type="text" class="form-control" name="procedencia" id="field_procedencia"
+                           formControlName="procedencia"/>
+                    <div *ngIf="editForm.get('procedencia')!.invalid && (editForm.get('procedencia')!.dirty || editForm.get('procedencia')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('procedencia')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('procedencia')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 5 }">
+                        This field is required to be at least 5 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('procedencia')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 100 }">
+                        This field cannot be longer than 100 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="subastasApp.animales.propietario" for="field_propietario">Propietario</label>
+                    <input type="text" class="form-control" name="propietario" id="field_propietario"
+                           formControlName="propietario"/>
+                    <div *ngIf="editForm.get('propietario')!.invalid && (editForm.get('propietario')!.dirty || editForm.get('propietario')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('propietario')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('propietario')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 5 }">
+                        This field is required to be at least 5 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('propietario')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 100 }">
+                        This field cannot be longer than 100 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="subastasApp.animales.imagenUrl" for="field_imagenUrl">Imagen Url</label>
+                    <div>
+                        <img [src]="'data:' + editForm.get('imagenUrlContentType')!.value + ';base64,' + editForm.get('imagenUrl')!.value" style="max-height: 100px;" *ngIf="editForm.get('imagenUrl')!.value" alt="animales image"/>
+                        <div *ngIf="editForm.get('imagenUrl')!.value" class="form-text text-danger clearfix">
+                            <span class="pull-left">{{ editForm.get('imagenUrlContentType')!.value }}, {{ byteSize(editForm.get('imagenUrl')!.value) }}</span>
+                            <button type="button" (click)="clearInputImage('imagenUrl', 'imagenUrlContentType', 'file_imagenUrl')" class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon icon="times"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_imagenUrl" (change)="setFileData($event, 'imagenUrl', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="imagenUrl" id="field_imagenUrl"
+                           formControlName="imagenUrl"/>
+                    <input type="hidden" class="form-control" name="imagenUrlContentType" id="field_imagenUrlContentType"
+                           formControlName="imagenUrlContentType" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="subastasApp.animales.videoUrl" for="field_videoUrl">Video Url</label>
+                    <input type="text" class="form-control" name="videoUrl" id="field_videoUrl"
+                           formControlName="videoUrl"/>
+                    <div *ngIf="editForm.get('videoUrl')!.invalid && (editForm.get('videoUrl')!.dirty || editForm.get('videoUrl')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('videoUrl')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 500 }">
+                        This field cannot be longer than 500 characters.
+                        </small>
+                    </div>
+                </div>
+
+                
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

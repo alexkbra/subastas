@@ -7,7 +7,39 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entities",
+        "dispositivo": "Dispositivo",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+      },
+      "eventos": {
+        "main": "Eventos",
+        "eventos": "Eventos",
+        "subastas": "Subastas",
+        "clasificacionLote": "Clasificacion Lote",
+        "lotes": "Lotes",
+        "lotesToAnimales": "Lotes To Animales",
+        "propietario": "Propietario"
+      },
+      "animales": {
+        "main": "Animales",
+        "especies": "Especies",
+        "razas": "Razas",
+        "animales": "Animales"
+      },
+      "clientes": {
+        "main": "Cliente",
+        "tipoDocumento": "Tipos Documentos",
+        "estadoCliente": "Estado Cliente",
+        "cliente": "Cliente",
+        "pujadores": "Pujadores",
+        "pujas": "Pujas"
+      },
+      "contenidos": {
+        "main": "Contenido",
+        "contenido": "Contenido",
+        "mensajes": "Mensajes",
+        "departamentos": "Departamentos",
+        "municipios": "Municipios",
+        "ciudad": "Ciudad"
       },
       "account": {
         "main": "Account",

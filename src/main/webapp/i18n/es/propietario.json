@@ -1,0 +1,34 @@
+{
+  "subastasApp": {
+    "propietario": {
+      "home": {
+        "title": "Propietarios",
+        "createLabel": "Crear nuevo propietario",
+        "createOrEditLabel": "Crear o editar propietario",
+        "notFound": "Ningún propietario encontrado"
+      },
+      "created": "Un nuevo propietario ha sido creado con el identificador {{ param }}",
+      "updated": "Un propietario ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un propietario ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar propietario {{ id }}?"
+      },
+      "detail": {
+        "title": "Propietario"
+      },
+      "numeroDocumento": "Número documento",
+      "nombreORazonSocial": "Nombre o razón social",
+      "correo": "Correo",
+      "telefonocelular": "Teléfono celular",
+      "telefonofijo": "Teléfono fijo",
+      "telefonoempresarial": "Teléfono empresarial",
+      "direccionresidencial": "Dirección residencial",
+      "direccionempresarial": "Dirección empresarial",
+      "idusuario": "Idusuario",
+      "imagenUrl": "Imagen",
+      "idciudad": "Idciudad",
+      "lotes": "Lotes",
+      "tipoDocumento": "Tipo Documento"
+    }
+  }
+}

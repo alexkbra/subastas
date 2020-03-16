@@ -1,0 +1,48 @@
+{
+    "name": "Contenido",
+    "fields": [
+        {
+            "fieldName": "tipo",
+            "fieldType": "TipoContenido",
+            "fieldValues": "VIDEO,IMAGEN,TEXTO"
+        },
+        {
+            "fieldName": "url",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "500"
+        },
+        {
+            "fieldName": "imagenUrl",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldName": "texto",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        },
+        {
+            "fieldName": "entidad",
+            "fieldType": "EntidadContenido",
+            "fieldValues": "Cliente,Pujadores,Pujas,Subastas,Eventos,Lotes,Animales,Razas"
+        },
+        {
+            "fieldName": "idEntidad",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20200313171000",
+    "entityTableName": "contenido",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

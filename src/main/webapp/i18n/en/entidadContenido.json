@@ -1,0 +1,15 @@
+{
+  "subastasApp": {
+    "EntidadContenido": {
+      "null": "",
+      "Cliente": "Cliente",
+      "Pujadores": "Pujadores",
+      "Pujas": "Pujas",
+      "Subastas": "Subastas",
+      "Eventos": "Eventos",
+      "Lotes": "Lotes",
+      "Animales": "Animales",
+      "Razas": "Razas"
+    }
+  }
+}

@@ -1,0 +1,81 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="propietario">
+            <h2><span jhiTranslate="subastasApp.propietario.detail.title">Propietario</span> {{ propietario.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="subastasApp.propietario.numeroDocumento">Numero Documento</span></dt>
+                <dd>
+                    <span>{{ propietario.numeroDocumento }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.propietario.nombreORazonSocial">Nombre O Razon Social</span></dt>
+                <dd>
+                    <span>{{ propietario.nombreORazonSocial }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.propietario.correo">Correo</span></dt>
+                <dd>
+                    <span>{{ propietario.correo }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.propietario.telefonocelular">Telefonocelular</span></dt>
+                <dd>
+                    <span>{{ propietario.telefonocelular }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.propietario.telefonofijo">Telefonofijo</span></dt>
+                <dd>
+                    <span>{{ propietario.telefonofijo }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.propietario.telefonoempresarial">Telefonoempresarial</span></dt>
+                <dd>
+                    <span>{{ propietario.telefonoempresarial }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.propietario.direccionresidencial">Direccionresidencial</span></dt>
+                <dd>
+                    <span>{{ propietario.direccionresidencial }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.propietario.direccionempresarial">Direccionempresarial</span></dt>
+                <dd>
+                    <span>{{ propietario.direccionempresarial }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.propietario.idusuario">Idusuario</span></dt>
+                <dd>
+                    <span>{{ propietario.idusuario }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.propietario.imagenUrl">Imagen Url</span></dt>
+                <dd>
+                    <div *ngIf="propietario.imagenUrl">
+                        <a (click)="openFile(propietario.imagenUrlContentType!, propietario.imagenUrl)">
+                            <img [src]="'data:' + propietario.imagenUrlContentType + ';base64,' + propietario.imagenUrl" style="max-width: 100%;" alt="propietario image"/>
+                        </a>
+                        {{ propietario.imagenUrlContentType }}, {{ byteSize(propietario.imagenUrl) }}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.propietario.idciudad">Idciudad</span></dt>
+                <dd>
+                    <span>{{ propietario.idciudad }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.propietario.tipoDocumento">Tipo Documento</span></dt>
+                <dd>
+                    <div *ngIf="propietario.tipoDocumento">
+                        <a [routerLink]="['/tipo-documento', propietario.tipoDocumento?.id, 'view']">{{ propietario.tipoDocumento?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/propietario', propietario.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

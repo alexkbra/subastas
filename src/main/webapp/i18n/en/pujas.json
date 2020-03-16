@@ -1,0 +1,28 @@
+{
+  "subastasApp": {
+    "pujas": {
+      "home": {
+        "title": "Pujas",
+        "createLabel": "Create a new Pujas",
+        "createOrEditLabel": "Create or edit a Pujas",
+        "notFound": "No Pujas found"
+      },
+      "created": "A new Pujas is created with identifier {{ param }}",
+      "updated": "A Pujas is updated with identifier {{ param }}",
+      "deleted": "A Pujas is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Pujas {{ id }}?"
+      },
+      "detail": {
+        "title": "Pujas"
+      },
+      "idEvento": "Id Evento",
+      "idSubasta": "Id Subasta",
+      "idLote": "Id Lote",
+      "valor": "Valor",
+      "fechacreacion": "Fechacreacion",
+      "aceptadoGanador": "Aceptado Ganador",
+      "pujadores": "Pujadores"
+    }
+  }
+}

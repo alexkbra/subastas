@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity LotesToAnimales.
+    -->
+    <changeSet id="20200313171500-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="lotes_id"
+                                 baseTableName="lotes_to_animales"
+                                 constraintName="fk_lotes_to_animales_lotes_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="lotes"/>
+
+        <addForeignKeyConstraint baseColumnNames="animales_id"
+                                 baseTableName="lotes_to_animales"
+                                 constraintName="fk_lotes_to_animales_animales_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="animales"/>
+
+    </changeSet>
+</databaseChangeLog>

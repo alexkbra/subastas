@@ -1,0 +1,38 @@
+{
+    "name": "Departamentos",
+    "fields": [
+        {
+            "fieldName": "iddepartamentos",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "departamento",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "minlength",
+                "maxlength",
+                "required"
+            ],
+            "fieldValidateRulesMinlength": "5",
+            "fieldValidateRulesMaxlength": "255"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "municipios",
+            "otherEntityRelationshipName": "departamentos",
+            "relationshipName": "municipios"
+        }
+    ],
+    "changelogDate": "20200313170700",
+    "entityTableName": "departamentos",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

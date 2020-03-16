@@ -1,0 +1,101 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="subastas">
+            <h2><span jhiTranslate="subastasApp.subastas.detail.title">Subastas</span> {{ subastas.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="subastasApp.subastas.nombre">Nombre</span></dt>
+                <dd>
+                    <span>{{ subastas.nombre }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.subastas.decripcion">Decripcion</span></dt>
+                <dd>
+                    <span>{{ subastas.decripcion }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.subastas.fechainicio">Fechainicio</span></dt>
+                <dd>
+                    <span>{{ subastas.fechainicio }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.subastas.fechafinal">Fechafinal</span></dt>
+                <dd>
+                    <span>{{ subastas.fechafinal }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.subastas.timpoRecloGanador">Timpo Reclo Ganador</span></dt>
+                <dd>
+                    <span>{{ subastas.timpoRecloGanador }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.subastas.fechacreacion">Fechacreacion</span></dt>
+                <dd>
+                    <span>{{ subastas.fechacreacion }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.subastas.valorinicial">Valorinicial</span></dt>
+                <dd>
+                    <span>{{ subastas.valorinicial }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.subastas.valoractual">Valoractual</span></dt>
+                <dd>
+                    <span>{{ subastas.valoractual }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.subastas.valortope">Valortope</span></dt>
+                <dd>
+                    <span>{{ subastas.valortope }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.subastas.pagaAnticipo">Paga Anticipo</span></dt>
+                <dd>
+                    <span>{{ subastas.pagaAnticipo }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.subastas.pesobaseporkg">Pesobaseporkg</span></dt>
+                <dd>
+                    <span>{{ subastas.pesobaseporkg }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.subastas.pesototallote">Pesototallote</span></dt>
+                <dd>
+                    <span>{{ subastas.pesototallote }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.subastas.valorAnticipo">Valor Anticipo</span></dt>
+                <dd>
+                    <span>{{ subastas.valorAnticipo }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.subastas.imagenUrl">Imagen Url</span></dt>
+                <dd>
+                    <div *ngIf="subastas.imagenUrl">
+                        <a (click)="openFile(subastas.imagenUrlContentType!, subastas.imagenUrl)">
+                            <img [src]="'data:' + subastas.imagenUrlContentType + ';base64,' + subastas.imagenUrl" style="max-width: 100%;" alt="subastas image"/>
+                        </a>
+                        {{ subastas.imagenUrlContentType }}, {{ byteSize(subastas.imagenUrl) }}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.subastas.videoUrl">Video Url</span></dt>
+                <dd>
+                    <span>{{ subastas.videoUrl }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.subastas.estadoActivo">Estado Activo</span></dt>
+                <dd>
+                    <span>{{ subastas.estadoActivo }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.subastas.eventos">Eventos</span></dt>
+                <dd>
+                    <div *ngIf="subastas.eventos">
+                        <a [routerLink]="['/eventos', subastas.eventos?.id, 'view']">{{ subastas.eventos?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/subastas', subastas.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

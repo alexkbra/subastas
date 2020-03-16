@@ -82,7 +82,7 @@ export class UserManagementComponent implements OnInit, OnDestroy {
       relativeTo: this.activatedRoute.parent,
       queryParams: {
         page: this.page,
-        sort: this.predicate + ',' + (this.ascending ? 'asc' : 'desc')
+        sort: this.predicate + ',' + (this.ascending ? 'desc' : 'asc')
       }
     });
     this.loadAll();

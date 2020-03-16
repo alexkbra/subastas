@@ -1,0 +1,39 @@
+{
+  "subastasApp": {
+    "subastas": {
+      "home": {
+        "title": "Subastas",
+        "createLabel": "Create a new Subastas",
+        "createOrEditLabel": "Create or edit a Subastas",
+        "notFound": "No Subastas found"
+      },
+      "created": "A new Subastas is created with identifier {{ param }}",
+      "updated": "A Subastas is updated with identifier {{ param }}",
+      "deleted": "A Subastas is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Subastas {{ id }}?"
+      },
+      "detail": {
+        "title": "Subastas"
+      },
+      "nombre": "Nombre",
+      "decripcion": "Decripcion",
+      "fechainicio": "Fechainicio",
+      "fechafinal": "Fechafinal",
+      "timpoRecloGanador": "Timpo Reclo Ganador",
+      "fechacreacion": "Fechacreacion",
+      "valorinicial": "Valorinicial",
+      "valoractual": "Valoractual",
+      "valortope": "Valortope",
+      "pagaAnticipo": "Paga Anticipo",
+      "pesobaseporkg": "Pesobaseporkg",
+      "pesototallote": "Pesototallote",
+      "valorAnticipo": "Valor Anticipo",
+      "imagenUrl": "Imagen Url",
+      "videoUrl": "Video Url",
+      "estadoActivo": "Estado Activo",
+      "lotes": "Lotes",
+      "eventos": "Eventos"
+    }
+  }
+}

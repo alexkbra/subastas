@@ -1,0 +1,57 @@
+{
+    "name": "Municipios",
+    "fields": [
+        {
+            "fieldName": "idmunicipios",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "municipio",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "minlength",
+                "maxlength",
+                "required"
+            ],
+            "fieldValidateRulesMinlength": "5",
+            "fieldValidateRulesMaxlength": "100"
+        },
+        {
+            "fieldName": "estado",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "minlength",
+                "maxlength",
+                "required"
+            ],
+            "fieldValidateRulesMinlength": "5",
+            "fieldValidateRulesMaxlength": "100"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "ciudad",
+            "otherEntityRelationshipName": "municipios",
+            "relationshipName": "ciudad"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "departamentos",
+            "otherEntityRelationshipName": "municipios",
+            "relationshipValidateRules": "required",
+            "relationshipName": "departamentos",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200313170800",
+    "entityTableName": "municipios",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

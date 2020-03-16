@@ -1,0 +1,86 @@
+{
+    "name": "Animales",
+    "fields": [
+        {
+            "fieldName": "pesokg",
+            "fieldType": "BigDecimal",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "descripcion",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "sexo",
+            "fieldType": "Sexos",
+            "fieldValues": "MASCULINO,FEMENINO,OTRO"
+        },
+        {
+            "fieldName": "procedencia",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "minlength",
+                "maxlength",
+                "required"
+            ],
+            "fieldValidateRulesMinlength": "5",
+            "fieldValidateRulesMaxlength": "100"
+        },
+        {
+            "fieldName": "propietario",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "minlength",
+                "maxlength",
+                "required"
+            ],
+            "fieldValidateRulesMinlength": "5",
+            "fieldValidateRulesMaxlength": "100"
+        },
+        {
+            "fieldName": "imagenUrl",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldName": "videoUrl",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "500"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "lotesToAnimales",
+            "otherEntityRelationshipName": "animales",
+            "relationshipName": "lotestoanimales"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "razas",
+            "otherEntityRelationshipName": "animales",
+            "relationshipValidateRules": "required",
+            "relationshipName": "razas",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200313171400",
+    "entityTableName": "animales",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

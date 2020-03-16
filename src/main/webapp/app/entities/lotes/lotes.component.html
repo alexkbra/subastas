@@ -1,0 +1,114 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="subastasApp.lotes.home.title">Lotes</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-lotes" [routerLink]="['/lotes/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="subastasApp.lotes.home.createLabel">
+            Create a new Lotes
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="lotes?.length === 0">
+        <span jhiTranslate="subastasApp.lotes.home.notFound">No lotes found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="lotes?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="numero"><span jhiTranslate="subastasApp.lotes.numero">Numero</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="nombre"><span jhiTranslate="subastasApp.lotes.nombre">Nombre</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="decripcion"><span jhiTranslate="subastasApp.lotes.decripcion">Decripcion</span> <fa-icon icon="sort"></fa-icon></th>
+                    <!--th scope="col"  jhiSortBy="raza"><span jhiTranslate="subastasApp.lotes.raza">Raza</span> <fa-icon icon="sort"></fa-icon></th-->
+                    <th scope="col"  jhiSortBy="cantidadAnimales"><span jhiTranslate="subastasApp.lotes.cantidadAnimales">Cantidad Animales</span> <fa-icon icon="sort"></fa-icon></th>
+                    <!--th scope="col"  jhiSortBy="pesopromedio"><span jhiTranslate="subastasApp.lotes.pesopromedio">Pesopromedio</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="pesototallote"><span jhiTranslate="subastasApp.lotes.pesototallote">Pesototallote</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="pesobaseporkg"><span jhiTranslate="subastasApp.lotes.pesobaseporkg">Pesobaseporkg</span> <fa-icon icon="sort"></fa-icon></th-->
+                    <th scope="col"  jhiSortBy="imagenUrl"><span jhiTranslate="subastasApp.lotes.imagenUrl">Imagen Url</span> <fa-icon icon="sort"></fa-icon></th>
+                    <!--th scope="col"  jhiSortBy="videoUrl"><span jhiTranslate="subastasApp.lotes.videoUrl">Video Url</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="idciudad"><span jhiTranslate="subastasApp.lotes.idciudad">Idciudad</span> <fa-icon icon="sort"></fa-icon></th-->
+                    <th scope="col"  jhiSortBy="propietario.id"><span jhiTranslate="subastasApp.lotes.propietario">Propietario</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="clasificacionlote.id"><span jhiTranslate="subastasApp.lotes.clasificacionlote">Clasificacionlote</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="subastas.id"><span jhiTranslate="subastasApp.lotes.subastas">Subastas</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let lotes of lotes ;trackBy: trackId">
+                    <td><a [routerLink]="['/lotes', lotes.id, 'view']">{{ lotes.id }}</a></td>
+                    <td>{{ lotes.numero }}</td>
+                    <td>{{ lotes.nombre }}</td>
+                    <td>{{ lotes.decripcion }}</td>
+                    <!--td>{{ lotes.raza }}</td-->
+                    <td>{{ lotes.cantidadAnimales }}</td>
+                    <!--td>{{ lotes.pesopromedio }}</td>
+                    <td>{{ lotes.pesototallote }}</td>
+                    <td>{{ lotes.pesobaseporkg }}</td-->
+                    <td>
+                        <a *ngIf="lotes.imagenUrl" (click)="openFile(lotes.imagenUrlContentType, lotes.imagenUrl)">
+                            <img [src]="'data:' + lotes.imagenUrlContentType + ';base64,' + lotes.imagenUrl" style="max-height: 30px;" alt="lotes image"/>
+                        </a>
+                        <!--span *ngIf="lotes.imagenUrl">{{ lotes.imagenUrlContentType }}, {{ byteSize(lotes.imagenUrl) }}</span-->
+                    </td>
+                    <!--td>{{ lotes.videoUrl }}</td>
+                    <td>{{ lotes.idciudad }}</td-->
+                    <td>
+                        <div *ngIf="lotes.propietario">
+                            <a [routerLink]="['/propietario', lotes.propietario?.id, 'view']" >{{ lotes.propietario?.nombreORazonSocial }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="lotes.clasificacionlote">
+                            <a [routerLink]="['/clasificacion-lote', lotes.clasificacionlote?.id, 'view']" >{{ lotes.clasificacionlote?.nombre }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="lotes.subastas">
+                            <a [routerLink]="['/subastas', lotes.subastas?.id, 'view']" >{{ lotes.subastas?.nombre }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/lotes', lotes.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/lotes', lotes.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(lotes)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="lotes?.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

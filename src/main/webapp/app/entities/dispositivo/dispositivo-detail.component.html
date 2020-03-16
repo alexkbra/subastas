@@ -1,0 +1,54 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="dispositivo">
+            <h2><span jhiTranslate="subastasApp.dispositivo.detail.title">Dispositivo</span> {{ dispositivo.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="subastasApp.dispositivo.idEvento">Id Evento</span></dt>
+                <dd>
+                    <span>{{ dispositivo.idEvento }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.dispositivo.idSubasta">Id Subasta</span></dt>
+                <dd>
+                    <span>{{ dispositivo.idSubasta }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.dispositivo.idLote">Id Lote</span></dt>
+                <dd>
+                    <span>{{ dispositivo.idLote }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.dispositivo.idusuario">Idusuario</span></dt>
+                <dd>
+                    <span>{{ dispositivo.idusuario }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.dispositivo.idcliente">Idcliente</span></dt>
+                <dd>
+                    <span>{{ dispositivo.idcliente }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.dispositivo.activo">Activo</span></dt>
+                <dd>
+                    <span>{{ dispositivo.activo }}</span>
+                </dd>
+                <dt><span jhiTranslate="subastasApp.dispositivo.dispositivo">Dispositivo</span></dt>
+                <dd>
+                    <span>{{ dispositivo.dispositivo }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/dispositivo', dispositivo.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

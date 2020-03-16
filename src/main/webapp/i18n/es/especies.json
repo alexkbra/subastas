@@ -1,0 +1,25 @@
+{
+  "subastasApp": {
+    "especies": {
+      "home": {
+        "title": "Especies",
+        "createLabel": "Crear nueva especie",
+        "createOrEditLabel": "Crear o editar especie",
+        "notFound": "Ninguna especie encontrada"
+      },
+      "created": "Una nueva especie ha sido creado con el identificador {{ param }}",
+      "updated": "Una especie ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Una especie ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar especie {{ id }}?"
+      },
+      "detail": {
+        "title": "Especies"
+      },
+      "nombre": "Nombre",
+      "decripcion": "Descripción",
+      "code": "Code",
+      "razas": "Razas"
+    }
+  }
+}

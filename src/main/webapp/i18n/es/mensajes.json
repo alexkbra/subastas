@@ -1,0 +1,31 @@
+{
+  "subastasApp": {
+    "mensajes": {
+      "home": {
+        "title": "Mensajes",
+        "createLabel": "Crear nuevo mensaje",
+        "createOrEditLabel": "Crear o editar mensaje",
+        "notFound": "Ningún mensaje encontrado"
+      },
+      "created": "Un nuevo mensaje ha sido creado con el identificador {{ param }}",
+      "updated": "Un mensaje ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un mensaje ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar mensaje {{ id }}?"
+      },
+      "detail": {
+        "title": "Mensajes"
+      },
+      "titulo": "Titulo",
+      "cuerpo": "Cuerpo",
+      "numeroLote": "Número lote",
+      "tipoMensaje": "Tipo mensaje",
+      "tipoCliente": "Tipo cliente",
+      "direccion": "Dirección",
+      "idusuario": "Idusuario",
+      "idcliente": "Idcliente",
+      "activo": "Activo",
+      "valorPagar": "Valor a pagar"
+    }
+  }
+}

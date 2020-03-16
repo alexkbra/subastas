@@ -1,0 +1,36 @@
+{
+  "subastasApp": {
+    "lotes": {
+      "home": {
+        "title": "Lotes",
+        "createLabel": "Crear nuevo lote",
+        "createOrEditLabel": "Crear o editar lote",
+        "notFound": "Ningún lote encontrado"
+      },
+      "created": "Un nuevo lote ha sido creado con el identificador {{ param }}",
+      "updated": "Un lote ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un lote ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar lote {{ id }}?"
+      },
+      "detail": {
+        "title": "Lotes"
+      },
+      "numero": "Numero",
+      "nombre": "Nombre",
+      "decripcion": "Descripción",
+      "raza": "Raza",
+      "cantidadAnimales": "Cantidad animales",
+      "pesopromedio": "Peso promedio",
+      "pesototallote": "Peso total lote",
+      "pesobaseporkg": "Peso base por (kg)",
+      "imagenUrl": "Imagen",
+      "videoUrl": "Video Url (YouTube)",
+      "idciudad": "Idciudad",
+      "lotestoanimales": "Lotestoanimales",
+      "propietario": "Propietario",
+      "clasificacionlote": "Clasificación lote",
+      "subastas": "Subasta"
+    }
+  }
+}

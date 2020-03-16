@@ -1,0 +1,75 @@
+{
+    "name": "Mensajes",
+    "fields": [
+        {
+            "fieldName": "titulo",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "minlength",
+                "maxlength",
+                "required"
+            ],
+            "fieldValidateRulesMinlength": "5",
+            "fieldValidateRulesMaxlength": "100"
+        },
+        {
+            "fieldName": "cuerpo",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "numeroLote",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "tipoMensaje",
+            "fieldType": "TipoMensaje",
+            "fieldValues": "GANDOR,INFO,ERROR"
+        },
+        {
+            "fieldName": "tipoCliente",
+            "fieldType": "TipoCliente",
+            "fieldValues": "COMPRADOR,PUJADOR"
+        },
+        {
+            "fieldName": "direccion",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "idusuario",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "idcliente",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "activo",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "valorPagar",
+            "fieldType": "BigDecimal",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20200313170400",
+    "entityTableName": "mensajes",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}
