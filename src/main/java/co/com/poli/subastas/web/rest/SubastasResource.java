@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 
@@ -62,6 +63,9 @@ public class SubastasResource {
         if (subastas.getId() != null) {
             throw new BadRequestAlertException("A new subastas cannot already have an ID", ENTITY_NAME, "idexists");
         }
+        if(subastas.getFechafinal().compareTo(subastas.getFechainicio()) > 0 ){
+            throw new BadRequestAlertException("La fecha final es mayor que la fecha inicial", ENTITY_NAME, "idexists");
+        }
         Subastas result = subastasRepository.save(subastas);
         return ResponseEntity.created(new URI("/api/subastas/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
@@ -82,6 +86,9 @@ public class SubastasResource {
         log.debug("REST request to update Subastas : {}", subastas);
         if (subastas.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
+        }
+        if(subastas.getFechafinal().compareTo(subastas.getFechainicio()) > 0 ){
+            throw new BadRequestAlertException("La fecha final es mayor que la fecha inicial", ENTITY_NAME, "idexists");
         }
         Subastas result = subastasRepository.save(subastas);
         return ResponseEntity.ok()
@@ -112,7 +119,7 @@ public class SubastasResource {
     @GetMapping("/subastas/id-evento/{idevento}")
     public ResponseEntity<List<Subastas>> getSubastasByIdEvento(@PathVariable Long idevento, Pageable pageable) {
         log.debug("REST request to get SubastasByIdEvento : {}", idevento);
-        Page<Subastas> page =  subastasRepository.findByEventos(eventosRepository.findById(idevento).get(), pageable);
+        Page<Subastas> page =  subastasRepository.findByEventosAndEstadoActivoBetweenFechainicioAndFechafinal(eventosRepository.findById(idevento).get(),Boolean.TRUE,Instant.now(), pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }

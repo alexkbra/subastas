@@ -51,6 +51,7 @@ export class EventosUpdateComponent implements OnInit {
         eventos.fechainicio = today;
         eventos.fechafinal = today;
         eventos.fechacreacion = today;
+        eventos.estadoActivo = true;
       }
 
       this.updateForm(eventos);

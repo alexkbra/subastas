@@ -2,6 +2,7 @@ package co.com.poli.subastas.repository;
 
 import co.com.poli.subastas.domain.Cliente;
 import co.com.poli.subastas.domain.Pujadores;
+import co.com.poli.subastas.domain.enumeration.EstadoPujadores;
 
 import java.util.List;
 
@@ -17,4 +18,6 @@ public interface PujadoresRepository extends JpaRepository<Pujadores, Long> {
 
     List<Pujadores> findByIdEventoAndIdSubastaAndIdLoteAndCliente(String idEvento,String idSubasta,String idLote, Cliente cliente);
 
+    List<Pujadores> findByIdEventoAndIdSubastaAndIdLoteAndEstado(String idEvento,String idSubasta,String idLote, EstadoPujadores estado);
+    
 }

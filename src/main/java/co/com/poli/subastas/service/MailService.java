@@ -1,5 +1,6 @@
 package co.com.poli.subastas.service;
 
+import co.com.poli.subastas.domain.Pujadores;
 import co.com.poli.subastas.domain.User;
 
 import io.github.jhipster.config.JHipsterProperties;
@@ -85,11 +86,32 @@ public class MailService {
         String subject = messageSource.getMessage(titleKey, null, locale);
         sendEmail(user.getEmail(), subject, content, false, true);
     }
+    
+    @Async
+    public void sendEmailAceptarGanadorFromTemplate(User user,Pujadores pujador, String templateName, String titleKey) {
+        if (user.getEmail() == null) {
+            log.debug("Email doesn't exist for user '{}'", user.getLogin());
+            return;
+        }
+        Locale locale = Locale.forLanguageTag(user.getLangKey());
+        Context context = new Context(locale);
+        context.setVariable(USER, user);
+        context.setVariable(BASE_URL, jHipsterProperties.getMail().getBaseUrl());
+        String content = templateEngine.process(templateName, context);
+        String subject = messageSource.getMessage(titleKey, null, locale);
+        sendEmail(user.getEmail(), subject, content, false, true);
+    }
 
     @Async
     public void sendActivationEmail(User user) {
         log.debug("Sending activation email to '{}'", user.getEmail());
         sendEmailFromTemplate(user, "mail/activationEmail", "email.activation.title");
+    }
+    
+    @Async
+    public void sendAceptarGanadorEmail(User user, Pujadores pujador) {
+        log.debug("Sending activation email to '{}'", user.getEmail());
+        sendEmailAceptarGanadorFromTemplate(user, pujador, "mail/activationEmail", "email.activation.title");
     }
 
     @Async

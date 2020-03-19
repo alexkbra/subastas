@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 
@@ -59,6 +60,9 @@ public class EventosResource {
         if (eventos.getId() != null) {
             throw new BadRequestAlertException("A new eventos cannot already have an ID", ENTITY_NAME, "idexists");
         }
+        if(eventos.getFechafinal().compareTo(eventos.getFechainicio()) > 0 ){
+            throw new BadRequestAlertException("La fecha final es mayor que la fecha inicial", ENTITY_NAME, "idexists");
+        }
         Eventos result = eventosRepository.save(eventos);
         return ResponseEntity.created(new URI("/api/eventos/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
@@ -80,6 +84,9 @@ public class EventosResource {
         if (eventos.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
+        if(eventos.getFechafinal().compareTo(eventos.getFechainicio()) > 0 ){
+            throw new BadRequestAlertException("La fecha final es mayor que la fecha inicial", ENTITY_NAME, "idexists");
+        }
         Eventos result = eventosRepository.save(eventos);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, eventos.getId().toString()))
@@ -87,6 +94,20 @@ public class EventosResource {
     }
 
     /**
+     * {@code GET  /eventos} : get all the eventos.
+     *
+     * @param pageable the pagination information.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of eventos in body.
+     */
+    @GetMapping("/eventos/now")
+    public ResponseEntity<List<Eventos>> getEventos(Pageable pageable) {
+        log.debug("REST request to get a page of Eventos");
+        Page<Eventos> page = eventosRepository.findByEstadoActivoBetweenFechainicioAndFechafinal(Boolean.TRUE ,Instant.now(),pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
+    
+     /**
      * {@code GET  /eventos} : get all the eventos.
      *
      * @param pageable the pagination information.

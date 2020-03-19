@@ -61,6 +61,7 @@ export class SubastasUpdateComponent implements OnInit {
         subastas.fechainicio = today;
         subastas.fechafinal = today;
         subastas.fechacreacion = today;
+        subastas.estadoActivo = true;
       }
 
       this.updateForm(subastas);

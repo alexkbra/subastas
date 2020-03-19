@@ -1,5 +1,6 @@
 package co.com.poli.subastas.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -44,7 +45,7 @@ public class Subastas implements Serializable {
 
     @NotNull
     @Column(name = "timpo_reclo_ganador", nullable = false)
-    private Duration timpoRecloGanador;
+    private Integer timpoRecloGanador;
 
     @NotNull
     @Column(name = "fechacreacion", nullable = false)
@@ -89,7 +90,7 @@ public class Subastas implements Serializable {
     @NotNull
     @Column(name = "estado_activo", nullable = false)
     private Boolean estadoActivo;
-
+    
     @OneToMany(mappedBy = "subastas")
     private Set<Lotes> lotes = new HashSet<>();
 
@@ -159,16 +160,16 @@ public class Subastas implements Serializable {
         this.fechafinal = fechafinal;
     }
 
-    public Duration getTimpoRecloGanador() {
+    public Integer getTimpoRecloGanador() {
         return timpoRecloGanador;
     }
 
-    public Subastas timpoRecloGanador(Duration timpoRecloGanador) {
+    public Subastas timpoRecloGanador(Integer timpoRecloGanador) {
         this.timpoRecloGanador = timpoRecloGanador;
         return this;
     }
 
-    public void setTimpoRecloGanador(Duration timpoRecloGanador) {
+    public void setTimpoRecloGanador(Integer timpoRecloGanador) {
         this.timpoRecloGanador = timpoRecloGanador;
     }
 

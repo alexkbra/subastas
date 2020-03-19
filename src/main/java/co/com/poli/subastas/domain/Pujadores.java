@@ -10,6 +10,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import co.com.poli.subastas.domain.enumeration.EstadoPujadores;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * A Pujadores.
@@ -47,7 +48,12 @@ public class Pujadores implements Serializable {
 
     @Column(name = "pago_aceptado")
     private Boolean pagoAceptado;
-
+    
+    @Size(max = 20)
+    @Column(name = "activation_key", length = 20)
+    @JsonIgnore
+    private String activationKey;
+    
     @OneToMany(mappedBy = "pujadores")
     private Set<Pujas> pujas = new HashSet<>();
 
@@ -193,6 +199,16 @@ public class Pujadores implements Serializable {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
+
+    public String getActivationKey() {
+        return activationKey;
+    }
+
+    public void setActivationKey(String activationKey) {
+        this.activationKey = activationKey;
+    }
+    
+    
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override

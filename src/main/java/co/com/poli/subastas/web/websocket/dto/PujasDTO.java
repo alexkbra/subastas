@@ -7,6 +7,7 @@ public class PujasDTO {
     private String idLote; 
     private String valor;
     private String token;
+    private String sessionId;
 
     public PujasDTO(String idEvento, String idSubasta, String idLote, String valor) {
         this.idEvento = idEvento;
@@ -56,6 +57,14 @@ public class PujasDTO {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public String getSessionId() {
+        return sessionId;
+    }
+
+    public void setSessionId(String sessionId) {
+        this.sessionId = sessionId;
     }
 
 }

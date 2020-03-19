@@ -52,8 +52,8 @@ public class SubastasResourceIT {
     private static final Instant DEFAULT_FECHAFINAL = Instant.ofEpochMilli(0L);
     private static final Instant UPDATED_FECHAFINAL = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
-    private static final Duration DEFAULT_TIMPO_RECLO_GANADOR = Duration.ofHours(6);
-    private static final Duration UPDATED_TIMPO_RECLO_GANADOR = Duration.ofHours(12);
+    private static final Integer DEFAULT_TIMPO_RECLO_GANADOR = 6;
+    private static final Integer UPDATED_TIMPO_RECLO_GANADOR = 12;
 
     private static final Instant DEFAULT_FECHACREACION = Instant.ofEpochMilli(0L);
     private static final Instant UPDATED_FECHACREACION = Instant.now().truncatedTo(ChronoUnit.MILLIS);
