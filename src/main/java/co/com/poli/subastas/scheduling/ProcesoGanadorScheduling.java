@@ -60,7 +60,7 @@ public class ProcesoGanadorScheduling {
         this.mailService = mailService;
     }
 
-    @Scheduled(cron = "*/10 * * * * *", zone = "America/Bogota")
+    //@Scheduled(cron = "*/10 * * * * *", zone = "America/Bogota")
     public void desactivarEventos() {
         log.info("-----------------------------desactivarEventos init---- ");
         List<Eventos> listEventos = this.eventosRepository.findAllWithFechafinalBefore(Instant.now());
@@ -72,7 +72,7 @@ public class ProcesoGanadorScheduling {
         log.info("-----------------------------desactivarEventos end---- ");
     }
 
-    @Scheduled(cron = "*/10 * * * * *", zone = "America/Bogota")
+    //@Scheduled(cron = "*/10 * * * * *", zone = "America/Bogota")
     public void desactivarSubastas() {
         log.info("-----------------------------desactivarSubastas init---- ");
         List<Subastas> listSubastas = this.subastasRepository.findAllWithFechafinalBefore(Instant.now());
@@ -84,7 +84,7 @@ public class ProcesoGanadorScheduling {
         log.info("-----------------------------desactivarSubastas end---- ");
     }
 
-    @Scheduled(cron = "*/30 * * * * *", zone = "America/Bogota")
+    //@Scheduled(cron = "*/30 * * * * *", zone = "America/Bogota")
     public void subastasProcesoGanador() {
         log.info("-----------------------------subastasProcesoGanador init---- ");
         List<Subastas> listSubastas = this.subastasRepository.findAllWithFechafinalBefore(Instant.now());

@@ -45,7 +45,7 @@ public class SubastasResource {
     private final SubastasRepository subastasRepository;
     private final EventosRepository eventosRepository;
 
-    public SubastasResource(SubastasRepository subastasRepository,EventosRepository eventosRepository) {
+    public SubastasResource(SubastasRepository subastasRepository, EventosRepository eventosRepository) {
         this.subastasRepository = subastasRepository;
         this.eventosRepository = eventosRepository;
     }
@@ -54,7 +54,9 @@ public class SubastasResource {
      * {@code POST  /subastas} : Create a new subastas.
      *
      * @param subastas the subastas to create.
-     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new subastas, or with status {@code 400 (Bad Request)} if the subastas has already an ID.
+     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and
+     * with body the new subastas, or with status {@code 400 (Bad Request)} if
+     * the subastas has already an ID.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/subastas")
@@ -63,22 +65,26 @@ public class SubastasResource {
         if (subastas.getId() != null) {
             throw new BadRequestAlertException("A new subastas cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        if(subastas.getFechafinal().compareTo(subastas.getFechainicio()) > 0 ){
-            throw new BadRequestAlertException("La fecha final es mayor que la fecha inicial", ENTITY_NAME, "idexists");
+        if (subastas.getFechafinal().compareTo(subastas.getFechainicio()) < 0) {
+            throw new BadRequestAlertException("La fecha final es mayor que la fecha inicial", ENTITY_NAME, "fechaFinalInvalida");
+        }
+        if (subastas.getFechafinal().compareTo(subastas.getFechainicio()) == 0) {
+            throw new BadRequestAlertException("La fecha inicial no puede ser igual a la fecha final", ENTITY_NAME, "fechaInicialInvalidas");
         }
         Subastas result = subastasRepository.save(subastas);
         return ResponseEntity.created(new URI("/api/subastas/" + result.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
-            .body(result);
+                .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
+                .body(result);
     }
 
     /**
      * {@code PUT  /subastas} : Updates an existing subastas.
      *
      * @param subastas the subastas to update.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated subastas,
-     * or with status {@code 400 (Bad Request)} if the subastas is not valid,
-     * or with status {@code 500 (Internal Server Error)} if the subastas couldn't be updated.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with
+     * body the updated subastas, or with status {@code 400 (Bad Request)} if
+     * the subastas is not valid, or with status
+     * {@code 500 (Internal Server Error)} if the subastas couldn't be updated.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/subastas")
@@ -87,20 +93,24 @@ public class SubastasResource {
         if (subastas.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        if(subastas.getFechafinal().compareTo(subastas.getFechainicio()) > 0 ){
-            throw new BadRequestAlertException("La fecha final es mayor que la fecha inicial", ENTITY_NAME, "idexists");
+        if (subastas.getFechafinal().compareTo(subastas.getFechainicio()) < 0) {
+            throw new BadRequestAlertException("La fecha final es mayor que la fecha inicial", ENTITY_NAME, "fechaFinalInvalida");
+        }
+        if (subastas.getFechafinal().compareTo(subastas.getFechainicio()) == 0) {
+            throw new BadRequestAlertException("La fecha inicial no puede ser igual a la fecha final", ENTITY_NAME, "fechaInicialInvalidas");
         }
         Subastas result = subastasRepository.save(subastas);
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, subastas.getId().toString()))
-            .body(result);
+                .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, subastas.getId().toString()))
+                .body(result);
     }
 
     /**
      * {@code GET  /subastas} : get all the subastas.
      *
      * @param pageable the pagination information.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of subastas in body.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the
+     * list of subastas in body.
      */
     @GetMapping("/subastas")
     public ResponseEntity<List<Subastas>> getAllSubastas(Pageable pageable) {
@@ -110,26 +120,27 @@ public class SubastasResource {
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
 
-     /**
+    /**
      * {@code GET  /subastas/:idEvento} : get the "idEvento" subastas.
      *
      * @param id the id of the subastas to retrieve.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the subastas, or with status {@code 404 (Not Found)}.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with
+     * body the subastas, or with status {@code 404 (Not Found)}.
      */
     @GetMapping("/subastas/id-evento/{idevento}")
     public ResponseEntity<List<Subastas>> getSubastasByIdEvento(@PathVariable Long idevento, Pageable pageable) {
         log.debug("REST request to get SubastasByIdEvento : {}", idevento);
-        Page<Subastas> page =  subastasRepository.findByEventosAndEstadoActivoBetweenFechainicioAndFechafinal(eventosRepository.findById(idevento).get(),Boolean.TRUE,Instant.now(), pageable);
+        Page<Subastas> page = subastasRepository.findByEventosAndEstadoActivoBetweenFechainicioAndFechafinal(eventosRepository.findById(idevento).get(), Boolean.TRUE, Instant.now(), pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
-
 
     /**
      * {@code GET  /subastas/:id} : get the "id" subastas.
      *
      * @param id the id of the subastas to retrieve.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the subastas, or with status {@code 404 (Not Found)}.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with
+     * body the subastas, or with status {@code 404 (Not Found)}.
      */
     @GetMapping("/subastas/{id}")
     public ResponseEntity<Subastas> getSubastas(@PathVariable Long id) {

@@ -162,6 +162,8 @@
     "emailexists": "¡La cuenta de correo ya está en uso!",
     "idexists": "Un/a nuevo/a {{entityName}} no puede tener ID",
     "idnull": "ID inválido",
+    "fechaFinalInvalida": "La fecha final es mayor que la fecha inicial",
+    "fechaInicialInvalidas": "La fecha inicial no puede ser igual a la fecha final",
     "file": {
       "could.not.extract": "Could not extract file",
       "not.image": "File was expected to be an image but was found to be \"{{ fileType }}\""

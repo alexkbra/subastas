@@ -4,8 +4,8 @@
             <h2 id="jhi-cliente-heading" jhiTranslate="subastasApp.cliente.home.createOrEditLabel">Create or edit a Cliente</h2>
 
             <div>
-                <jhi-alert-error></jhi-alert-error>
-
+                
+                 <jhi-alert-error></jhi-alert-error>
                 <div class="form-group" [hidden]="!editForm.get('id')!.value">
                     <label for="id" jhiTranslate="global.field.id">ID</label>
                     <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
@@ -314,6 +314,8 @@
                         This field is required.
                     </small>
                 </div>
+                
+                <jhi-alert-error></jhi-alert-error>
             </div>
 
             <div>

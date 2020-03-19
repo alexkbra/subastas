@@ -51,7 +51,9 @@ public class EventosResource {
      * {@code POST  /eventos} : Create a new eventos.
      *
      * @param eventos the eventos to create.
-     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new eventos, or with status {@code 400 (Bad Request)} if the eventos has already an ID.
+     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and
+     * with body the new eventos, or with status {@code 400 (Bad Request)} if
+     * the eventos has already an ID.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/eventos")
@@ -60,22 +62,26 @@ public class EventosResource {
         if (eventos.getId() != null) {
             throw new BadRequestAlertException("A new eventos cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        if(eventos.getFechafinal().compareTo(eventos.getFechainicio()) > 0 ){
-            throw new BadRequestAlertException("La fecha final es mayor que la fecha inicial", ENTITY_NAME, "idexists");
+        if (eventos.getFechafinal().compareTo(eventos.getFechainicio()) < 0) {
+            throw new BadRequestAlertException("La fecha final es mayor que la fecha inicial", ENTITY_NAME, "fechaFinalInvalida");
+        }
+        if (eventos.getFechafinal().compareTo(eventos.getFechainicio()) == 0) {
+            throw new BadRequestAlertException("La fecha inicial no puede ser igual a la fecha final", ENTITY_NAME, "fechaInicialInvalidas");
         }
         Eventos result = eventosRepository.save(eventos);
         return ResponseEntity.created(new URI("/api/eventos/" + result.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
-            .body(result);
+                .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
+                .body(result);
     }
 
     /**
      * {@code PUT  /eventos} : Updates an existing eventos.
      *
      * @param eventos the eventos to update.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated eventos,
-     * or with status {@code 400 (Bad Request)} if the eventos is not valid,
-     * or with status {@code 500 (Internal Server Error)} if the eventos couldn't be updated.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with
+     * body the updated eventos, or with status {@code 400 (Bad Request)} if the
+     * eventos is not valid, or with status {@code 500 (Internal Server Error)}
+     * if the eventos couldn't be updated.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/eventos")
@@ -84,34 +90,40 @@ public class EventosResource {
         if (eventos.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        if(eventos.getFechafinal().compareTo(eventos.getFechainicio()) > 0 ){
-            throw new BadRequestAlertException("La fecha final es mayor que la fecha inicial", ENTITY_NAME, "idexists");
+
+        if (eventos.getFechafinal().compareTo(eventos.getFechainicio()) < 0) {
+            throw new BadRequestAlertException("La fecha final es mayor que la fecha inicial", ENTITY_NAME, "fechaFinalInvalida");
+        }
+        if (eventos.getFechafinal().compareTo(eventos.getFechainicio()) == 0) {
+            throw new BadRequestAlertException("La fecha inicial no puede ser igual a la fecha final", ENTITY_NAME, "fechaInicialInvalidas");
         }
         Eventos result = eventosRepository.save(eventos);
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, eventos.getId().toString()))
-            .body(result);
+                .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, eventos.getId().toString()))
+                .body(result);
     }
 
     /**
      * {@code GET  /eventos} : get all the eventos.
      *
      * @param pageable the pagination information.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of eventos in body.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the
+     * list of eventos in body.
      */
     @GetMapping("/eventos/now")
     public ResponseEntity<List<Eventos>> getEventos(Pageable pageable) {
         log.debug("REST request to get a page of Eventos");
-        Page<Eventos> page = eventosRepository.findByEstadoActivoBetweenFechainicioAndFechafinal(Boolean.TRUE ,Instant.now(),pageable);
+        Page<Eventos> page = eventosRepository.findByEstadoActivoBetweenFechainicioAndFechafinal(Boolean.TRUE, Instant.now(), pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
-    
-     /**
+
+    /**
      * {@code GET  /eventos} : get all the eventos.
      *
      * @param pageable the pagination information.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of eventos in body.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the
+     * list of eventos in body.
      */
     @GetMapping("/eventos")
     public ResponseEntity<List<Eventos>> getAllEventos(Pageable pageable) {
@@ -125,7 +137,8 @@ public class EventosResource {
      * {@code GET  /eventos/:id} : get the "id" eventos.
      *
      * @param id the id of the eventos to retrieve.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the eventos, or with status {@code 404 (Not Found)}.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with
+     * body the eventos, or with status {@code 404 (Not Found)}.
      */
     @GetMapping("/eventos/{id}")
     public ResponseEntity<Eventos> getEventos(@PathVariable Long id) {
