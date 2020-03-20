@@ -28,7 +28,7 @@ export class ClienteUpdateComponent implements OnInit {
 
   editForm = this.fb.group({
     id: [],
-    numeroDocumento: [null, [Validators.required, Validators.min(5), Validators.max(20)]],
+    numeroDocumento: [null, [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
     nombre: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(100)]],
     apellido: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(100)]],
     correo: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(255)]],

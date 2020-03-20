@@ -38,8 +38,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = SubastasApp.class)
 public class ClienteResourceIT {
 
-    private static final Integer DEFAULT_NUMERO_DOCUMENTO = 5;
-    private static final Integer UPDATED_NUMERO_DOCUMENTO = 6;
+    private static final String DEFAULT_NUMERO_DOCUMENTO = "5";
+    private static final String UPDATED_NUMERO_DOCUMENTO = "6";
 
     private static final String DEFAULT_NOMBRE = "AAAAAAAAAA";
     private static final String UPDATED_NOMBRE = "BBBBBBBBBB";

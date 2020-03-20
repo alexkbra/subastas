@@ -119,9 +119,8 @@
                 </div-->
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="subastasApp.subastas.valorinicial" for="field_valorinicial">Valorinicial</label>
-                    <input type="number" class="form-control" name="valorinicial" id="field_valorinicial"
-                           formControlName="valorinicial"/>
+                    <label class="form-control-label" jhiTranslate="subastasApp.subastas.valorinicial" for="field_valorinicial">Valorinicial {{ editForm.get('valorinicial') }}</label>
+                    <input type="number" class="form-control" name="valorinicial" id="field_valorinicial" formControlName="valorinicial" />
                     <div *ngIf="editForm.get('valorinicial')!.invalid && (editForm.get('valorinicial')!.dirty || editForm.get('valorinicial')!.touched)">
                         <small class="form-text text-danger"
                                *ngIf="editForm.get('valorinicial')?.errors?.required" jhiTranslate="entity.validation.required">

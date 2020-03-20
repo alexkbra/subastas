@@ -136,7 +136,7 @@ public class UserService {
 
         cliente.setAnonimo(true);
         cliente.setIdusuario(newUser.getId().toString());
-        cliente.setNumeroDocumento(15);
+        cliente.setNumeroDocumento("1234567");
         
         cliente.setNombre(userDTO.getLogin().toLowerCase());
         cliente.setApellido(Constants.ANONYMOUS_USER);

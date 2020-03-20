@@ -24,10 +24,9 @@ public class Cliente implements Serializable {
     private Long id;
 
     @NotNull
-    @Min(value = 5)
-    @Max(value = 20)
-    @Column(name = "numero_documento", nullable = false)
-    private Integer numeroDocumento;
+    @Size(min = 2, max = 100)
+    @Column(name = "numero_documento", length = 100, nullable = false)
+    private String  numeroDocumento;
 
     @NotNull
     @Size(min = 5, max = 100)
@@ -121,16 +120,16 @@ public class Cliente implements Serializable {
         this.id = id;
     }
 
-    public Integer getNumeroDocumento() {
+    public String getNumeroDocumento() {
         return numeroDocumento;
     }
 
-    public Cliente numeroDocumento(Integer numeroDocumento) {
+    public Cliente numeroDocumento(String numeroDocumento) {
         this.numeroDocumento = numeroDocumento;
         return this;
     }
 
-    public void setNumeroDocumento(Integer numeroDocumento) {
+    public void setNumeroDocumento(String numeroDocumento) {
         this.numeroDocumento = numeroDocumento;
     }
 
