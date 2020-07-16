@@ -65,8 +65,8 @@
       },
       "report": {
         "main": "Report",
-        "client": "Compradores",
-        "lots": "Lotes vendidos"
+        "client": "Client",
+        "lots": "Sold lots"
       },
       "language": "Language"
     },
