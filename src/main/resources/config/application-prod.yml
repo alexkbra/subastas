@@ -62,8 +62,8 @@ spring:
   liquibase:
     contexts: prod
   mail:
-    host: localhost
-    port: 25
+    host: http://elpolisubasta.herokuapp.com/
+    port: 80
     username:
     password:
   thymeleaf:

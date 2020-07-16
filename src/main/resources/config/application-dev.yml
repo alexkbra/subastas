@@ -60,8 +60,8 @@ spring:
     # Remove 'faker' if you do not want the sample data to be loaded automatically
     contexts: dev, faker
   mail:
-    host: localhost
-    port: 25
+    host: http://elpolisubasta.herokuapp.com/
+    port: 80
     username:
     password:
   messages:
