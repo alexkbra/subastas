@@ -62,7 +62,7 @@ spring:
   liquibase:
     contexts: prod
   mail:
-    host: http://elpolisubasta.herokuapp.com/
+    host: localhost
     port: 25
     username:
     password:
