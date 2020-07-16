@@ -62,6 +62,9 @@ export class SubastasUpdateComponent implements OnInit {
         subastas.fechafinal = today;
         subastas.fechacreacion = today;
         subastas.estadoActivo = true;
+        subastas.pesototallote = 0;
+        subastas.valorinicial = 0;
+        subastas.timpoRecloGanador = 2;
       }
 
       this.updateForm(subastas);

@@ -63,6 +63,11 @@
         "database": "Database",
         "jhipster-needle-menu-add-admin-element": "JHipster will add additional menu entries here (do not translate!)"
       },
+      "report": {
+        "main": "Report",
+        "client": "Compradores",
+        "lots": "Lotes vendidos"
+      },
       "language": "Language"
     },
     "form": {
