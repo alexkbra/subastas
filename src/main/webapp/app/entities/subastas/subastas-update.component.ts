@@ -64,6 +64,8 @@ export class SubastasUpdateComponent implements OnInit {
         subastas.estadoActivo = true;
         subastas.pesototallote = 0;
         subastas.valorinicial = 0;
+        subastas.valoractual = 0;
+        subastas.valortope = 0;
         subastas.timpoRecloGanador = 2;
       }
 
