@@ -2,29 +2,29 @@
   "subastasApp": {
     "pujadores": {
       "home": {
-        "title": "Pujadores",
-        "createLabel": "Create a new Pujadores",
-        "createOrEditLabel": "Create or edit a Pujadores",
-        "notFound": "No Pujadores found"
+        "title": "Bidders",
+        "createLabel": "Create a new Bidders",
+        "createOrEditLabel": "Create or edit a Bidders",
+        "notFound": "No Bidders found"
       },
-      "created": "A new Pujadores is created with identifier {{ param }}",
-      "updated": "A Pujadores is updated with identifier {{ param }}",
-      "deleted": "A Pujadores is deleted with identifier {{ param }}",
+      "created": "A new Bidders is created with identifier {{ param }}",
+      "updated": "A Bidders is updated with identifier {{ param }}",
+      "deleted": "A Bidders is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Pujadores {{ id }}?"
+        "question": "Are you sure you want to delete Bidders {{ id }}?"
       },
       "detail": {
-        "title": "Pujadores"
+        "title": "Bidders"
       },
-      "idEvento": "Id Evento",
-      "idSubasta": "Id Subasta",
-      "idLote": "Id Lote",
-      "nroconsignacion": "Nroconsignacion",
-      "nombrebanco": "Nombrebanco",
-      "estado": "Estado",
-      "pagoAceptado": "Pago Aceptado",
-      "pujas": "Pujas",
-      "cliente": "Cliente"
+      "idEvento": "Id Event",
+      "idSubasta": "Id Auction",
+      "idLote": "Id Lot",
+      "nroconsignacion": "consignment number",
+      "nombrebanco": "Bankname",
+      "estado": "Status",
+      "pagoAceptado": "Payment Accepted",
+      "pujas": "Bids",
+      "cliente": "Customer"
     }
   }
 }

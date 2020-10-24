@@ -2,24 +2,24 @@
   "subastasApp": {
     "especies": {
       "home": {
-        "title": "Especies",
-        "createLabel": "Create a new Especies",
-        "createOrEditLabel": "Create or edit a Especies",
-        "notFound": "No Especies found"
+        "title": "Species",
+        "createLabel": "Create a new Species",
+        "createOrEditLabel": "Create or edit a Species",
+        "notFound": "No Species found"
       },
-      "created": "A new Especies is created with identifier {{ param }}",
-      "updated": "A Especies is updated with identifier {{ param }}",
-      "deleted": "A Especies is deleted with identifier {{ param }}",
+      "created": "A new Species is created with identifier {{ param }}",
+      "updated": "A Species is updated with identifier {{ param }}",
+      "deleted": "A Species is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Especies {{ id }}?"
+        "question": "Are you sure you want to delete Species {{ id }}?"
       },
       "detail": {
-        "title": "Especies"
+        "title": "Species"
       },
-      "nombre": "Nombre",
-      "decripcion": "Decripcion",
+      "nombre": "Name",
+      "decripcion": "Decription",
       "code": "Code",
-      "razas": "Razas"
+      "razas": "Races"
     }
   }
 }

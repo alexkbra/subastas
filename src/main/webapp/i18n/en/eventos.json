@@ -2,32 +2,32 @@
   "subastasApp": {
     "eventos": {
       "home": {
-        "title": "Eventos",
-        "createLabel": "Create a new Eventos",
-        "createOrEditLabel": "Create or edit a Eventos",
-        "notFound": "No Eventos found"
+        "title": "Events",
+        "createLabel": "Create a new Events",
+        "createOrEditLabel": "Create or edit a Events",
+        "notFound": "No Events found"
       },
-      "created": "A new Eventos is created with identifier {{ param }}",
-      "updated": "A Eventos is updated with identifier {{ param }}",
-      "deleted": "A Eventos is deleted with identifier {{ param }}",
+      "created": "A new Events is created with identifier {{ param }}",
+      "updated": "A Events is updated with identifier {{ param }}",
+      "deleted": "A Events is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Eventos {{ id }}?"
+        "question": "Are you sure you want to delete Events {{ id }}?"
       },
       "detail": {
-        "title": "Eventos"
+        "title": "Events"
       },
-      "nombre": "Nombre",
-      "decripcion": "Decripcion",
-      "fechainicio": "Fechainicio",
-      "fechafinal": "Fechafinal",
-      "fechacreacion": "Fechacreacion",
+      "nombre": "Name",
+      "decripcion": "Description",
+      "fechainicio": "Start date",
+      "fechafinal": "Final date",
+      "fechacreacion": "Creation Date",
       "imagenUrl": "Imagen Url",
       "videoUrl": "Video Url",
       "idciudad": "Idciudad",
-      "latitud": "Latitud",
-      "longitud": "Longitud",
-      "estadoActivo": "Estado Activo",
-      "subastas": "Subastas"
+      "latitud": "latitude",
+      "longitud": "length",
+      "estadoActivo": "Active Status",
+      "subastas": "Auctions"
     }
   }
 }

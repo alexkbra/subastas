@@ -2,35 +2,35 @@
   "subastasApp": {
     "lotes": {
       "home": {
-        "title": "Lotes",
-        "createLabel": "Create a new Lotes",
-        "createOrEditLabel": "Create or edit a Lotes",
-        "notFound": "No Lotes found"
+        "title": "Lots",
+        "createLabel": "Create a new Lots",
+        "createOrEditLabel": "Create or edit a Lots",
+        "notFound": "No Lots found"
       },
-      "created": "A new Lotes is created with identifier {{ param }}",
-      "updated": "A Lotes is updated with identifier {{ param }}",
-      "deleted": "A Lotes is deleted with identifier {{ param }}",
+      "created": "A new Lots is created with identifier {{ param }}",
+      "updated": "A Lots is updated with identifier {{ param }}",
+      "deleted": "A Lots is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Lotes {{ id }}?"
+        "question": "Are you sure you want to delete Lots {{ id }}?"
       },
       "detail": {
-        "title": "Lotes"
+        "title": "Lots"
       },
-      "numero": "Numero",
-      "nombre": "Nombre",
-      "decripcion": "Decripcion",
-      "raza": "Raza",
+      "numero": "Number",
+      "nombre": "Name",
+      "decripcion": "Description",
+      "raza": "Race",
       "cantidadAnimales": "Cantidad Animales",
-      "pesopromedio": "Pesopromedio",
-      "pesototallote": "Pesototallote",
-      "pesobaseporkg": "Pesobaseporkg",
+      "pesopromedio": "Average weight",
+      "pesototallote": "Total batch weight",
+      "pesobaseporkg": "Base weight per kg",
       "imagenUrl": "Imagen Url",
       "videoUrl": "Video Url",
       "idciudad": "Idciudad",
-      "lotestoanimales": "Lotestoanimales",
-      "propietario": "Propietario",
-      "clasificacionlote": "Clasificacionlote",
-      "subastas": "Subastas"
+      "lotestoanimales": "Lots to animals",
+      "propietario": "Owner",
+      "clasificacionlote": "Lot classification",
+      "subastas": "Auctions"
     }
   }
 }

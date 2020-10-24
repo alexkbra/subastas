@@ -2,26 +2,26 @@
   "subastasApp": {
     "contenido": {
       "home": {
-        "title": "Contenidos",
-        "createLabel": "Create a new Contenido",
-        "createOrEditLabel": "Create or edit a Contenido",
-        "notFound": "No Contenidos found"
+        "title": "Contents",
+        "createLabel": "Create a new Contents",
+        "createOrEditLabel": "Create or edit a Contents",
+        "notFound": "No Contents found"
       },
-      "created": "A new Contenido is created with identifier {{ param }}",
-      "updated": "A Contenido is updated with identifier {{ param }}",
-      "deleted": "A Contenido is deleted with identifier {{ param }}",
+      "created": "A new Contents is created with identifier {{ param }}",
+      "updated": "A Contents is updated with identifier {{ param }}",
+      "deleted": "A Contents is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Contenido {{ id }}?"
+        "question": "Are you sure you want to delete Contents {{ id }}?"
       },
       "detail": {
-        "title": "Contenido"
+        "title": "Contents"
       },
-      "tipo": "Tipo",
+      "tipo": "Type",
       "url": "Url",
       "imagenUrl": "Imagen Url",
-      "texto": "Texto",
-      "entidad": "Entidad",
-      "idEntidad": "Id Entidad"
+      "texto": "Text",
+      "entidad": "Entity",
+      "idEntidad": "Id Entity"
     }
   }
 }

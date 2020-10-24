@@ -2,24 +2,24 @@
   "subastasApp": {
     "tipoDocumento": {
       "home": {
-        "title": "Tipo Documentos",
-        "createLabel": "Create a new Tipo Documento",
-        "createOrEditLabel": "Create or edit a Tipo Documento",
-        "notFound": "No Tipo Documentos found"
+        "title": "Type Documents",
+        "createLabel": "Create a new Type Documents",
+        "createOrEditLabel": "Create or edit a Type Documents",
+        "notFound": "No Type Documents found"
       },
-      "created": "A new Tipo Documento is created with identifier {{ param }}",
-      "updated": "A Tipo Documento is updated with identifier {{ param }}",
-      "deleted": "A Tipo Documento is deleted with identifier {{ param }}",
+      "created": "A new Type Documents is created with identifier {{ param }}",
+      "updated": "A Type Documents is updated with identifier {{ param }}",
+      "deleted": "A Type Documents is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Tipo Documento {{ id }}?"
+        "question": "Are you sure you want to delete Type Documents {{ id }}?"
       },
       "detail": {
-        "title": "Tipo Documento"
+        "title": "Type Documents"
       },
-      "codigo": "Codigo",
-      "nombre": "Nombre",
-      "propietario": "Propietario",
-      "cliente": "Cliente"
+      "codigo": "Code",
+      "nombre": "Name",
+      "propietario": "Owner",
+      "cliente": "Customer"
     }
   }
 }

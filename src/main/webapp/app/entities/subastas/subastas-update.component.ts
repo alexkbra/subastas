@@ -65,6 +65,7 @@ export class SubastasUpdateComponent implements OnInit {
         subastas.pesototallote = 0;
         subastas.valorinicial = 0;
         subastas.timpoRecloGanador = 2;
+        subastas.valoractual = 0;
       }
 
       this.updateForm(subastas);

@@ -2,23 +2,23 @@
   "subastasApp": {
     "clasificacionLote": {
       "home": {
-        "title": "Clasificacion Lotes",
-        "createLabel": "Create a new Clasificacion Lote",
-        "createOrEditLabel": "Create or edit a Clasificacion Lote",
-        "notFound": "No Clasificacion Lotes found"
+        "title": "Lot Classification",
+        "createLabel": "Create a new Lot Classification",
+        "createOrEditLabel": "Create or edit a Lot Classification",
+        "notFound": "No Lot Classification found"
       },
-      "created": "A new Clasificacion Lote is created with identifier {{ param }}",
-      "updated": "A Clasificacion Lote is updated with identifier {{ param }}",
-      "deleted": "A Clasificacion Lote is deleted with identifier {{ param }}",
+      "created": "A new Lot Classification is created with identifier {{ param }}",
+      "updated": "A Lot Classification is updated with identifier {{ param }}",
+      "deleted": "A Lot Classification is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Clasificacion Lote {{ id }}?"
+        "question": "Are you sure you want to delete Lot Classification {{ id }}?"
       },
       "detail": {
-        "title": "Clasificacion Lote"
+        "title": "Lot Classification"
       },
-      "nombre": "Nombre",
+      "nombre": "Name",
       "code": "Code",
-      "lotes": "Lotes"
+      "lotes": "Lots"
     }
   }
 }

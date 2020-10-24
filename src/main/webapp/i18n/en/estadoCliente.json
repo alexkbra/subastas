@@ -2,23 +2,23 @@
   "subastasApp": {
     "estadoCliente": {
       "home": {
-        "title": "Estado Clientes",
-        "createLabel": "Create a new Estado Cliente",
-        "createOrEditLabel": "Create or edit a Estado Cliente",
-        "notFound": "No Estado Clientes found"
+        "title": "Clients Status",
+        "createLabel": "Create a new Clients Status",
+        "createOrEditLabel": "Create or edit a Clients Status",
+        "notFound": "No Clients Status found"
       },
-      "created": "A new Estado Cliente is created with identifier {{ param }}",
-      "updated": "A Estado Cliente is updated with identifier {{ param }}",
-      "deleted": "A Estado Cliente is deleted with identifier {{ param }}",
+      "created": "A new Clients Status is created with identifier {{ param }}",
+      "updated": "A Clients Status is updated with identifier {{ param }}",
+      "deleted": "A Clients Status is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Estado Cliente {{ id }}?"
+        "question": "Are you sure you want to delete Clients Status {{ id }}?"
       },
       "detail": {
-        "title": "Estado Cliente"
+        "title": "Clients Status"
       },
-      "nombre": "Nombre",
+      "nombre": "Name",
       "code": "Code",
-      "cliente": "Cliente"
+      "cliente": "Customer"
     }
   }
 }

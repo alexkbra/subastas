@@ -2,25 +2,25 @@
   "subastasApp": {
     "municipios": {
       "home": {
-        "title": "Municipios",
-        "createLabel": "Create a new Municipios",
-        "createOrEditLabel": "Create or edit a Municipios",
-        "notFound": "No Municipios found"
+        "title": "Municipalities",
+        "createLabel": "Create a new Municipalities",
+        "createOrEditLabel": "Create or edit a Municipalities",
+        "notFound": "No Municipalities found"
       },
-      "created": "A new Municipios is created with identifier {{ param }}",
-      "updated": "A Municipios is updated with identifier {{ param }}",
-      "deleted": "A Municipios is deleted with identifier {{ param }}",
+      "created": "A new Municipalities is created with identifier {{ param }}",
+      "updated": "A Municipalities is updated with identifier {{ param }}",
+      "deleted": "A Municipalities is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Municipios {{ id }}?"
+        "question": "Are you sure you want to delete Municipalities {{ id }}?"
       },
       "detail": {
-        "title": "Municipios"
+        "title": "Municipalities"
       },
       "idmunicipios": "Idmunicipios",
-      "municipio": "Municipio",
-      "estado": "Estado",
-      "ciudad": "Ciudad",
-      "departamentos": "Departamentos"
+      "municipio": "Municipality",
+      "estado": "Status",
+      "ciudad": "City",
+      "departamentos": "Departments"
     }
   }
 }

@@ -7,39 +7,39 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entities",
-        "dispositivo": "Dispositivo",
+        "dispositivo": "Device",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "eventos": {
-        "main": "Eventos",
-        "eventos": "Eventos",
-        "subastas": "Subastas",
-        "clasificacionLote": "Clasificacion Lote",
-        "lotes": "Lotes",
-        "lotesToAnimales": "Lotes To Animales",
-        "propietario": "Propietario"
+        "main": "Events",
+        "eventos": "Events",
+        "subastas": "Auctions",
+        "clasificacionLote": "Classification Lot",
+        "lotes": "Lots",
+        "lotesToAnimales": "Lots To Animals",
+        "propietario": "Owner"
       },
       "animales": {
-        "main": "Animales",
-        "especies": "Especies",
-        "razas": "Razas",
-        "animales": "Animales"
+        "main": "Animals",
+        "especies": "Species",
+        "razas": "Races",
+        "animales": "Animals"
       },
       "clientes": {
-        "main": "Cliente",
-        "tipoDocumento": "Tipos Documentos",
-        "estadoCliente": "Estado Cliente",
-        "cliente": "Cliente",
-        "pujadores": "Pujadores",
-        "pujas": "Pujas"
+        "main": "Client",
+        "tipoDocumento": "Document Types",
+        "estadoCliente": "Estado Client",
+        "cliente": "Client",
+        "pujadores": "Bidders",
+        "pujas": "Bids"
       },
       "contenidos": {
-        "main": "Contenido",
-        "contenido": "Contenido",
-        "mensajes": "Mensajes",
-        "departamentos": "Departamentos",
-        "municipios": "Municipios",
-        "ciudad": "Ciudad"
+        "main": "Content",
+        "contenido": "Content",
+        "mensajes": "Messages",
+        "departamentos": "Departments",
+        "municipios": "Municipalities",
+        "ciudad": "City"
       },
       "account": {
         "main": "Account",

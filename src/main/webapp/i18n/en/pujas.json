@@ -2,27 +2,27 @@
   "subastasApp": {
     "pujas": {
       "home": {
-        "title": "Pujas",
-        "createLabel": "Create a new Pujas",
-        "createOrEditLabel": "Create or edit a Pujas",
-        "notFound": "No Pujas found"
+        "title": "Bids",
+        "createLabel": "Create a new Bids",
+        "createOrEditLabel": "Create or edit a Bids",
+        "notFound": "No Bids found"
       },
-      "created": "A new Pujas is created with identifier {{ param }}",
-      "updated": "A Pujas is updated with identifier {{ param }}",
-      "deleted": "A Pujas is deleted with identifier {{ param }}",
+      "created": "A new Bids is created with identifier {{ param }}",
+      "updated": "A Bids is updated with identifier {{ param }}",
+      "deleted": "A Bids is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Pujas {{ id }}?"
+        "question": "Are you sure you want to delete Bids {{ id }}?"
       },
       "detail": {
-        "title": "Pujas"
+        "title": "Bids"
       },
-      "idEvento": "Id Evento",
-      "idSubasta": "Id Subasta",
-      "idLote": "Id Lote",
-      "valor": "Valor",
-      "fechacreacion": "Fechacreacion",
-      "aceptadoGanador": "Aceptado Ganador",
-      "pujadores": "Pujadores"
+      "idEvento": "Id Event",
+      "idSubasta": "Id Auction",
+      "idLote": "Id Lot",
+      "valor": "Value",
+      "fechacreacion": "Creation Date",
+      "aceptadoGanador": "Accepted Winner",
+      "pujadores": "Bidders"
     }
   }
 }

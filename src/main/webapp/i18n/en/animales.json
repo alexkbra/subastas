@@ -2,29 +2,29 @@
   "subastasApp": {
     "animales": {
       "home": {
-        "title": "Animales",
-        "createLabel": "Create a new Animales",
-        "createOrEditLabel": "Create or edit a Animales",
-        "notFound": "No Animales found"
+        "title": "Animals",
+        "createLabel": "Create a new Animals",
+        "createOrEditLabel": "Create or edit a Animals",
+        "notFound": "No Animals found"
       },
-      "created": "A new Animales is created with identifier {{ param }}",
-      "updated": "A Animales is updated with identifier {{ param }}",
-      "deleted": "A Animales is deleted with identifier {{ param }}",
+      "created": "A new Animals is created with identifier {{ param }}",
+      "updated": "A Animals is updated with identifier {{ param }}",
+      "deleted": "A Animals is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Animales {{ id }}?"
+        "question": "Are you sure you want to delete Animals {{ id }}?"
       },
       "detail": {
-        "title": "Animales"
+        "title": "Animals"
       },
-      "pesokg": "Pesokg",
-      "descripcion": "Descripcion",
-      "sexo": "Sexo",
-      "procedencia": "Procedencia",
-      "propietario": "Propietario",
+      "pesokg": "Weight kg",
+      "descripcion": "Description",
+      "sexo": "Sex",
+      "procedencia": "Provenance",
+      "propietario": "Owner",
       "imagenUrl": "Imagen Url",
       "videoUrl": "Video Url",
-      "lotestoanimales": "Lotestoanimales",
-      "razas": "Razas"
+      "lotestoanimales": "Lots to Animals",
+      "razas": "Races"
     }
   }
 }

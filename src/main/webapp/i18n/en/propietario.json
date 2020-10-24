@@ -2,33 +2,33 @@
   "subastasApp": {
     "propietario": {
       "home": {
-        "title": "Propietarios",
-        "createLabel": "Create a new Propietario",
-        "createOrEditLabel": "Create or edit a Propietario",
-        "notFound": "No Propietarios found"
+        "title": "Owners",
+        "createLabel": "Create a new Owners",
+        "createOrEditLabel": "Create or edit a Owners",
+        "notFound": "No Owners found"
       },
-      "created": "A new Propietario is created with identifier {{ param }}",
-      "updated": "A Propietario is updated with identifier {{ param }}",
-      "deleted": "A Propietario is deleted with identifier {{ param }}",
+      "created": "A new Owners is created with identifier {{ param }}",
+      "updated": "A Owners is updated with identifier {{ param }}",
+      "deleted": "A Owners is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Propietario {{ id }}?"
+        "question": "Are you sure you want to delete Owners {{ id }}?"
       },
       "detail": {
-        "title": "Propietario"
+        "title": "Owners"
       },
-      "numeroDocumento": "Numero Documento",
-      "nombreORazonSocial": "Nombre O Razon Social",
-      "correo": "Correo",
-      "telefonocelular": "Telefonocelular",
-      "telefonofijo": "Telefonofijo",
-      "telefonoempresarial": "Telefonoempresarial",
-      "direccionresidencial": "Direccionresidencial",
-      "direccionempresarial": "Direccionempresarial",
+      "numeroDocumento": "Numero Document",
+      "nombreORazonSocial": "Name Or Company Name",
+      "correo": "Mail",
+      "telefonocelular": "Cell phone",
+      "telefonofijo": "Fixed telephone",
+      "telefonoempresarial": "Business telephone",
+      "direccionresidencial": "Residential address",
+      "direccionempresarial": "Business address",
       "idusuario": "Idusuario",
       "imagenUrl": "Imagen Url",
       "idciudad": "Idciudad",
-      "lotes": "Lotes",
-      "tipoDocumento": "Tipo Documento"
+      "lotes": "Lots",
+      "tipoDocumento": "Document Type"
     }
   }
 }

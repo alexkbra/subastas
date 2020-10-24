@@ -2,40 +2,40 @@
   "subastasApp": {
     "cliente": {
       "home": {
-        "title": "Clientes",
-        "createLabel": "Create a new Cliente",
-        "createOrEditLabel": "Create or edit a Cliente",
-        "notFound": "No Clientes found"
+        "title": "Clients",
+        "createLabel": "Create a new Clients",
+        "createOrEditLabel": "Create or edit a Clients",
+        "notFound": "No Clients found"
       },
-      "created": "A new Cliente is created with identifier {{ param }}",
-      "updated": "A Cliente is updated with identifier {{ param }}",
-      "deleted": "A Cliente is deleted with identifier {{ param }}",
+      "created": "A new Clients is created with identifier {{ param }}",
+      "updated": "A Clients is updated with identifier {{ param }}",
+      "deleted": "A Clients is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Cliente {{ id }}?"
+        "question": "Are you sure you want to delete Clients {{ id }}?"
       },
       "detail": {
-        "title": "Cliente"
+        "title": "Clients"
       },
-      "numeroDocumento": "Numero Documento",
-      "nombre": "Nombre",
-      "apellido": "Apellido",
-      "correo": "Correo",
-      "nombrerepresentantelegal": "Nombrerepresentantelegal",
-      "telefonocelular": "Telefonocelular",
-      "telefonofijo": "Telefonofijo",
-      "telefonoempresarial": "Telefonoempresarial",
-      "telefonorepresentantelegal": "Telefonorepresentantelegal",
-      "direccionresidencial": "Direccionresidencial",
-      "direccionempresarial": "Direccionempresarial",
-      "direccionrepresentantelegal": "Direccionrepresentantelegal",
-      "fechanacimiento": "Fechanacimiento",
+      "numeroDocumento": "Numero Document",
+      "nombre": "Name",
+      "apellido": "Surname",
+      "correo": "Mail",
+      "nombrerepresentantelegal": "Name legal representative",
+      "telefonocelular": "Cell phone",
+      "telefonofijo": "Fixed telephone",
+      "telefonoempresarial": "Business telephone",
+      "telefonorepresentantelegal": "Telephone legal representative",
+      "direccionresidencial": "Residential address",
+      "direccionempresarial": "Business address",
+      "direccionrepresentantelegal": "Legal representative address",
+      "fechanacimiento": "Date of birth",
       "idusuario": "Idusuario",
       "imagenUrl": "Imagen Url",
       "idciudad": "Idciudad",
-      "anonimo": "Anonimo",
-      "pujadores": "Pujadores",
-      "tipoDocumento": "Tipo Documento",
-      "estadocliente": "Estadocliente"
+      "anonimo": "Anonymous",
+      "pujadores": "Bidders",
+      "tipoDocumento": "Document Type",
+      "estadoClients": "Client state"
     }
   }
 }

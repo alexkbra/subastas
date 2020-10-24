@@ -2,23 +2,23 @@
   "subastasApp": {
     "departamentos": {
       "home": {
-        "title": "Departamentos",
-        "createLabel": "Create a new Departamentos",
-        "createOrEditLabel": "Create or edit a Departamentos",
-        "notFound": "No Departamentos found"
+        "title": "Departments",
+        "createLabel": "Create a new Departments",
+        "createOrEditLabel": "Create or edit a Departments",
+        "notFound": "No Departments found"
       },
-      "created": "A new Departamentos is created with identifier {{ param }}",
-      "updated": "A Departamentos is updated with identifier {{ param }}",
-      "deleted": "A Departamentos is deleted with identifier {{ param }}",
+      "created": "A new Departments is created with identifier {{ param }}",
+      "updated": "A Departments is updated with identifier {{ param }}",
+      "deleted": "A Departments is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Departamentos {{ id }}?"
+        "question": "Are you sure you want to delete Departments {{ id }}?"
       },
       "detail": {
-        "title": "Departamentos"
+        "title": "Departments"
       },
-      "iddepartamentos": "Iddepartamentos",
-      "departamento": "Departamento",
-      "municipios": "Municipios"
+      "iddepartamentos": "IddDepartments",
+      "departamento": "Department",
+      "municipios": "Municipalities"
     }
   }
 }

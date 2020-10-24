@@ -2,30 +2,30 @@
   "subastasApp": {
     "mensajes": {
       "home": {
-        "title": "Mensajes",
-        "createLabel": "Create a new Mensajes",
-        "createOrEditLabel": "Create or edit a Mensajes",
-        "notFound": "No Mensajes found"
+        "title": "Messages",
+        "createLabel": "Create a new Messages",
+        "createOrEditLabel": "Create or edit a Messages",
+        "notFound": "No Messages found"
       },
-      "created": "A new Mensajes is created with identifier {{ param }}",
-      "updated": "A Mensajes is updated with identifier {{ param }}",
-      "deleted": "A Mensajes is deleted with identifier {{ param }}",
+      "created": "A new Messages is created with identifier {{ param }}",
+      "updated": "A Messages is updated with identifier {{ param }}",
+      "deleted": "A Messages is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Mensajes {{ id }}?"
+        "question": "Are you sure you want to delete Messages {{ id }}?"
       },
       "detail": {
-        "title": "Mensajes"
+        "title": "Messages"
       },
-      "titulo": "Titulo",
-      "cuerpo": "Cuerpo",
-      "numeroLote": "Numero Lote",
-      "tipoMensaje": "Tipo Mensaje",
+      "titulo": "Title",
+      "cuerpo": "Body",
+      "numeroLote": "Lot Number",
+      "tipoMensaje": "Type Message",
       "tipoCliente": "Tipo Cliente",
-      "direccion": "Direccion",
+      "direccion": "Direction",
       "idusuario": "Idusuario",
       "idcliente": "Idcliente",
-      "activo": "Activo",
-      "valorPagar": "Valor Pagar"
+      "activo": "Active",
+      "valorPagar": "Value Pay"
     }
   }
 }

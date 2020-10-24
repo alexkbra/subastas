@@ -2,38 +2,38 @@
   "subastasApp": {
     "subastas": {
       "home": {
-        "title": "Subastas",
-        "createLabel": "Create a new Subastas",
-        "createOrEditLabel": "Create or edit a Subastas",
-        "notFound": "No Subastas found"
+        "title": "Auctions",
+        "createLabel": "Create a new Auctions",
+        "createOrEditLabel": "Create or edit a Auctions",
+        "notFound": "No Auctions found"
       },
-      "created": "A new Subastas is created with identifier {{ param }}",
-      "updated": "A Subastas is updated with identifier {{ param }}",
-      "deleted": "A Subastas is deleted with identifier {{ param }}",
+      "created": "A new Auctions is created with identifier {{ param }}",
+      "updated": "A Auctions is updated with identifier {{ param }}",
+      "deleted": "A Auctions is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Subastas {{ id }}?"
+        "question": "Are you sure you want to delete Auctions {{ id }}?"
       },
       "detail": {
-        "title": "Subastas"
+        "title": "Auctions"
       },
-      "nombre": "Nombre",
-      "decripcion": "Decripcion",
-      "fechainicio": "Fechainicio",
-      "fechafinal": "Fechafinal",
-      "timpoRecloGanador": "Timpo Reclo Ganador",
-      "fechacreacion": "Fechacreacion",
-      "valorinicial": "Valorinicial",
-      "valoractual": "Valoractual",
-      "valortope": "Valortope",
-      "pagaAnticipo": "Paga Anticipo",
-      "pesobaseporkg": "Pesobaseporkg",
-      "pesototallote": "Pesototallote",
-      "valorAnticipo": "Valor Anticipo",
+      "nombre": "Name",
+      "decripcion": "Description",
+      "fechainicio": "Start date",
+      "fechafinal": "End date",
+      "timpoRecloGanador": "Timpo Reclo Winner",
+      "fechacreacion": "Creation date",
+      "valorinicial": "Initial Value",
+      "valoractual": "Actual Value",
+      "valortope": "Top value",
+      "pagaAnticipo": "Pay Advance",
+      "pesobaseporkg": "Base weight per kg",
+      "pesototallote": "Total lot weight",
+      "valorAnticipo": "Valor Advance",
       "imagenUrl": "Imagen Url",
       "videoUrl": "Video Url",
-      "estadoActivo": "Estado Activo",
-      "lotes": "Lotes",
-      "eventos": "Eventos"
+      "estadoActivo": "Active Status",
+      "lotes": "Lots",
+      "eventos": "Events"
     }
   }
 }
