@@ -62,7 +62,7 @@ spring:
   liquibase:
     contexts: prod
   mail:
-    host: https://www.cloudmailin.com/target/200
+    host: http://elpolisubasta.herokuapp.com/
     port: 80
     username:
     password:

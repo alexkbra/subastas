@@ -60,7 +60,7 @@ spring:
     # Remove 'faker' if you do not want the sample data to be loaded automatically
     contexts: dev, faker
   mail:
-    host: https://www.cloudmailin.com/target/200
+    host: http://elpolisubasta.herokuapp.com/
     port: 80
     username:
     password:
@@ -100,7 +100,7 @@ jhipster:
         token-validity-in-seconds: 86400
         token-validity-in-seconds-for-remember-me: 2592000
   mail: # specific JHipster mail property, for standard properties see MailProperties
-    base-url: https://elpolisubasta.herokuapp.com/
+    base-url: http://elpolisubasta.herokuapp.com/
   metrics:
     logs: # Reports metrics in the logs
       enabled: false
