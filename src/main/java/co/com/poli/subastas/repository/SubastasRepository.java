@@ -23,4 +23,8 @@ public interface SubastasRepository extends JpaRepository<Subastas, Long> {
     
     @Query("select a from Subastas a where a.fechafinal <= :now")
     List<Subastas> findAllWithFechafinalBefore(@Param("now") Instant now);
+    
+    List<Subastas> findByEstadoActivo(Boolean estado);
+    
+    
 }

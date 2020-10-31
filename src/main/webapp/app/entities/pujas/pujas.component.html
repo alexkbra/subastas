@@ -2,12 +2,12 @@
     <h2 id="page-heading">
         <span jhiTranslate="subastasApp.pujas.home.title">Pujas</span>
 
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-pujas" [routerLink]="['/pujas/new']">
+        <!--button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-pujas" [routerLink]="['/pujas/new']">
             <fa-icon icon="plus"></fa-icon>
             <span  jhiTranslate="subastasApp.pujas.home.createLabel">
             Create a new Pujas
             </span>
-        </button>
+        </button-->
     </h2>
 
     <jhi-alert-error></jhi-alert-error>
@@ -41,8 +41,8 @@
                     <td>{{ pujas.idLote }}</td>
                     <td>{{ pujas.valor }}</td>
                     <td>{{ pujas.fechacreacion | date:'MM/dd/yyyy hh:mm:ss a' }}</td>
-                    <!--td>{{ pujas.aceptadoGanador }}</td>
-                    <td-->
+                    <!--td>{{ pujas.aceptadoGanador }}</td-->
+                    <td>
                         <div *ngIf="pujas.pujadores">
                             <a [routerLink]="['/pujadores', pujas.pujadores?.id, 'view']" >{{ pujas.pujadores?.nroconsignacion }}</a>
                         </div>

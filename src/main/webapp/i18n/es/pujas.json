@@ -2,7 +2,7 @@
   "subastasApp": {
     "pujas": {
       "home": {
-        "title": "Pujas",
+        "title": "Reporte Lotes vendidos",
         "createLabel": "Crear nuevo puja",
         "createOrEditLabel": "Crear o editar puja",
         "notFound": "Ninguna puja encontrada"
@@ -14,15 +14,15 @@
         "question": "¿Seguro que quiere eliminar puja {{ id }}?"
       },
       "detail": {
-        "title": "Pujas"
+        "title": "Reporte Lotes vendidos"
       },
       "idEvento": "Evento",
       "idSubasta": "Subasta",
-      "idLote": "Lote",
-      "valor": "Valor",
+      "idLote": "Lotes vendidos",
+      "valor": "Precio de venta",
       "fechacreacion": "Fecha creación",
       "aceptadoGanador": "Aceptado Ganador",
-      "pujadores": "Pujadores"
+      "pujadores": "Comprador"
     }
   }
 }

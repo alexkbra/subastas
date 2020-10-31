@@ -2,6 +2,7 @@
   "home": {
     "title": "Welcome, SW BEEF CATTLE AUCTION!",
     "subtitle": "This is your homepage",
+    "subtitle2": "Please download the mobile app to play: ",
     "logged": {
       "message": "You are logged in as user \"{{username}}\"."
     }

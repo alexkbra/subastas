@@ -1,7 +1,10 @@
 package co.com.poli.subastas.web.rest;
 
+import co.com.poli.subastas.domain.Lotes;
 import co.com.poli.subastas.domain.Pujas;
+import co.com.poli.subastas.domain.Subastas;
 import co.com.poli.subastas.repository.PujasRepository;
+import co.com.poli.subastas.repository.SubastasRepository;
 import co.com.poli.subastas.web.rest.errors.BadRequestAlertException;
 
 import io.github.jhipster.web.util.HeaderUtil;
@@ -22,8 +25,11 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import org.springframework.data.domain.PageImpl;
 
 /**
  * REST controller for managing {@link co.com.poli.subastas.domain.Pujas}.
@@ -41,9 +47,11 @@ public class PujasResource {
     private String applicationName;
 
     private final PujasRepository pujasRepository;
+    private final SubastasRepository subastasRepository;
 
-    public PujasResource(PujasRepository pujasRepository) {
+    public PujasResource(SubastasRepository subastasRepository,PujasRepository pujasRepository) {
         this.pujasRepository = pujasRepository;
+        this.subastasRepository = subastasRepository;
     }
 
     /**
@@ -55,7 +63,7 @@ public class PujasResource {
      */
     @PostMapping("/pujas")
     public ResponseEntity<Pujas> createPujas(@Valid @RequestBody Pujas pujas) throws URISyntaxException {
-        log.debug("REST request to save Pujas : {}", pujas);
+        log.debug("REST request to save Reporte lotes vendidos : {}", pujas);
         if (pujas.getId() != null) {
             throw new BadRequestAlertException("A new pujas cannot already have an ID", ENTITY_NAME, "idexists");
         }
@@ -95,7 +103,16 @@ public class PujasResource {
     @GetMapping("/pujas")
     public ResponseEntity<List<Pujas>> getAllPujas(Pageable pageable) {
         log.debug("REST request to get a page of Pujas");
-        Page<Pujas> page = pujasRepository.findAll(pageable);
+        List<Subastas> listSubastas = this.subastasRepository.findByEstadoActivo(Boolean.FALSE);
+        List<Pujas> listPujas = new ArrayList<>();
+        for(Subastas subasta :listSubastas){
+            for(Lotes lotes : subasta.getLotes()){
+                listPujas.addAll(this.pujasRepository.findByIdLote(lotes.getId().toString()));
+            }
+        }   
+        
+        
+        Page<Pujas> page = new PageImpl<>(listPujas, pageable, listPujas.size());
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }

@@ -138,7 +138,7 @@ public class ProcesoGanadorScheduling {
     private Pujas pujaMayor(Long idEvento, Long idSubastas, Long idLote) {
         Pujas pujaMayor = this.pujasRepository.findFirstByIdEventoAndIdSubastaAndIdLoteOrderByValorDesc(idEvento.toString(), idSubastas.toString(), idLote.toString());
         return pujaMayor;
-    }
+    } 
 
     private Boolean isNoGandaor(Long idEvento, Long idSubastas, Long idLote) {
         Boolean isNoGanador = this.pujadoresRepository.findByIdEventoAndIdSubastaAndIdLoteAndEstado(idEvento.toString(), idSubastas.toString(), idLote.toString(), EstadoPujadores.GANADOR).isEmpty();

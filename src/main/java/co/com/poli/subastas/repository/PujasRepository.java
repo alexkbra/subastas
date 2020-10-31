@@ -14,6 +14,8 @@ import org.springframework.stereotype.Repository;
 @SuppressWarnings("unused")
 @Repository
 public interface PujasRepository extends JpaRepository<Pujas, Long> {
+    
+    List<Pujas> findByIdLote(String idLote);
 
     List<Pujas> findByIdEventoAndIdSubastaAndIdLoteOrderByValorDesc(String idEvento, String idSubasta, String idLote);
     

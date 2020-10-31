@@ -2,7 +2,7 @@
   "subastasApp": {
     "pujadores": {
       "home": {
-        "title": "Pujadores",
+        "title": "Compradores",
         "createLabel": "Crear nuevo pujador",
         "createOrEditLabel": "Crear o editar pujador",
         "notFound": "Ningún pujador encontrado"
@@ -14,7 +14,7 @@
         "question": "¿Seguro que quiere eliminar pujador {{ id }}?"
       },
       "detail": {
-        "title": "Pujadores"
+        "title": "Compradores"
       },
       "idEvento": "Evento",
       "idSubasta": "Subasta",
