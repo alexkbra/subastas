@@ -4,6 +4,7 @@ import co.com.poli.subastas.SubastasApp;
 import co.com.poli.subastas.domain.Pujas;
 import co.com.poli.subastas.domain.Pujadores;
 import co.com.poli.subastas.repository.PujasRepository;
+import co.com.poli.subastas.repository.SubastasRepository;
 import co.com.poli.subastas.web.rest.errors.ExceptionTranslator;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -57,6 +58,9 @@ public class PujasResourceIT {
 
     @Autowired
     private PujasRepository pujasRepository;
+    
+    @Autowired
+    private SubastasRepository subastasRepository;
 
     @Autowired
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
@@ -80,7 +84,7 @@ public class PujasResourceIT {
     @BeforeEach
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final PujasResource pujasResource = new PujasResource(pujasRepository);
+        final PujasResource pujasResource = new PujasResource(subastasRepository,pujasRepository);
         this.restPujasMockMvc = MockMvcBuilders.standaloneSetup(pujasResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
