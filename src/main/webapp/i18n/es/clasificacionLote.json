@@ -3,7 +3,7 @@
     "clasificacionLote": {
       "home": {
         "title": "Clasificación lotes",
-        "createLabel": "Crear nuevo clasificación",
+        "createLabel": "Crear nueva clasificación",
         "createOrEditLabel": "Crear o editar clasificación",
         "notFound": "Ninguna clasificación encontrado"
       },

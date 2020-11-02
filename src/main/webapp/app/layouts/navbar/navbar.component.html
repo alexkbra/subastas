@@ -179,6 +179,12 @@
                         </a>
                     </li>
                     <li>
+                        <a class="dropdown-item" routerLink="propietario" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon icon="asterisk" fixedWidth="true"></fa-icon>
+                            <span jhiTranslate="global.menu.eventos.propietario">Propietario</span>
+                        </a>
+                    </li>
+                    <li>
                         <a class="dropdown-item" routerLink="lotes" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
                             <fa-icon icon="asterisk" fixedWidth="true"></fa-icon>
                             <span jhiTranslate="global.menu.eventos.lotes">Lotes</span>
@@ -190,12 +196,7 @@
                             <span jhiTranslate="global.menu.eventos.lotesToAnimales">Lotes To Animales</span>
                         </a>
                     </li>
-                    <li>
-                        <a class="dropdown-item" routerLink="propietario" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
-                            <fa-icon icon="asterisk" fixedWidth="true"></fa-icon>
-                            <span jhiTranslate="global.menu.eventos.propietario">Propietario</span>
-                        </a>
-                    </li>
+                    
                 </ul>
             </li>
 

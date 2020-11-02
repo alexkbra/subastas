@@ -2,19 +2,19 @@
   "subastasApp": {
     "lotesToAnimales": {
       "home": {
-        "title": "Lote to animale",
-        "createLabel": "Crear nuevo Lote to animale",
-        "createOrEditLabel": "Crear o editar Lote to animale",
-        "notFound": "Ningún Lote to animale encontrado"
+        "title": "Relacionar lotes con animales",
+        "createLabel": "Crear nueva relación",
+        "createOrEditLabel": "Crear o editar relación",
+        "notFound": "Ningún relación encontrado"
       },
-      "created": "Un nuevo Lote to animale ha sido creado con el identificador {{ param }}",
-      "updated": "Un Lote to animale ha sido actualizado con el identificador {{ param }}",
-      "deleted": "Un Lote to animale ha sido eliminado con el identificador {{ param }}",
+      "created": "Una nueva relación ha sido creado con el identificador {{ param }}",
+      "updated": "Una relación ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Una relación ha sido eliminado con el identificador {{ param }}",
       "delete": {
-        "question": "¿Seguro que quiere eliminar Lote to animale {{ id }}?"
+        "question": "¿Seguro que quiere eliminar relación {{ id }}?"
       },
       "detail": {
-        "title": "Lotes to animales"
+        "title": "Relacionar lotes con animales"
       },
       "cantidad": "Cantidad",
       "lotes": "Lote",
