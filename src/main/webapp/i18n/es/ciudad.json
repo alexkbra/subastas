@@ -2,7 +2,7 @@
   "subastasApp": {
     "ciudad": {
       "home": {
-        "title": "Ciudads",
+        "title": "Ciudad",
         "createLabel": "Crear nuevo Ciudad",
         "createOrEditLabel": "Crear o editar Ciudad",
         "notFound": "Ningún Ciudads encontrado"
