@@ -3,6 +3,7 @@
     "title": "Welcome, SW BEEF CATTLE AUCTION!",
     "subtitle": "This is your homepage",
     "subtitle2": "Please download the mobile app to play: ",
+    "linkapp": "Click aquí para descargar la app movíl de subastas",
     "logged": {
       "message": "You are logged in as user \"{{username}}\"."
     }
