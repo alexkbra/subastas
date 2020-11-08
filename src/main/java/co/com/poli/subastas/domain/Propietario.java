@@ -23,10 +23,9 @@ public class Propietario implements Serializable {
     private Long id;
 
     @NotNull
-    @Min(value = 5)
-    @Max(value = 20)
-    @Column(name = "numero_documento", nullable = false)
-    private Integer numeroDocumento;
+    @Size(min = 5, max = 20)
+    @Column(name = "numero_documento", length = 20, nullable = false)
+    private String numeroDocumento;
 
     @NotNull
     @Size(min = 5, max = 100)
@@ -90,19 +89,15 @@ public class Propietario implements Serializable {
         this.id = id;
     }
 
-    public Integer getNumeroDocumento() {
+    public String getNumeroDocumento() {
         return numeroDocumento;
     }
 
-    public Propietario numeroDocumento(Integer numeroDocumento) {
+    public Propietario numeroDocumento(String numeroDocumento) {
         this.numeroDocumento = numeroDocumento;
         return this;
     }
-
-    public void setNumeroDocumento(Integer numeroDocumento) {
-        this.numeroDocumento = numeroDocumento;
-    }
-
+    
     public String getNombreORazonSocial() {
         return nombreORazonSocial;
     }
@@ -283,6 +278,8 @@ public class Propietario implements Serializable {
     public void setTipoDocumento(TipoDocumento tipoDocumento) {
         this.tipoDocumento = tipoDocumento;
     }
+    
+    
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override

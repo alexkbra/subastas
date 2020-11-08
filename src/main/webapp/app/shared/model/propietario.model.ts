@@ -3,7 +3,7 @@ import { ITipoDocumento } from 'app/shared/model/tipo-documento.model';
 
 export interface IPropietario {
   id?: number;
-  numeroDocumento?: number;
+  numeroDocumento?: string;
   nombreORazonSocial?: string;
   correo?: string;
   telefonocelular?: string;
@@ -22,7 +22,7 @@ export interface IPropietario {
 export class Propietario implements IPropietario {
   constructor(
     public id?: number,
-    public numeroDocumento?: number,
+    public numeroDocumento?: string,
     public nombreORazonSocial?: string,
     public correo?: string,
     public telefonocelular?: string,

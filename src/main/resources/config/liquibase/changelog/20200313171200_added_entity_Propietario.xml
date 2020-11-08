@@ -16,7 +16,7 @@
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="numero_documento" type="integer">
+            <column name="numero_documento" type="varchar(20)">
                 <constraints nullable="false" />
             </column>
             <column name="nombre_o_razon_social" type="varchar(100)">
@@ -78,7 +78,7 @@
                   separator=";"
                   tableName="propietario">
             <column name="id" type="numeric"/>
-            <column name="numero_documento" type="numeric"/>
+            <column name="numero_documento" type="string"/>
             <column name="nombre_o_razon_social" type="string"/>
             <column name="correo" type="string"/>
             <column name="telefonocelular" type="string"/>

@@ -27,7 +27,7 @@
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="subastasApp.propietario.numeroDocumento" for="field_numeroDocumento">Numero Documento</label>
-                    <input type="number" class="form-control" name="numeroDocumento" id="field_numeroDocumento"
+                    <input type="text" class="form-control" name="numeroDocumento" id="field_numeroDocumento"
                            formControlName="numeroDocumento"/>
                     <div *ngIf="editForm.get('numeroDocumento')!.invalid && (editForm.get('numeroDocumento')!.dirty || editForm.get('numeroDocumento')!.touched)">
                         <small class="form-text text-danger"
@@ -35,18 +35,14 @@
                         This field is required.
                         </small>
                         <small class="form-text text-danger"
-                               *ngIf="editForm.get('numeroDocumento')?.errors?.min" jhiTranslate="entity.validation.min" [translateValues]="{ min: 5 }">
-                            This field should be at least 5.
+                               *ngIf="editForm.get('numeroDocumento')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 5 }">
+                        This field is required to be at least 5 characters.
                         </small>
                         <small class="form-text text-danger"
-                               *ngIf="editForm.get('numeroDocumento')?.errors?.max" jhiTranslate="entity.validation.max" [translateValues]="{ max: 20 }">
-                            This field cannot be more than 20.
+                               *ngIf="editForm.get('numeroDocumento')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 20 }">
+                        This field cannot be longer than 20 characters.
                         </small>
-                        <small class="form-text text-danger"
-                            [hidden]="!editForm.get('numeroDocumento')?.errors?.number" jhiTranslate="entity.validation.number">
-                            This field should be a number.
-                        </small>
-                    </div>
+                    </div>		
                 </div>
 
                 <div class="form-group">

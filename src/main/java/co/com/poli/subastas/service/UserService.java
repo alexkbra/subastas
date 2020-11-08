@@ -135,7 +135,7 @@ public class UserService {
         userRepository.save(newUser);
 
         cliente.setAnonimo(true);
-        cliente.setIdusuario(newUser.getId().toString());
+        cliente.setIdusuario(userDTO.getLogin().toLowerCase());
         cliente.setNumeroDocumento("1234567");
         
         cliente.setNombre(userDTO.getLogin().toLowerCase());

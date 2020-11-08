@@ -1,1 +1,1 @@
-id;id_evento;id_subasta;id_lote;nroconsignacion;nombrebanco;estado;pago_aceptado;cliente_id
+id;id_evento;id_subasta;id_lote;nroconsignacion;nombrebanco;estado;pago_aceptado;cliente_id;activation_key

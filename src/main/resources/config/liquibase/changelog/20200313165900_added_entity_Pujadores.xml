@@ -34,6 +34,9 @@
             <column name="estado" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
+            <column name="activation_key" type="varchar(20)">
+                <constraints nullable="true" />
+            </column>
             <column name="pago_aceptado" type="boolean">
                 <constraints nullable="true" />
             </column>
@@ -68,6 +71,7 @@
             <column name="id_lote" type="string"/>
             <column name="nroconsignacion" type="string"/>
             <column name="nombrebanco" type="string"/>
+            <column name="activation_key" type="string"/>
             <column name="estado" type="string"/>
             <column name="pago_aceptado" type="boolean"/>
             <column name="cliente_id" type="numeric"/>

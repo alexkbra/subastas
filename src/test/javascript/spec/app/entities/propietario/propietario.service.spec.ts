@@ -22,7 +22,7 @@ describe('Service Tests', () => {
 
       elemDefault = new Propietario(
         0,
-        0,
+        '11111',
         'AAAAAAA',
         'AAAAAAA',
         'AAAAAAA',
@@ -68,7 +68,7 @@ describe('Service Tests', () => {
       it('should update a Propietario', () => {
         const returnedFromService = Object.assign(
           {
-            numeroDocumento: 1,
+            numeroDocumento: '11111',
             nombreORazonSocial: 'BBBBBB',
             correo: 'BBBBBB',
             telefonocelular: 'BBBBBB',
@@ -95,7 +95,7 @@ describe('Service Tests', () => {
       it('should return a list of Propietario', () => {
         const returnedFromService = Object.assign(
           {
-            numeroDocumento: 1,
+            numeroDocumento: '11111',
             nombreORazonSocial: 'BBBBBB',
             correo: 'BBBBBB',
             telefonocelular: 'BBBBBB',
