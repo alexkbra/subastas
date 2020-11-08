@@ -92,6 +92,10 @@ public class Propietario implements Serializable {
     public String getNumeroDocumento() {
         return numeroDocumento;
     }
+    
+     public void setNumeroDocumento(String numeroDocumento) {
+        this.numeroDocumento = numeroDocumento;
+    }
 
     public Propietario numeroDocumento(String numeroDocumento) {
         this.numeroDocumento = numeroDocumento;

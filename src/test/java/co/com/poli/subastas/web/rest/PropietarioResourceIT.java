@@ -36,7 +36,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class PropietarioResourceIT {
 
     private static final String DEFAULT_NUMERO_DOCUMENTO = "555555";
-    private static final Integer UPDATED_NUMERO_DOCUMENTO = 6;
+    private static final String UPDATED_NUMERO_DOCUMENTO = "66666";
 
     private static final String DEFAULT_NOMBRE_O_RAZON_SOCIAL = "AAAAAAAAAA";
     private static final String UPDATED_NOMBRE_O_RAZON_SOCIAL = "BBBBBBBBBB";
