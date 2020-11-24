@@ -5,6 +5,7 @@ import co.com.poli.subastas.domain.Pujas;
 import co.com.poli.subastas.domain.Pujadores;
 import co.com.poli.subastas.repository.ClienteRepository;
 import co.com.poli.subastas.repository.DispositivoRepository;
+import co.com.poli.subastas.repository.LotesRepository;
 import co.com.poli.subastas.repository.PujadoresRepository;
 import co.com.poli.subastas.repository.PujasRepository;
 import co.com.poli.subastas.repository.SubastasRepository;
@@ -78,6 +79,9 @@ public class PujasResourceIT {
     private PujadoresRepository pujadoresRepository;
     
     @Autowired
+    private LotesRepository lotesRepository;
+    
+    @Autowired
     private TokenProvider tokenProvider;
     
     @Autowired
@@ -109,7 +113,7 @@ public class PujasResourceIT {
     public void setup() {
         MockitoAnnotations.initMocks(this);
         final PujasResource pujasResource = new PujasResource(subastasRepository,pujasRepository, userRepository, clienteRepository,  pujadoresRepository,
-             tokenProvider, dispositivoRepository,  restTemplate);
+             tokenProvider, dispositivoRepository,  restTemplate, lotesRepository);
         this.restPujasMockMvc = MockMvcBuilders.standaloneSetup(pujasResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
