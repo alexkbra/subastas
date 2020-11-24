@@ -3,8 +3,13 @@ package co.com.poli.subastas.web.rest;
 import co.com.poli.subastas.SubastasApp;
 import co.com.poli.subastas.domain.Pujas;
 import co.com.poli.subastas.domain.Pujadores;
+import co.com.poli.subastas.repository.ClienteRepository;
+import co.com.poli.subastas.repository.DispositivoRepository;
+import co.com.poli.subastas.repository.PujadoresRepository;
 import co.com.poli.subastas.repository.PujasRepository;
 import co.com.poli.subastas.repository.SubastasRepository;
+import co.com.poli.subastas.repository.UserRepository;
+import co.com.poli.subastas.security.jwt.TokenProvider;
 import co.com.poli.subastas.web.rest.errors.ExceptionTranslator;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -31,6 +36,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import org.springframework.web.client.RestTemplate;
 
 /**
  * Integration tests for the {@link PujasResource} REST controller.
@@ -61,6 +67,21 @@ public class PujasResourceIT {
     
     @Autowired
     private SubastasRepository subastasRepository;
+    
+    @Autowired
+    private UserRepository userRepository;
+    
+    @Autowired
+    private ClienteRepository clienteRepository;
+    
+    @Autowired
+    private PujadoresRepository pujadoresRepository;
+    
+    @Autowired
+    private TokenProvider tokenProvider;
+    
+    @Autowired
+    private DispositivoRepository dispositivoRepository;
 
     @Autowired
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
@@ -76,6 +97,9 @@ public class PujasResourceIT {
 
     @Autowired
     private Validator validator;
+    
+    @Autowired
+    private RestTemplate restTemplate;
 
     private MockMvc restPujasMockMvc;
 
@@ -84,7 +108,8 @@ public class PujasResourceIT {
     @BeforeEach
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final PujasResource pujasResource = new PujasResource(subastasRepository,pujasRepository);
+        final PujasResource pujasResource = new PujasResource(subastasRepository,pujasRepository, userRepository, clienteRepository,  pujadoresRepository,
+             tokenProvider, dispositivoRepository,  restTemplate);
         this.restPujasMockMvc = MockMvcBuilders.standaloneSetup(pujasResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)

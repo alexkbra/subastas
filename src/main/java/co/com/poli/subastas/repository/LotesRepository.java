@@ -19,5 +19,6 @@ public interface LotesRepository extends JpaRepository<Lotes, Long> {
     Page<Lotes> findBySubastas(Subastas subastas, Pageable pageable);
     
     List<Lotes> findBySubastas(Subastas subastas);
+    
 
 }

@@ -62,43 +62,8 @@ public class PujasService implements ApplicationListener<SessionDisconnectEvent>
     @MessageMapping("/topic/pujas")
     @SendTo("/topic/puja")
     public List<Pujas> sendPuja(@Payload PujasDTO puja, StompHeaderAccessor stompHeaderAccessor, Principal principal) {
-        List<Pujas> result = new ArrayList<Pujas>();
-        List<Pujas> listPujas = pujasRepository.findByIdEventoAndIdSubastaAndIdLoteOrderByValorDesc(puja.getIdEvento(),
-                puja.getIdSubasta(), puja.getIdLote());
-        result.add(listPujas.get(0));
-        if (puja.getValor() != null && !puja.getValor().isEmpty()) {
-            Authentication auth = tokenProvider.getAuthentication(puja.getToken());
-            User user = (User) auth.getPrincipal();
-
-            co.com.poli.subastas.domain.User userLogin = userRepository.findOneWithAuthoritiesByLogin(user.getLogin()).get();
-            Cliente cliente = clienteRepository.findByIdusuario(userLogin.getId().toString()).get(0);
-            Pujadores pujadoresOld = pujadoresRepository.findByIdEventoAndIdSubastaAndIdLoteAndCliente(
-                    puja.getIdEvento(), puja.getIdSubasta(), puja.getIdLote(), cliente).get(0);
-            Pujadores pujadoresNew = null;
-            if (pujadoresOld == null) {
-                pujadoresNew = new Pujadores();
-                pujadoresNew.setIdEvento(puja.getIdEvento());
-                pujadoresNew.setIdSubasta(puja.getIdSubasta());
-                pujadoresNew.setIdLote(puja.getIdLote());
-                pujadoresNew.setEstado(EstadoPujadores.NOAUTORIZADO);
-                pujadoresNew.setPagoAceptado(false);
-                pujadoresNew.setCliente(cliente);
-                pujadoresRepository.save(pujadoresNew);
-            } else {
-                pujadoresNew = pujadoresOld;
-            }
-            Pujas pujaNew = new Pujas();
-            pujaNew.setIdEvento(puja.getIdEvento());
-            pujaNew.setIdSubasta(puja.getIdSubasta());
-            pujaNew.setIdLote(puja.getIdLote());
-            pujaNew.setValor(new BigDecimal(puja.getValor()));
-            pujaNew.setFechacreacion(Instant.now());
-            pujaNew.setAceptadoGanador(false);
-            pujaNew.setPujadores(pujadoresNew);
-            pujasRepository.save(pujaNew);
-            result.add(pujaNew);
-        }
-        return result;
+        
+        return null;
     }
 
     @Override

@@ -2,15 +2,16 @@ package co.com.poli.subastas.web.websocket.dto;
 
 public class PujasDTO {
 
-    private String idEvento;
+    private String idEventos;
     private String idSubasta;
     private String idLote; 
     private String valor;
     private String token;
     private String sessionId;
+    private String dispositivoId;
 
     public PujasDTO(String idEvento, String idSubasta, String idLote, String valor) {
-        this.idEvento = idEvento;
+        this.idEventos = idEvento;
         this.idSubasta = idSubasta;
         this.idLote = idLote;
         this.valor = valor;
@@ -19,12 +20,12 @@ public class PujasDTO {
     public PujasDTO() {
     }
 
-    public String getIdEvento() {
-        return idEvento;
+    public String getIdEventos() {
+        return idEventos;
     }
 
-    public void setIdEvento(String idEvento) {
-        this.idEvento = idEvento;
+    public void setIdEventos(String idEvento) {
+        this.idEventos = idEvento;
     }
 
     public String getIdSubasta() {
@@ -67,4 +68,18 @@ public class PujasDTO {
         this.sessionId = sessionId;
     }
 
+    public String getDispositivoId() {
+        return dispositivoId;
+    }
+
+    public void setDispositivoId(String dispositivoId) {
+        this.dispositivoId = dispositivoId;
+    }
+
+    @Override
+    public String toString() {
+        return "PujasDTO{" + "idEvento=" + idEventos + ", idSubasta=" + idSubasta + ", idLote=" + idLote + ", valor=" + valor + ", token=" + token + ", sessionId=" + sessionId + ", dispositivoId=" + dispositivoId + '}';
+    }
+    
+    
 }
