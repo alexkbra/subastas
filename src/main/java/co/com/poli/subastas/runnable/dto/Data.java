@@ -5,12 +5,17 @@
  */
 package co.com.poli.subastas.runnable.dto;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import java.io.Serializable;
+
 /**
  *
  * @author 57304
  */
-public class Data {
-
+public class Data implements Serializable{
+    
     String clickAction;
     String id;
     String status;
@@ -29,7 +34,8 @@ public class Data {
 
     public Data() {
     }
-
+    
+    @JsonGetter("click_action")
     public String getClickAction() {
         return clickAction;
     }
