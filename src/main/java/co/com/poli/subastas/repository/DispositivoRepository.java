@@ -19,7 +19,7 @@ public interface DispositivoRepository extends JpaRepository<Dispositivo, Long> 
     
     List<Dispositivo> findByDispositivo(String dispositivo);
     
-    List<Dispositivo> findByIdusuario(String i  dusuario);
+    List<Dispositivo> findByIdusuario(String idusuario);
     
 
 }
