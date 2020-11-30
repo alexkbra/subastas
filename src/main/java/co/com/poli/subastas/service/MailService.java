@@ -111,7 +111,8 @@ public class MailService {
     @Async
     public void sendAceptarGanadorEmail(User user, Pujadores pujador) {
         log.debug("Sending activation email to '{}'", user.getEmail());
-        sendEmailAceptarGanadorFromTemplate(user, pujador, "mail/activationEmail", "email.activation.title");
+        user.setActivationKey(pujador.getActivationKey());
+        sendEmailAceptarGanadorFromTemplate(user, pujador, "mail/ganadorEmail", "email.ganador.title");
     }
 
     @Async

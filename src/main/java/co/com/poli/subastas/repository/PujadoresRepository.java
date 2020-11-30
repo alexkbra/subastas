@@ -20,4 +20,6 @@ public interface PujadoresRepository extends JpaRepository<Pujadores, Long> {
 
     List<Pujadores> findByIdEventoAndIdSubastaAndIdLoteAndEstado(String idEvento,String idSubasta,String idLote, EstadoPujadores estado);
     
+    Pujadores findByActivationKey(String activationKey);
+    
 }

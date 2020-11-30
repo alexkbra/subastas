@@ -71,6 +71,7 @@ public class SubastasResource {
         if (subastas.getFechafinal().compareTo(subastas.getFechainicio()) == 0) {
             throw new BadRequestAlertException("La fecha inicial no puede ser igual a la fecha final", ENTITY_NAME, "fechaInicialInvalidas");
         }
+        subastas.setEstadoGanador(Boolean.FALSE);
         Subastas result = subastasRepository.save(subastas);
         return ResponseEntity.created(new URI("/api/subastas/" + result.getId()))
                 .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))

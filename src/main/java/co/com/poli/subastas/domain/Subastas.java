@@ -91,6 +91,10 @@ public class Subastas implements Serializable {
     @Column(name = "estado_activo", nullable = false)
     private Boolean estadoActivo;
     
+    @Column(name = "estado_ganador", nullable = false)
+    private Boolean estadoGanador;
+    
+    
     @OneToMany(mappedBy = "subastas")
     private Set<Lotes> lotes = new HashSet<>();
 
@@ -112,6 +116,14 @@ public class Subastas implements Serializable {
         return nombre;
     }
 
+    public Boolean getEstadoGanador() {
+        return estadoGanador;
+    }
+
+    public void setEstadoGanador(Boolean estadoGanador) {
+        this.estadoGanador = estadoGanador;
+    }
+    
     public Subastas nombre(String nombre) {
         this.nombre = nombre;
         return this;

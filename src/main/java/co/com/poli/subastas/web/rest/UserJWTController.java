@@ -1,7 +1,9 @@
 package co.com.poli.subastas.web.rest;
 
 import co.com.poli.subastas.domain.Cliente;
+import co.com.poli.subastas.domain.Dispositivo;
 import co.com.poli.subastas.repository.ClienteRepository;
+import co.com.poli.subastas.repository.DispositivoRepository;
 import co.com.poli.subastas.security.jwt.JWTFilter;
 import co.com.poli.subastas.security.jwt.TokenProvider;
 import co.com.poli.subastas.web.rest.vm.LoginVM;
@@ -30,20 +32,29 @@ public class UserJWTController {
     private final TokenProvider tokenProvider;
 
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
-    
+
     private final ClienteRepository clienteRepository;
 
-    public UserJWTController(TokenProvider tokenProvider, AuthenticationManagerBuilder authenticationManagerBuilder, ClienteRepository clienteRepository) {
+    private final DispositivoRepository dispositivoRepository;
+
+    public UserJWTController(TokenProvider tokenProvider, AuthenticationManagerBuilder authenticationManagerBuilder, ClienteRepository clienteRepository, DispositivoRepository dispositivoRepository) {
         this.tokenProvider = tokenProvider;
         this.authenticationManagerBuilder = authenticationManagerBuilder;
         this.clienteRepository = clienteRepository;
+        this.dispositivoRepository = dispositivoRepository;
     }
 
     @PostMapping("/authenticate")
     public ResponseEntity<JWTToken> authorize(@Valid @RequestBody LoginVM loginVM) {
 
-        UsernamePasswordAuthenticationToken authenticationToken =
-            new UsernamePasswordAuthenticationToken(loginVM.getUsername(), loginVM.getPassword());
+        UsernamePasswordAuthenticationToken authenticationToken
+                = new UsernamePasswordAuthenticationToken(loginVM.getUsername(), loginVM.getPassword());
+
+        List<Dispositivo> dispositivos = this.dispositivoRepository.findByIdusuario(loginVM.getUsername());
+        for (Dispositivo dispositivo : dispositivos) {
+            dispositivo.setActivo(Boolean.TRUE);
+            this.dispositivoRepository.save(dispositivo);
+        }
 
         Authentication authentication = authenticationManagerBuilder.getObject().authenticate(authenticationToken);
         SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -53,15 +64,15 @@ public class UserJWTController {
         httpHeaders.add(JWTFilter.AUTHORIZATION_HEADER, "Bearer " + jwt);
         return new ResponseEntity<>(new JWTToken(jwt), httpHeaders, HttpStatus.OK);
     }
-    
+
     @PostMapping("/authenticate_mobile")
     public ResponseEntity<JWTToken> authorizeMobile(@Valid @RequestBody LoginVM loginVM) {
 
-        UsernamePasswordAuthenticationToken authenticationToken =
-            new UsernamePasswordAuthenticationToken(loginVM.getUsername(), loginVM.getPassword());
+        UsernamePasswordAuthenticationToken authenticationToken
+                = new UsernamePasswordAuthenticationToken(loginVM.getUsername(), loginVM.getPassword());
         String clientStatus = "anonymousClientNotBidder";
         List<Cliente> listClient = clienteRepository.findByIdusuario(loginVM.getUsername());
-        if(!listClient.isEmpty()){
+        if (!listClient.isEmpty()) {
             Cliente client = clienteRepository.findByIdusuario(loginVM.getUsername()).get(0);
             clientStatus = client.getEstadocliente().getCode();
         }
@@ -69,11 +80,12 @@ public class UserJWTController {
         SecurityContextHolder.getContext().setAuthentication(authentication);
         boolean rememberMe = (loginVM.isRememberMe() == null) ? false : loginVM.isRememberMe();
         String jwt = tokenProvider.createToken(authentication, rememberMe);
-        
+
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add(JWTFilter.AUTHORIZATION_HEADER, "Bearer " + jwt);
-        return new ResponseEntity<>(new JWTToken(jwt,clientStatus), httpHeaders, HttpStatus.OK);
+        return new ResponseEntity<>(new JWTToken(jwt, clientStatus), httpHeaders, HttpStatus.OK);
     }
+
     /**
      * Object to return as body in JWT Authentication.
      */
@@ -81,7 +93,7 @@ public class UserJWTController {
 
         private String idToken;
         private String clientStatus;
-        
+
         JWTToken(String idToken) {
             this.idToken = idToken;
         }
@@ -99,7 +111,7 @@ public class UserJWTController {
         void setIdToken(String idToken) {
             this.idToken = idToken;
         }
-        
+
         @JsonProperty("client_status")
         public String getClientStatus() {
             return clientStatus;
@@ -108,7 +120,6 @@ public class UserJWTController {
         public void setClientStatus(String clientStatus) {
             this.clientStatus = clientStatus;
         }
-        
-        
+
     }
 }

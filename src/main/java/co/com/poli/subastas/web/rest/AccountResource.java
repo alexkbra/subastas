@@ -1,6 +1,8 @@
 package co.com.poli.subastas.web.rest;
 
+import co.com.poli.subastas.domain.Dispositivo;
 import co.com.poli.subastas.domain.User;
+import co.com.poli.subastas.repository.DispositivoRepository;
 import co.com.poli.subastas.repository.UserRepository;
 import co.com.poli.subastas.security.SecurityUtils;
 import co.com.poli.subastas.service.MailService;
@@ -41,12 +43,17 @@ public class AccountResource {
     private final UserService userService;
 
     private final MailService mailService;
+    
+    private final DispositivoRepository dispositivoRepository;
 
-    public AccountResource(UserRepository userRepository, UserService userService, MailService mailService) {
+    public AccountResource(UserRepository userRepository, UserService userService, MailService mailService,DispositivoRepository dispositivoRepository) {
 
         this.userRepository = userRepository;
         this.userService = userService;
         this.mailService = mailService;
+        this.dispositivoRepository = dispositivoRepository;
+        
+        
     }
 
     /**
@@ -178,6 +185,17 @@ public class AccountResource {
             throw new AccountResourceException("No user was found for this reset key");
         }
     }
+    
+    
+    @GetMapping(path = "/logout/{id}")
+    public void closeSession(@PathVariable String id) {
+        List<Dispositivo> dispositivos = this.dispositivoRepository.findByDispositivo(id);
+        for (Dispositivo dispositivo : dispositivos) {
+            dispositivo.setActivo(Boolean.FALSE);
+            this.dispositivoRepository.save(dispositivo);
+        }
+    }
+    
 
     private static boolean checkPasswordLength(String password) {
         return !StringUtils.isEmpty(password) &&

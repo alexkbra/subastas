@@ -46,6 +46,11 @@
             <column name="paga_anticipo" type="boolean">
                 <constraints nullable="false" />
             </column>
+            
+            <column name="estado_ganador" type="boolean">
+                <constraints nullable="false" />
+            </column>
+            
             <column name="pesobaseporkg" type="decimal(21,2)">
                 <constraints nullable="true" />
             </column>

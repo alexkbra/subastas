@@ -65,8 +65,8 @@ export class SubastasUpdateComponent implements OnInit {
         subastas.pesototallote = 0;
         subastas.valorinicial = 0;
         subastas.valoractual = 0;
-        subastas.valortope = 0;
-        subastas.timpoRecloGanador = 2;
+        subastas.valortope = 1;
+        subastas.timpoRecloGanador = 60;
         subastas.valoractual = 0;
       }
 
@@ -96,6 +96,7 @@ export class SubastasUpdateComponent implements OnInit {
       imagenUrlContentType: subastas.imagenUrlContentType,
       videoUrl: subastas.videoUrl,
       estadoActivo: subastas.estadoActivo,
+      estadoGanador: subastas.estadoGanador,
       eventos: subastas.eventos
     });
   }

@@ -2,7 +2,7 @@
   "home": {
     "title": "¡Bienvenido, SW SUBASTA DE GANADO VACUNO!",
     "subtitle": "Esta es su página de inicio",
-    "subtitle2": "Por favor descargar la app móvil para jugar: ",
+    "subtitle2": "Por favor descargar la app móvil para participar en la puja: ",
     "linkapp": "Click aquí para descargar la app movíl de subastas",
     "logged": {
       "message": "Está conectado como \"{{username}}\"."

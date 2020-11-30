@@ -15,7 +15,11 @@ public interface DispositivoRepository extends JpaRepository<Dispositivo, Long> 
     
     List<Dispositivo> findByIdEventoAndIdSubastaAndIdLoteAndDispositivo(String idEvento,String idSubasta,String idLote,String dispositivo);
     
-    List<Dispositivo> findByIdEventoAndIdSubastaAndIdLote(String idEvento,String idSubasta,String idLote);
+    List<Dispositivo> findByIdEventoAndIdSubastaAndIdLoteAndActivo(String idEvento,String idSubasta,String idLote, Boolean activo);
+    
+    List<Dispositivo> findByDispositivo(String dispositivo);
+    
+    List<Dispositivo> findByIdusuario(String i  dusuario);
     
 
 }

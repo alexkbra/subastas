@@ -21,6 +21,7 @@ export interface ISubastas {
   imagenUrl?: any;
   videoUrl?: string;
   estadoActivo?: boolean;
+  estadoGanador?: boolean;
   lotes?: ILotes[];
   eventos?: IEventos;
 }
@@ -45,10 +46,12 @@ export class Subastas implements ISubastas {
     public imagenUrl?: any,
     public videoUrl?: string,
     public estadoActivo?: boolean,
+    public estadoGanador?: boolean,
     public lotes?: ILotes[],
     public eventos?: IEventos
   ) {
     this.pagaAnticipo = this.pagaAnticipo || false;
     this.estadoActivo = this.estadoActivo || false;
+    this.estadoGanador = this.estadoGanador || false;
   }
 }

@@ -65,7 +65,7 @@ public class NotificarPuja implements Runnable {
 
     @Override
     public void run() {
-        List<Dispositivo> dispositivos = dispositivoRepository.findByIdEventoAndIdSubastaAndIdLote(this.puja.getIdEvento(), this.puja.getIdSubasta(), this.puja.getIdLote());
+        List<Dispositivo> dispositivos = dispositivoRepository.findByIdEventoAndIdSubastaAndIdLoteAndActivo(this.puja.getIdEvento(), this.puja.getIdSubasta(), this.puja.getIdLote(), Boolean.TRUE);
         List<Pujas> pujass = pujasRepository.findByIdEventoAndIdSubastaAndIdLoteOrderByValorDesc(puja.getIdEvento(), puja.getIdSubasta(), puja.getIdLote());
         System.out.println(pujass.toString());
         System.out.println("=================================== ");

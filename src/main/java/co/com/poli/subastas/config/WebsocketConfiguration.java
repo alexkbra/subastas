@@ -42,8 +42,8 @@ public class WebsocketConfiguration implements WebSocketMessageBrokerConfigurer 
                 
         registry.addEndpoint("/websocket/tracker").setHandshakeHandler(defaultHandshakeHandler())
                 .setAllowedOrigins(allowedOrigins).withSockJS().setInterceptors(httpSessionHandshakeInterceptor());
-        registry.addEndpoint("/websocket/puja").setHandshakeHandler(defaultHandshakeHandler())
-                .setAllowedOrigins(allowedOrigins).withSockJS().setInterceptors(httpSessionHandshakeInterceptor());
+        /*registry.addEndpoint("/websocket/puja").setHandshakeHandler(defaultHandshakeHandler())
+                .setAllowedOrigins(allowedOrigins).withSockJS().setInterceptors(httpSessionHandshakeInterceptor());*/
     }
 
     @Bean

@@ -21,8 +21,8 @@ public interface SubastasRepository extends JpaRepository<Subastas, Long> {
     @Query("select a from Subastas a where eventos = ?1 and estadoActivo = ?2 and ?3 BETWEEN a.fechainicio and a.fechafinal")
     Page<Subastas> findByEventosAndEstadoActivoBetweenFechainicioAndFechafinal(Eventos eventos,Boolean estado,Instant now, Pageable pageable);
     
-    @Query("select a from Subastas a where a.fechafinal <= :now")
-    List<Subastas> findAllWithFechafinalBefore(@Param("now") Instant now);
+    @Query("select a from Subastas a where a.fechafinal <= :now and a.estadoActivo = :estado and a.estadoGanador = :estadoG ")
+    List<Subastas> findAllWithFechafinalBefore(@Param("now") Instant now,@Param("estado") Boolean estado, @Param("estadoG") Boolean estadoG );
     
     List<Subastas> findByEstadoActivo(Boolean estado);
     

@@ -221,7 +221,7 @@ public class SubastasResourceIT {
         // Validate the Subastas in the database
         List<Subastas> subastasList = subastasRepository.findAll();
         assertThat(subastasList).hasSize(databaseSizeBeforeCreate + 1);
-        Subastas testSubastas = subastasList.get(subastasList.size() - 1);
+        Subastas testSubastas = subastasList.get(subastasList.size() - 1); 
         assertThat(testSubastas.getNombre()).isEqualTo(DEFAULT_NOMBRE);
         assertThat(testSubastas.getDecripcion()).isEqualTo(DEFAULT_DECRIPCION);
         assertThat(testSubastas.getFechainicio()).isEqualTo(DEFAULT_FECHAINICIO);

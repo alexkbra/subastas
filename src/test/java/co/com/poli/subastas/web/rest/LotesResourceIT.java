@@ -154,7 +154,7 @@ public class LotesResourceIT {
         // Add required entity
         Subastas subastas;
         if (TestUtil.findAll(em, Subastas.class).isEmpty()) {
-            subastas = SubastasResourceIT.createEntity(em);
+            subastas = SubastasResourceIT.createEntity(em); 
             em.persist(subastas);
             em.flush();
         } else {
@@ -206,7 +206,7 @@ public class LotesResourceIT {
         // Add required entity
         Subastas subastas;
         if (TestUtil.findAll(em, Subastas.class).isEmpty()) {
-            subastas = SubastasResourceIT.createUpdatedEntity(em);
+            subastas = SubastasResourceIT.createUpdatedEntity(em);  
             em.persist(subastas);
             em.flush();
         } else {

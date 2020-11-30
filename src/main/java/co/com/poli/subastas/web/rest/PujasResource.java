@@ -126,51 +126,20 @@ public class PujasResource {
         System.out.println("=============================================================");
         System.out.println("=============================================================");
         
-        if (puja.getValor() != null && !puja.getValor().isEmpty()) {
+        if (determinarSiPuedeLaPUja(puja) ) {
             Authentication auth = tokenProvider.getAuthentication(puja.getToken());
             User user = (User) auth.getPrincipal();
 
-            co.com.poli.subastas.domain.User userLogin = userRepository.findOneWithAuthoritiesByLogin(user.getUsername()).get();
-            Cliente cliente = clienteRepository.findByIdusuario(user.getUsername()).get(0);
-            System.out.println("======================="+user.getUsername());
-            System.out.println("=============================================================");
+            Cliente cliente = obtenerCliente(user);
             List<Pujadores> pujadoresOld = pujadoresRepository.findByIdEventoAndIdSubastaAndIdLoteAndCliente(
                     puja.getIdEventos(), puja.getIdSubasta(), puja.getIdLote(), cliente);
             
-            List<Dispositivo> dispositivoOld = dispositivoRepository.findByIdEventoAndIdSubastaAndIdLoteAndDispositivo(puja.getIdEventos(), puja.getIdSubasta(), puja.getIdLote(), puja.getDispositivoId());
+            List<Dispositivo> dispositivoOld = dispositivoRepository.findByIdEventoAndIdSubastaAndIdLoteAndDispositivo(puja.getIdEventos(),puja.getIdSubasta(),puja.getIdLote(), puja.getDispositivoId());
             
             Pujadores pujadoresNew;
-            if (pujadoresOld.isEmpty()) {
-                pujadoresNew = new Pujadores();
-                pujadoresNew.setIdEvento(puja.getIdEventos());
-                pujadoresNew.setIdSubasta(puja.getIdSubasta());
-                pujadoresNew.setIdLote(puja.getIdLote());
-                pujadoresNew.setEstado(EstadoPujadores.NOAUTORIZADO);
-                pujadoresNew.setPagoAceptado(false);
-                pujadoresNew.setCliente(cliente);
-                pujadoresRepository.save(pujadoresNew);
-            } else {
-                pujadoresNew = pujadoresOld.get(0);
-            }
-            
-            if(dispositivoOld.isEmpty()){
-                Dispositivo dispositivo = new Dispositivo();
-                dispositivo.setIdEvento(puja.getIdEventos());
-                dispositivo.setIdSubasta(puja.getIdSubasta());
-                dispositivo.setIdLote(puja.getIdLote());
-                dispositivo.activo(Boolean.TRUE);
-                dispositivo.dispositivo(puja.getDispositivoId());
-                dispositivoRepository.save(dispositivo);
-            }
-            Pujas pujaNew = new Pujas();
-            pujaNew.setIdEvento(puja.getIdEventos());
-            pujaNew.setIdSubasta(puja.getIdSubasta());
-            pujaNew.setIdLote(puja.getIdLote());
-            pujaNew.setValor(new BigDecimal(puja.getValor()));
-            pujaNew.setFechacreacion(Instant.now());
-            pujaNew.setAceptadoGanador(false);
-            pujaNew.setPujadores(pujadoresNew);
-            pujasRepository.save(pujaNew);
+            pujadoresNew = determinarNuevoPujador(pujadoresOld, puja, cliente);
+            agregarDispositivo(dispositivoOld, puja, user);
+            Pujas pujaNew = realizarPuja(puja, pujadoresNew);
             
             NotificarPuja notificar = new NotificarPuja( subastasRepository, pujasRepository, userRepository,  clienteRepository,  pujadoresRepository,
             tokenProvider, dispositivoRepository, restTemplate, pujaNew,lotesRepository);
@@ -180,12 +149,67 @@ public class PujasResource {
             log.debug("================== ==========================================");
             log.debug("================== ==========================================");
             
-            
         }
         
         return ResponseEntity.created(new URI("/api/pujas/" + puja.getToken()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, puja.getToken()))
             .body(puja);
+    }
+
+    private boolean determinarSiPuedeLaPUja(PujasDTO puja) throws NumberFormatException {
+        return puja.getValor() != null && !puja.getValor().isEmpty() && 
+                this.subastasRepository.findById(Long.parseLong(puja.getIdSubasta())).get().getFechafinal().compareTo(Instant.now()) > 0;
+    }
+
+    private Cliente obtenerCliente(User user) {
+        co.com.poli.subastas.domain.User userLogin = userRepository.findOneWithAuthoritiesByLogin(user.getUsername()).get();
+        Cliente cliente = clienteRepository.findByIdusuario(user.getUsername()).get(0);
+        System.out.println("======================="+user.getUsername());
+        System.out.println("=============================================================");
+        return cliente;
+    }
+
+    private Pujas realizarPuja(PujasDTO puja, Pujadores pujadoresNew) {
+        Pujas pujaNew = new Pujas();
+        pujaNew.setIdEvento(puja.getIdEventos());
+        pujaNew.setIdSubasta(puja.getIdSubasta());
+        pujaNew.setIdLote(puja.getIdLote());
+        pujaNew.setValor(new BigDecimal(puja.getValor()));
+        pujaNew.setFechacreacion(Instant.now());
+        pujaNew.setAceptadoGanador(false);
+        pujaNew.setPujadores(pujadoresNew);
+        pujasRepository.save(pujaNew);
+        return pujaNew;
+    }
+
+    private Pujadores determinarNuevoPujador(List<Pujadores> pujadoresOld, PujasDTO puja, Cliente cliente) {
+        Pujadores pujadoresNew;
+        if (pujadoresOld.isEmpty()) {
+            pujadoresNew = new Pujadores();
+            pujadoresNew.setIdEvento(puja.getIdEventos());
+            pujadoresNew.setIdSubasta(puja.getIdSubasta());
+            pujadoresNew.setIdLote(puja.getIdLote());
+            pujadoresNew.setEstado(EstadoPujadores.ACTIVO);
+            pujadoresNew.setPagoAceptado(false);
+            pujadoresNew.setCliente(cliente);
+            pujadoresRepository.save(pujadoresNew);
+        } else {
+            pujadoresNew = pujadoresOld.get(0);
+        }
+        return pujadoresNew;
+    }
+
+    private void agregarDispositivo(List<Dispositivo> dispositivoOld, PujasDTO puja, User user) {
+        if(dispositivoOld.isEmpty()){
+            Dispositivo dispositivo = new Dispositivo();
+            dispositivo.setIdEvento(puja.getIdEventos());
+            dispositivo.setIdSubasta(puja.getIdSubasta());
+            dispositivo.setIdLote(puja.getIdLote());
+            dispositivo.activo(Boolean.TRUE);
+            dispositivo.setIdcliente(user.getUsername());
+            dispositivo.dispositivo(puja.getDispositivoId()); 
+            dispositivoRepository.save(dispositivo);
+        }
     }
     
     /**

@@ -6,6 +6,24 @@
             <div>
                 
                  <jhi-alert-error></jhi-alert-error>
+                 
+                 <div  *ngIf="editForm.get('estadocliente')!.invalid && (editForm.get('estadocliente')!.dirty || editForm.get('estadocliente')!.touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('estadocliente')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+                 
+                 <div class="form-group" >
+                    <label class="form-control-label" jhiTranslate="subastasApp.cliente.estadocliente" for="field_estadocliente">Estadocliente</label>
+                    <select class="form-control" id="field_estadocliente" name="estadocliente" formControlName="estadocliente">
+                        <option *ngIf="!editForm.get('estadocliente')!.value" [ngValue]="null" selected></option>
+                        <option [ngValue]="estadoClienteOption.id === editForm.get('estadocliente')!.value?.id ? editForm.get('estadocliente')!.value : estadoClienteOption" *ngFor="let estadoClienteOption of estadoclientes; trackBy: trackById">{{ estadoClienteOption.nombre }}</option>
+                    </select>
+                </div>
+                
+                 
+                 
                 <div class="form-group" [hidden]="!editForm.get('id')!.value">
                     <label for="id" jhiTranslate="global.field.id">ID</label>
                     <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
@@ -301,19 +319,7 @@
                            formControlName="anonimo"/>
                 </div-->
 
-                <div class="form-group" >
-                    <label class="form-control-label" jhiTranslate="subastasApp.cliente.estadocliente" for="field_estadocliente">Estadocliente</label>
-                    <select class="form-control" id="field_estadocliente" name="estadocliente" formControlName="estadocliente">
-                        <option *ngIf="!editForm.get('estadocliente')!.value" [ngValue]="null" selected></option>
-                        <option [ngValue]="estadoClienteOption.id === editForm.get('estadocliente')!.value?.id ? editForm.get('estadocliente')!.value : estadoClienteOption" *ngFor="let estadoClienteOption of estadoclientes; trackBy: trackById">{{ estadoClienteOption.nombre }}</option>
-                    </select>
-                </div>
-                <div  *ngIf="editForm.get('estadocliente')!.invalid && (editForm.get('estadocliente')!.dirty || editForm.get('estadocliente')!.touched)">
-                    <small class="form-text text-danger"
-                           *ngIf="editForm.get('estadocliente')?.errors?.required" jhiTranslate="entity.validation.required">
-                        This field is required.
-                    </small>
-                </div>
+                
                 
                 <jhi-alert-error></jhi-alert-error>
             </div>

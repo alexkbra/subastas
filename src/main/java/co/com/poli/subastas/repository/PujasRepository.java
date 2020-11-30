@@ -21,7 +21,6 @@ public interface PujasRepository extends JpaRepository<Pujas, Long> {
     
     List<Pujas> findByIdEventoAndIdSubastaAndIdLoteAndValorGreaterThanOrderByValorDesc(String idEvento, String idSubasta, String idLote, BigDecimal valor);
     
-    Pujas findFirstByIdEventoAndIdSubastaAndIdLoteOrderByValorDesc(String idEvento, String idSubasta, String idLote);
     
     List<Pujas> findByIdEventoAndIdSubastaOrderByValorDesc(String idEvento, String idSubasta);
     

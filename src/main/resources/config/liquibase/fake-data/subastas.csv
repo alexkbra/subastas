@@ -1,1 +1,1 @@
-id;nombre;decripcion;fechainicio;fechafinal;timpo_reclo_ganador;fechacreacion;valorinicial;valoractual;valortope;paga_anticipo;pesobaseporkg;pesototallote;valor_anticipo;imagen_url;imagen_url_content_type;video_url;estado_activo;eventos_id
+id;nombre;decripcion;fechainicio;fechafinal;timpo_reclo_ganador;fechacreacion;valorinicial;valoractual;valortope;paga_anticipo;estado_ganador;pesobaseporkg;pesototallote;valor_anticipo;imagen_url;imagen_url_content_type;video_url;estado_activo;eventos_id

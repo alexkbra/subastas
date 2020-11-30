@@ -1,6 +1,8 @@
 package co.com.poli.subastas.web.rest;
 
 import co.com.poli.subastas.domain.Pujadores;
+import co.com.poli.subastas.domain.User;
+import co.com.poli.subastas.domain.enumeration.EstadoPujadores;
 import co.com.poli.subastas.repository.PujadoresRepository;
 import co.com.poli.subastas.web.rest.errors.BadRequestAlertException;
 
@@ -84,6 +86,30 @@ public class PujadoresResource {
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, pujadores.getId().toString()))
             .body(result);
+    }
+    
+    /**
+     * {@code GET  /activate} : activate the registered user.
+     *
+     * @param key the activation key.
+     * @throws RuntimeException {@code 500 (Internal Server Error)} if the user couldn't be activated.
+     */
+    @GetMapping("/winner")
+    public void activateAccount(@RequestParam(value = "key") String key) {
+        Pujadores pujadores = pujadoresRepository.findByActivationKey(key);
+        if(pujadores != null){
+            pujadores.setEstado(EstadoPujadores.GANADOR);
+            pujadoresRepository.save(pujadores);
+        }
+        if (pujadores == null) {
+            throw new AccountResourceException("No se encontró ningún pujador para esta clave de activación");
+        }
+    }
+    
+    private static class AccountResourceException extends RuntimeException {
+        private AccountResourceException(String message) {
+            super(message);
+        }
     }
 
     /**
